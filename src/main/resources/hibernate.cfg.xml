@@ -30,5 +30,8 @@
         <property name="hibernate.cache.use_query_cache">
             true
         </property>
+
+        <mapping class="com.revature.beans.ReservationTable"></mapping>
+
     </session-factory>
 </hibernate-configuration>

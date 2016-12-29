@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tables")
-public class Tables {
+public class ReservationTable {
 
     @Id
     @Column
@@ -16,19 +16,19 @@ public class Tables {
 
     @Override
     public String toString() {
-        return "Tables{" +
+        return "ReservationTable{" +
                 "id=" + id +
                 ", capacity=" + capacity +
                 '}';
     }
 
-    public Tables(int id, int capacity) {
+    public ReservationTable(int id, int capacity) {
         super();
         this.id = id;
         this.capacity = capacity;
     }
 
-    public Tables() {
+    public ReservationTable() {
         super();
     }
 

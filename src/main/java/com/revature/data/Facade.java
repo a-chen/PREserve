@@ -1,22 +1,23 @@
 package com.revature.data;
 
-import com.revature.beans.Tables;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import com.revature.beans.ReservationTable;
 
 import java.util.HashSet;
 
-public class Facade {
+public interface Facade {
 
-    private SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+    /**
+     * This returns a collection of all tables
+     *
+     * @return collection of all tables
+     */
+    public HashSet<ReservationTable> getAllTables();
 
-    public HashSet<Tables> getAllTables() {
-
-        Session session = sessionFactory.openSession();
-        TableDAOImpl dao = new TableDAOImpl(session);
-
-        return dao.getAll();
-    }
-
+    /**
+     * This returns a table with provided id
+     *
+     * @param id
+     * @return table with specified id
+     */
+    public ReservationTable getTableById(int id);
 }

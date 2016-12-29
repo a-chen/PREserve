@@ -1,25 +1,38 @@
 package com.revature.data;
 
-import com.revature.beans.Tables;
+import com.revature.beans.ReservationTable;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 
 import java.util.HashSet;
-import java.util.List;
 
-public class TableDAOImpl {
+public class TableDAOImpl implements TableDAO{
 
-    Session session;
+    Session session = null;
 
-    public TableDAOImpl(Session session) {
+    TableDAOImpl(Session session) {
         this.session = session;
     }
 
-    public HashSet<Tables> getAll() {
-        Query query = session.createQuery("from com.revature.beans.Tables");
+    /**
+     * This returns a set of all tables
+     * @return set of all tables
+     */
+    @Override
+    public HashSet<ReservationTable> getAll() {
+        Query query = session.createQuery("from com.revature.beans.ReservationTable");
         //returns list of results
-        return (HashSet<Tables>) query.list();
+        return new HashSet<>(query.list());
+    }
+
+    /**
+     * This returns a table with provided id
+     * @param id
+     * @return table with specified id
+     */
+    @Override
+    public ReservationTable getTableById(int id) {
+        //TODO finish method body
+        return null;
     }
 }
