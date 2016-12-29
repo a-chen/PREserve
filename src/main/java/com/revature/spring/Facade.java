@@ -1,4 +1,6 @@
-package com.revature.data;
+package com.revature.spring;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Created by bcant on 12/29/2016.
@@ -13,7 +15,6 @@ public class Facade {
         this.customerDAO = customerDAO;
     }
     public void setCustomerDAO( CustomerDAO customerDAO) {
-        System.out.println("Facade setting customerDAO");
         this.customerDAO = customerDAO;
     }
 
