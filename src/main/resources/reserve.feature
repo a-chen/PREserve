@@ -24,20 +24,20 @@ Feature:  Reserve Table
   Scenario:
     Given I have a reservation
     When  I click update patrons
-    Then  I can chose a number of patrons
+    Then  I can choose a number of patrons
     And   pick an available table
 
   # Update reservation table
   Scenario:
     Given I have a reservation
     When  I click update table
-    Then  I can chose an available table
+    Then  I can choose an available table
 
   # Update time slot
   Scenario:
     Given I have a reservation
     When  I click update time slot
-    Then  I can chose other available time slots
+    Then  I can choose other available time slots
     And   pick an available table
 
   # Delete reservation

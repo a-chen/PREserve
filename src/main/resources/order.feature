@@ -12,7 +12,7 @@ Feature: Place an order
   # Add items
   Scenario:
     Given I am viewing the menu
-    When  I chose an item and quantity
+    When  I choose an item and quantity
     Then  The item is added to my order
 
   # Update quantity
