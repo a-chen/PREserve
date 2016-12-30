@@ -1,4 +1,4 @@
-package com.revature.spring;
+package com.revature.data;
 
 import com.revature.annotations.SpringAnnotationConfig;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class SpringTest {
     public void lifeCycle(){
         AbstractApplicationContext ctxt = new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
 
-        ctxt.getBean("facade", Facade.class).getFullName();
+        ctxt.getBean("facade", FacadeImpl.class).getFullName();
         ctxt.registerShutdownHook();
     }
 }

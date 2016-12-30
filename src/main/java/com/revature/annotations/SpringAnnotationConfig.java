@@ -1,10 +1,8 @@
 package com.revature.annotations;
 
-        import com.revature.beans.Customer;
-        import com.revature.spring.CustomerDAO;
-        import com.revature.spring.CustomerDAOImpl;
-        import com.revature.spring.Facade;
-        import org.springframework.beans.factory.annotation.Autowire;
+        import com.revature.data.CustomerDAO;
+        import com.revature.data.CustomerDAOImpl;
+        import com.revature.data.FacadeImpl;
         import org.springframework.context.annotation.Bean;
         import org.springframework.context.annotation.Configuration;
 
@@ -20,12 +18,12 @@ public class SpringAnnotationConfig {
     }
 
     @Bean(name="facade")
-    public Facade facade(){
-        return new Facade();
+    public FacadeImpl facade(){
+        return new FacadeImpl();
     }
 
     @Bean
-    public Facade facade( CustomerDAO customerDAO ){
-        return new Facade( customerDAO() ); // constructor injection
+    public FacadeImpl facade(CustomerDAO customerDAO ){
+        return new FacadeImpl( customerDAO() ); // constructor injection
     }
 }

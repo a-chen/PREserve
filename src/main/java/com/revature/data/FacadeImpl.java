@@ -1,17 +1,15 @@
-package com.revature.spring;
-
-import org.springframework.beans.factory.annotation.Autowired;
+package com.revature.data;
 
 /**
  * Created by bcant on 12/29/2016.
  */
-public class Facade {
+public class FacadeImpl implements Facade {
 
     private CustomerDAO customerDAO;
 
-    public Facade(){}
+    public FacadeImpl(){}
 
-    public Facade( CustomerDAO customerDAO ){
+    public FacadeImpl(CustomerDAO customerDAO ){
         this.customerDAO = customerDAO;
     }
     public void setCustomerDAO( CustomerDAO customerDAO) {
