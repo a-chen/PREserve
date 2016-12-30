@@ -1,6 +1,8 @@
 package com.revature.data;
 
 import com.revature.beans.ReservationTable;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 

@@ -6,7 +6,7 @@ public class TableDAOImplTest {
 
     @Test
     public void getAllTables() throws Exception {
-        FacadeImpl facade = new FacadeImpl();
+        DataFacadeImpl facade = new DataFacadeImpl();
         System.out.println(facade.getAllTables());
     }
 

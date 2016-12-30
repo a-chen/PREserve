@@ -16,6 +16,7 @@
         <hibernate.version>4.2.0.Final</hibernate.version>
         <cucumber.version>1.2.5</cucumber.version>
         <selenium.version>3.0.1</selenium.version>
+        <jackson.version>2.2.3</jackson.version>
     </properties>
 
     <dependencies>
@@ -130,17 +131,17 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.2.3</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.2.3</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.2.3</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!-- Validation -->

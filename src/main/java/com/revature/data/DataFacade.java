@@ -4,7 +4,7 @@ import com.revature.beans.ReservationTable;
 
 import java.util.HashSet;
 
-public interface Facade {
+public interface DataFacade {
 
     /**
      * This returns a collection of all tables

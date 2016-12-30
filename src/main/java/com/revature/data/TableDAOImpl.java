@@ -1,38 +1,36 @@
 package com.revature.data;
 
 import com.revature.beans.ReservationTable;
-import org.hibernate.Query;
 import org.hibernate.Session;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 
-public class TableDAOImpl implements TableDAO{
+@Repository(value = "tableDAO")
+@Scope(value = "prototype")
+public class TableDAOImpl implements TableDAO {
 
-    Session session = null;
-
-    TableDAOImpl(Session session) {
-        this.session = session;
-    }
+    Session session;
 
     /**
      * This returns a set of all tables
+     *
      * @return set of all tables
      */
     @Override
     public HashSet<ReservationTable> getAll() {
-        Query query = session.createQuery("from com.revature.beans.ReservationTable");
-        //returns list of results
-        return new HashSet<>(query.list());
+        return new HashSet<>(session.createCriteria(ReservationTable.class).list());
     }
 
     /**
      * This returns a table with provided id
+     *
      * @param id
      * @return table with specified id
      */
     @Override
     public ReservationTable getTableById(int id) {
-        //TODO finish method body
-        return null;
+        return (ReservationTable) session.get(ReservationTable.class, id);
     }
 }
