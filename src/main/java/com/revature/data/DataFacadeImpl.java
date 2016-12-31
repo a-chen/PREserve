@@ -18,6 +18,7 @@ import java.util.HashSet;
 @Component(value = "facade")
 public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 
+    private CustomerDAO customerDAO;
     private SessionFactory sessionFactory;
     private ApplicationContext context;
 
@@ -29,6 +30,8 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     public DataFacadeImpl() {
         sessionFactory = new Configuration().configure().buildSessionFactory();
     }
+
+    public DataFacadeImpl(CustomerDAO customerDAO ){this.customerDAO = customerDAO;}
 
     /**
      * This returns a collection of all tables
@@ -58,6 +61,15 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         session.close();
         return table;
     } //getTableById
+
+
+    public void setCustomerDAO( CustomerDAO customerDAO) {
+        this.customerDAO = customerDAO;
+    }
+
+    public void getFullName(){
+        customerDAO.getFullName();
+    }
 
 
 }
