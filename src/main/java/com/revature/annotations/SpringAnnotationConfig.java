@@ -1,29 +1,38 @@
 package com.revature.annotations;
 
-        import com.revature.data.CustomerDAO;
-        import com.revature.data.CustomerDAOImpl;
-        import com.revature.data.DataFacadeImpl;
+        import com.revature.data.*;
+        import com.revature.data.dao.*;
+        import com.revature.data.impl.*;
         import org.springframework.context.annotation.Bean;
+        import org.springframework.context.annotation.ComponentScan;
         import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by bcant on 12/29/2016.
  */
 @Configuration
+@ComponentScan(basePackages = {"com.revature"})
 public class SpringAnnotationConfig {
 
     @Bean
-    public CustomerDAO customerDAO(){
-        return new CustomerDAOImpl();
-    }
-
-    @Bean(name="facade")
-    public DataFacadeImpl dataFacade(){
-        return new DataFacadeImpl();
-    }
-
+    public CustomerDAO customerDAO() {return new CustomerDAOImpl();}
     @Bean
-    public DataFacadeImpl dataFacade(CustomerDAO customerDAO ){
-        return new DataFacadeImpl( customerDAO() ); // constructor injection
+    public ItemDAO itemDAO() {return new ItemDAOImpl();}
+    @Bean
+    public OrderDAO orderDAO() {return new OrderDAOImpl();}
+    @Bean
+    public Order_ItemDAO order_itemDAO() {return new Order_ItemDAOImpl();}
+    @Bean
+    public ReservationDAO reservationDAO() {return new ReservationDAOImpl();}
+    @Bean
+    public TableDAO tableDAO() {return new TableDAOImpl();}
+
+    @Bean(name = "facade")
+    public DataFacadeImpl dataFacade() {
+        return new DataFacadeImpl(  customerDAO(), itemDAO(),
+                                    orderDAO(), order_itemDAO(),
+                                    reservationDAO(), tableDAO());
     }
+
+
 }

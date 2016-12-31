@@ -1,12 +1,15 @@
-package com.revature.data;
+package com.revature.data.dao;
 
 import com.revature.beans.ReservationTable;
+import org.hibernate.Session;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 
 public interface TableDAO {
+
+    void setSession(Session session);
 
     /**
      * This returns a set of all tables

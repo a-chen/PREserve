@@ -1,19 +1,22 @@
-package com.revature.data;
+package com.revature.data.impl;
 
 import java.util.HashSet;
 
+import com.revature.data.dao.ItemDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.revature.beans.Item;
 
-public class ItemDAOImpl implements ItemDAO{
+public class ItemDAOImpl implements ItemDAO {
 
 	Session session = null;
 
-    ItemDAOImpl(Session session) {
+    public ItemDAOImpl(Session session) {
         this.session = session;
     }
+
+    public ItemDAOImpl() {}
 
 	public HashSet<Item> getAll(){
 		Query query = session.createQuery("from com.revature.beans.Item");

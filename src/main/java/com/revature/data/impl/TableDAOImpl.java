@@ -1,17 +1,19 @@
-package com.revature.data;
+package com.revature.data.impl;
 
 import com.revature.beans.ReservationTable;
+import com.revature.data.dao.TableDAO;
 import org.hibernate.Session;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 
-@Repository(value = "tableDAO")
-@Scope(value = "prototype")
 public class TableDAOImpl implements TableDAO {
 
     Session session;
+
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
 
     /**
      * This returns a set of all tables

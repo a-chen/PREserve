@@ -1,4 +1,4 @@
-package com.revature.data;
+package com.revature.data.dao;
 
 /**
  * Created by bcant on 12/29/2016.

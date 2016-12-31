@@ -1,9 +1,8 @@
-package com.revature.data;
+package com.revature.data.impl;
 
-/**
- * Created by bcant on 12/29/2016.
- */
-public class CustomerDAOImpl implements CustomerDAO{
+import com.revature.data.dao.CustomerDAO;
+
+public class CustomerDAOImpl implements CustomerDAO {
 
     public CustomerDAOImpl(){}
 

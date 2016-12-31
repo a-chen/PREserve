@@ -10,7 +10,7 @@ public class SpringTest {
     public void lifeCycle(){
         AbstractApplicationContext ctxt = new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
 
-        ctxt.getBean("dataFacade", DataFacadeImpl.class).getFullName();
+        ctxt.getBean("facade", DataFacadeImpl.class).getFullName();
         ctxt.registerShutdownHook();
     }
 }

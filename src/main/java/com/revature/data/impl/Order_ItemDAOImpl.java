@@ -1,23 +1,23 @@
-package com.revature.data;
+package com.revature.data.impl;
 
 import java.util.HashSet;
 
+import com.revature.data.dao.Order_ItemDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 
-import com.revature.beans.Item;
 import com.revature.beans.Order_Item;
 
-public class Order_ItemDAOImpl implements Order_ItemDAO{
+public class Order_ItemDAOImpl implements Order_ItemDAO {
 
     Session session = null;
 
-    Order_ItemDAOImpl(Session session) {
+    public Order_ItemDAOImpl(Session session) {
         this.session = session;
     }
+
+    public Order_ItemDAOImpl() {}
 
 	public HashSet<Order_Item> getAll(){
 		Query query = session.createQuery("from com.revature.beans.Order_Item");
