@@ -1,8 +1,16 @@
 package com.revature.data.dao;
 
-/**
- * Created by bcant on 12/29/2016.
- */
+import com.revature.beans.Customer;
+import org.hibernate.Session;
+
 public interface CustomerDAO {
-    void getFullName();
+
+    void setSession(Session session);
+
+    /**
+     * This returns a customer with provided username
+     * @param id
+     * @return table with specified id
+     */
+    Customer getCustomerByUsername( int id );
 }

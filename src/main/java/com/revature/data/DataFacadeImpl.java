@@ -1,11 +1,11 @@
 package com.revature.data;
 
+import com.revature.beans.Customer;
 import com.revature.beans.ReservationTable;
 import com.revature.data.dao.*;
-import com.revature.data.impl.TableDAOImpl;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.Session;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -86,14 +86,19 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         return table;
     } //getTableById
 
+    /**
+     * This returns a table with provided id
+     * @param id
+     * @return
+     */
+    @Override
+    public Customer getCustomerByUsername( int id ) {
+        Session session = sessionFactory.openSession();
 
-    public void setCustomerDAO( CustomerDAO customerDAO) {
-        this.customerDAO = customerDAO;
+        customerDAO.setSession( session );
+        Customer customer = customerDAO.getCustomerByUsername( id );
+
+        session.close();
+        return customer;
     }
-
-    public void getFullName(){
-        customerDAO.getFullName();
-    }
-
-
 }

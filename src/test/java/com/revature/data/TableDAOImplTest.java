@@ -18,13 +18,13 @@ public class TableDAOImplTest {
         context.registerShutdownHook();
     }
 
-   @Test
-   public void getTableById() {
-       AbstractApplicationContext context =
-               new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
+    @Test
+    public void getTableById() {
+        AbstractApplicationContext context =
+                new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
 
-       DataFacade facade = context.getBean("facade", DataFacade.class);
-       System.out.println(facade.getTableById(1));
-       context.registerShutdownHook();
-   }
+        DataFacade facade = context.getBean("facade", DataFacade.class);
+        System.out.println(facade.getTableById(1));
+        context.registerShutdownHook();
+    }
 }

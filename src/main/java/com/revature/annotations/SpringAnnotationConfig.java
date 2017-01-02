@@ -7,9 +7,6 @@ package com.revature.annotations;
         import org.springframework.context.annotation.ComponentScan;
         import org.springframework.context.annotation.Configuration;
 
-/**
- * Created by bcant on 12/29/2016.
- */
 @Configuration
 @ComponentScan(basePackages = {"com.revature"})
 public class SpringAnnotationConfig {
@@ -27,8 +24,8 @@ public class SpringAnnotationConfig {
     @Bean
     public TableDAO tableDAO() {return new TableDAOImpl();}
 
-    @Bean(name = "facade")
-    public DataFacadeImpl dataFacade() {
+    @Bean
+    public DataFacadeImpl facade() {
         return new DataFacadeImpl(  customerDAO(), itemDAO(),
                                     orderDAO(), order_itemDAO(),
                                     reservationDAO(), tableDAO());
