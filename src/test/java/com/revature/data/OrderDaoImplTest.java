@@ -5,14 +5,17 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
-public class CustomerDAOImplTest {
+/**
+ * Created by bcant on 1/2/2017.
+ */
+public class OrderDaoImplTest {
     @Test
-    public void getCustomerById() {
+    public void getOrderById() {
         AbstractApplicationContext context =
                 new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
 
         DataFacade facade = context.getBean("facade", DataFacade.class);
-        System.out.println(facade.getCustomerById(1));
+        System.out.println(facade.getOrderById(1));
         context.registerShutdownHook();
     }
 }

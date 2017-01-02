@@ -1,6 +1,7 @@
 package com.revature.data;
 
 import com.revature.beans.Customer;
+import com.revature.beans.Order;
 import com.revature.beans.ReservationTable;
 import com.revature.data.dao.*;
 import org.hibernate.SessionFactory;
@@ -87,18 +88,34 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     } //getTableById
 
     /**
-     * This returns a table with provided id
+     * This returns a customer with provided id
      * @param id
-     * @return
+     * @return customer with specified id
      */
     @Override
-    public Customer getCustomerByUsername( int id ) {
+    public Customer getCustomerById( int id ) {
         Session session = sessionFactory.openSession();
 
         customerDAO.setSession( session );
-        Customer customer = customerDAO.getCustomerByUsername( id );
+        Customer customer = customerDAO.getCustomerById( id );
 
         session.close();
         return customer;
+    }
+
+    /**
+     * This returns an order with provided id
+     * @param id
+     * @return order with specified id
+     */
+    @Override
+    public Order getOrderById(int id) {
+        Session session = sessionFactory.openSession();
+
+        orderDAO.setSession( session );
+        Order order = orderDAO.getOrderById( id );
+
+        session.close();
+        return order;
     }
 }

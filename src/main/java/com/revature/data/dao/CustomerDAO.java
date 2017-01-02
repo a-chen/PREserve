@@ -8,9 +8,9 @@ public interface CustomerDAO {
     void setSession(Session session);
 
     /**
-     * This returns a customer with provided username
+     * This returns a customer with provided id
      * @param id
      * @return table with specified id
      */
-    Customer getCustomerByUsername( int id );
+    Customer getCustomerById( int id );
 }

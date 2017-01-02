@@ -1,6 +1,7 @@
 package com.revature.data;
 
 import com.revature.beans.Customer;
+import com.revature.beans.Order;
 import com.revature.beans.ReservationTable;
 import org.springframework.context.ApplicationContext;
 
@@ -26,7 +27,14 @@ public interface DataFacade {
     /**
      * This returns a customer with provided username
      * @param id
-     * @return
+     * @return customer with specified id
      */
-    Customer getCustomerByUsername( int id );
+    Customer getCustomerById( int id );
+
+    /**
+     * This returns an order with provided username
+     * @param id
+     * @return order with specified id
+     */
+    Order getOrderById( int id );
 }

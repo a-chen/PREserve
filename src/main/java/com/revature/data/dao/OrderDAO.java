@@ -1,7 +1,16 @@
 package com.revature.data.dao;
 
-/**
- * Created by achen on 12/31/2016.
- */
+import com.revature.beans.Order;
+import org.hibernate.Session;
+
 public interface OrderDAO {
+
+    public void setSession(Session session);
+
+    /**
+     * This returns an order with provided id
+     * @param id
+     * @return order with specified id
+     */
+    Order getOrderById( int id );
 }
