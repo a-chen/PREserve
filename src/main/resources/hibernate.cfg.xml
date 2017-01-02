@@ -9,7 +9,7 @@
         </property>
         <property name="hibernate.connection.url">
             <!--jdbc:mysql://mysql.cdsneqowcvpk.us-west-2.rds.amazonaws.com:3305/HomeTesting-->
-                <!--This is my database (Bryan) used for testing at home since I cannot connect to the reservation db-->
+                <!--This is my database (Bryan) used for testing at home since I cannot connect to the reservation  db-->
             jdbc:mysql://mysql.ccyxvdqrgntt.us-west-2.rds.amazonaws.com:3306/reservation
         </property>
         <property name="hibernate.connection.username">demo</property>
