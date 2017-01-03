@@ -11,45 +11,51 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "reservation_id", nullable = false)
-    private int reservationId;
+    @OneToOne
+    @JoinColumn
+    private Reservation reservation;
 
-    @Column(name = "customer_id", nullable = false)
-    private int customerId;
+    @OneToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    public Order(int reservationId, int customerId) {
-        this.reservationId = reservationId;
-        this.customerId = customerId;
+    public Order(Reservation reservation, Customer customer) {
+        this.reservation = reservation;
+        this.customer = customer;
     }
 
     public Order() { super();}
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
     }
 
-    public int getReservationId() {
-        return reservationId;
+    public Reservation getReservation() {
+        return reservation;
     }
 
-    public void setReservationId(int reservationId) {
-        this.reservationId = reservationId;
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", reservationId=" + reservationId +
-                ", customerId=" + customerId +
+                ", reservation=" + reservation.getId() +
+                ", customer=" + customer.getId() +
                 '}';
     }
 }
