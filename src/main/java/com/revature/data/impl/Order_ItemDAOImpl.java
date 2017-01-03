@@ -13,6 +13,10 @@ public class Order_ItemDAOImpl implements Order_ItemDAO {
 
     Session session = null;
 
+	@Override
+	public void setSession(Session session) {
+		this.session = session;
+	}
     public Order_ItemDAOImpl(Session session) {
         this.session = session;
     }
@@ -24,7 +28,20 @@ public class Order_ItemDAOImpl implements Order_ItemDAO {
 		
 		return new HashSet<Order_Item>(query.list());
 	}
-
+	
+	public HashSet<Order_Item> getByOrderID(int id){
+		String HQL = "select"
+					+ " order_item.orders_id, order_item.item_id, order_item.quantity"
+					+ " from com.revature.beans.Order_Item"
+						+ " left join orders"
+						+ " on order_item.orders_id = orders.id"
+					+ " where orders.id= :order_id";
+		Query query = session.createQuery(HQL);
+		query.setInteger("order_id", id);
+		
+		return new HashSet<Order_Item>(query.list());
+	}
+	
 	public void insert(Order_Item order_item) {
 		Transaction tx = session.beginTransaction();
 		session.save(order_item);
@@ -42,5 +59,6 @@ public class Order_ItemDAOImpl implements Order_ItemDAO {
 		session.delete(order_item);
 		tx.commit();
 	}
-	
+
+
 }

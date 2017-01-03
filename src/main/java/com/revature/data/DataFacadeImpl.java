@@ -1,7 +1,9 @@
 package com.revature.data;
 
 import com.revature.beans.Customer;
+import com.revature.beans.Item;
 import com.revature.beans.Order;
+import com.revature.beans.Order_Item;
 import com.revature.beans.ReservationTable;
 import com.revature.data.dao.*;
 import org.hibernate.SessionFactory;
@@ -118,4 +120,42 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         session.close();
         return order;
     }
+
+	@Override
+	public HashSet<Item> getAllItems() {
+		Session session = sessionFactory.openSession();
+		itemDAO.setSession(session);
+		HashSet<Item> items = itemDAO.getAll();
+		session.close();
+		return items;
+	}
+
+	@Override
+	public Item getItemById(int id) {
+		Session session = sessionFactory.openSession();
+
+        itemDAO.setSession( session );
+        Item item = itemDAO.getById( id );
+
+        session.close();
+        return item;
+	}
+	
+	@Override
+	public HashSet<Order_Item> getAllOrder_Items() {
+		Session session = sessionFactory.openSession();
+        order_itemDAO.setSession(session);
+        HashSet<Order_Item> order_items = order_itemDAO.getAll();
+        session.close();
+        return order_items;
+	}
+
+	@Override
+	public HashSet<Order_Item> getOrder_ItemByOrderId(int id) {
+		Session session = sessionFactory.openSession();
+		order_itemDAO.setSession(session);
+		HashSet<Order_Item> order_items = order_itemDAO.getByOrderID(id);
+		session.close();
+		return order_items;
+	}
 }

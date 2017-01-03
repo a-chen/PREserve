@@ -12,6 +12,11 @@ public class ItemDAOImpl implements ItemDAO {
 
 	Session session = null;
 
+	@Override
+	public void setSession(Session session) {
+		this.session = session;
+	}
+	
     public ItemDAOImpl(Session session) {
         this.session = session;
     }
@@ -31,4 +36,5 @@ public class ItemDAOImpl implements ItemDAO {
 		Item item = (Item) query.uniqueResult();
 		return item;
 	}
+
 }
