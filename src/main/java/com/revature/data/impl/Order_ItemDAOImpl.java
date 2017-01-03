@@ -11,7 +11,7 @@ import com.revature.beans.Order_Item;
 
 public class Order_ItemDAOImpl implements Order_ItemDAO {
 
-    Session session = null;
+    private Session session;
 
 	@Override
 	public void setSession(Session session) {

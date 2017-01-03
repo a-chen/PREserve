@@ -6,7 +6,7 @@ import org.hibernate.Session;
 
 public class OrderDAOImpl implements OrderDAO {
 
-    Session session;
+    private Session session;
 
     @Override
     public void setSession(Session session) {

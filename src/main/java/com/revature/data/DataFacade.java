@@ -1,29 +1,10 @@
 package com.revature.data;
 
-import com.revature.beans.Customer;
-import com.revature.beans.Item;
-import com.revature.beans.Order;
-import com.revature.beans.Order_Item;
-import com.revature.beans.ReservationTable;
+import com.revature.beans.*;
 
 import java.util.HashSet;
 
 public interface DataFacade {
-
-    /**
-     * This returns a collection of all tables
-     *
-     * @return collection of all tables
-     */
-    public HashSet<ReservationTable> getAllTables();
-
-    /**
-     * This returns a table with provided id
-     *
-     * @param id
-     * @return table with specified id
-     */
-    public ReservationTable getTableById(int id);
 
     /**
      * This returns a customer with provided username
@@ -63,4 +44,49 @@ public interface DataFacade {
 	 * @return
 	 */
 	HashSet<Order_Item> getOrder_ItemByOrderId(int id);
+
+	void createReservation(Reservation reservation);
+
+	/**
+	 * Returns a collection of Reservations belonging
+	 *  to a Customer ID
+	 * @param id
+	 * @return set of Reservations belonging to a customer
+	 */
+	HashSet<Reservation> getReservationByCustomerId(int id);
+
+	/**
+	 * Returns a reservation with specified ID
+	 * @param id
+	 * @return Reservation obj with specified ID
+	 */
+	Reservation getReservationById(int id);
+
+	/**
+	 * Updates a Reservation
+	 * @param Reservation Object
+	 */
+	void updateReservation(Reservation reservation);
+
+	/**
+	 * Deletes a reservatoin
+	 * @param Reservation Object
+	 */
+	void deleteReservation(Reservation reservation);
+
+	/**
+	 * This returns a collection of all tables
+	 *
+	 * @return collection of all tables
+	 */
+	public HashSet<ReservationTable> getAllTables();
+
+	/**
+	 * This returns a table with provided id
+	 *
+	 * @param id
+	 * @return table with specified id
+	 */
+	public ReservationTable getTableById(int id);
+
 }

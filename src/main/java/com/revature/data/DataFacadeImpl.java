@@ -1,10 +1,6 @@
 package com.revature.data;
 
-import com.revature.beans.Customer;
-import com.revature.beans.Item;
-import com.revature.beans.Order;
-import com.revature.beans.Order_Item;
-import com.revature.beans.ReservationTable;
+import com.revature.beans.*;
 import com.revature.data.dao.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -158,4 +154,46 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 		session.close();
 		return order_items;
 	}
+
+    @Override
+    public void createReservation(Reservation reservation) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        reservationDAO.createReservation(reservation);
+        session.close();
+    }
+
+    @Override
+    public HashSet<Reservation> getReservationByCustomerId(int id) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        HashSet<Reservation> reservations = reservationDAO.getReservationByCustomerId(id);
+        session.close();
+        return reservations;
+    }
+
+    @Override
+    public Reservation getReservationById(int id) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        Reservation reservation = reservationDAO.getReservationById(id);
+        session.close();
+        return reservation;
+    }
+
+    @Override
+    public void updateReservation(Reservation reservation) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        reservationDAO.updateReservation(reservation);
+        session.close();
+    }
+
+    @Override
+    public void deleteReservation(Reservation reservation) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        reservationDAO.deleteReservation(reservation);
+        session.close();
+    }
 }

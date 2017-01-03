@@ -5,7 +5,7 @@ import org.hibernate.Session;
 
 public interface OrderDAO {
 
-    public void setSession(Session session);
+    void setSession(Session session);
 
     /**
      * This returns an order with provided id

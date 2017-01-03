@@ -10,7 +10,7 @@ import java.util.HashSet;
 
 public class ReservationDAOImpl implements ReservationDAO {
 
-    Session session;
+    private Session session;
 
     @Override
     public void setSession(Session session) {

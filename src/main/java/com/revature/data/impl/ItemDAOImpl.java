@@ -10,7 +10,7 @@ import com.revature.beans.Item;
 
 public class ItemDAOImpl implements ItemDAO {
 
-	Session session = null;
+	private Session session;
 
 	@Override
 	public void setSession(Session session) {

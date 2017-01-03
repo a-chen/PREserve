@@ -8,7 +8,7 @@ import com.revature.beans.Order_Item;
 
 public interface Order_ItemDAO {
 
-	public void setSession(Session session);
+	void setSession(Session session);
 
 	HashSet<Order_Item> getAll();
 	

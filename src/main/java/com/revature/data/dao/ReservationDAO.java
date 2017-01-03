@@ -7,7 +7,7 @@ import java.util.HashSet;
 
 public interface ReservationDAO {
 
-    public void setSession(Session session);
+    void setSession(Session session);
 
     /**
      * Creates a reservation
