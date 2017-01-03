@@ -23,12 +23,12 @@ public class ItemDAOImpl implements ItemDAO {
 
     public ItemDAOImpl() {}
 
-	public HashSet<Item> getAll(){
+	public HashSet<Item> getAllItems(){
 		Query query = session.createQuery("from com.revature.beans.Item");
 		return new HashSet<Item>(query.list());
 	}
 		
-	public Item getById(int id) {
+	public Item getItemById(int id) {
 		String HQL="FROM com.revature.beans.Item WHERE id = :pk";
 		Query query = session.createQuery(HQL);
 		query.setInteger("pk", id);

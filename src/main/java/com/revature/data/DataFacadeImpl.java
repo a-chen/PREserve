@@ -125,7 +125,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 	public HashSet<Item> getAllItems() {
 		Session session = sessionFactory.openSession();
 		itemDAO.setSession(session);
-		HashSet<Item> items = itemDAO.getAll();
+		HashSet<Item> items = itemDAO.getAllItems();
 		session.close();
 		return items;
 	}
@@ -135,7 +135,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 		Session session = sessionFactory.openSession();
 
         itemDAO.setSession( session );
-        Item item = itemDAO.getById( id );
+        Item item = itemDAO.getItemById( id );
 
         session.close();
         return item;
