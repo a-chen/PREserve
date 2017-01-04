@@ -12,7 +12,7 @@
                 <!--This is my database (Bryan) used for testing at home since I cannot connect to the reservation  db-->
             jdbc:mysql://mysql.ccyxvdqrgntt.us-west-2.rds.amazonaws.com:3306/reservation
         </property>
-        <property name="hibernate.connection.username">bcantos17</property>
+        <property name="hibernate.connection.username">demo</property>
         <property name="hibernate.connection.password">welcome1</property>
         <property name="hibernate.connection.pool_size">20</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>

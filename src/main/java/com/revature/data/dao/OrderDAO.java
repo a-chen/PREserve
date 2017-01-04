@@ -21,4 +21,6 @@ public interface OrderDAO {
      * @param order
      */
     void insert( Order order );
+
+    void delete( Order order );
 }

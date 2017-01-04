@@ -119,13 +119,12 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     }
 
     /**
-     *This inserts an order with the provided order
+     *This inserts an order
      * @param order
      */
     @Override
     public void insertOrder( Order order ) {
         Session session = sessionFactory.openSession();
-        orderDAO = context.getBean("orderDAO", OrderDAO.class);
         orderDAO.setSession( session );
         Transaction transaction = session.beginTransaction();
         try{
@@ -137,7 +136,27 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         session.close();
     }
 
-	@Override
+    /**
+     * This deletes an order
+     * @param order
+     */
+    @Override
+    public void deleteOrder(Order order) {
+        Session session = sessionFactory.openSession();
+        orderDAO.setSession( session );
+
+        Transaction transaction = session.beginTransaction();
+        try{
+            orderDAO.delete( order );
+            transaction.commit();
+        }catch( Exception e ){
+            transaction.rollback();
+        }
+
+        session.close();
+    }
+
+    @Override
 	public HashSet<Item> getAllItems() {
 		Session session = sessionFactory.openSession();
 		itemDAO.setSession(session);
