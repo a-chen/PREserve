@@ -1,11 +1,15 @@
 package com.revature.data;
 
 import com.revature.annotations.SpringAnnotationConfig;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 
 public class TableDAOImplTest {
+
+ /*   @Before
+    public void runBeforeMethod*/
 
     @Test
     public void getAllTables() throws Exception {

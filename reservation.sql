@@ -35,9 +35,11 @@ CREATE TABLE reservation(
     
     PRIMARY KEY (id),
     FOREIGN KEY (tables_id)
-		REFERENCES tables(id),
+		REFERENCES tables(id)
+        ON DELETE CASCADE,
 	FOREIGN KEY (customer_id)
 		REFERENCES customer(id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE orders(
@@ -47,27 +49,49 @@ CREATE TABLE orders(
     
     PRIMARY KEY (id),
     FOREIGN KEY (reservation_id)
-		REFERENCES reservation(id),
+		REFERENCES reservation(id)
+        ON DELETE CASCADE,
 	FOREIGN KEY (customer_id)
 		REFERENCES customer(id)
+        ON DELETE CASCADE
 );
 
 CREATE TABLE order_item(
+	id INT NOT NULL AUTO_INCREMENT,
 	orders_id INT NOT NULL,
     item_id INT NOT NULL,
     quantity INT NOT NULL,
     
+    PRIMARY KEY (id),
     FOREIGN KEY (orders_id)
-		REFERENCES orders(id),
+		REFERENCES orders(id)
+        ON DELETE CASCADE,
 	FOREIGN KEY (item_id)
-		REFERENCES item(id),
-	PRIMARY KEY (orders_id, item_id)
+		REFERENCES item(id)
+		ON DELETE CASCADE
 );
 
-#see tables
-show tables;
+#Test Data
 
-drop table reservation_table;
+#tables
+INSERT INTO tables (id, capacity) VALUES (1, 6);
+INSERT INTO tables (capacity) VALUES (6);
+INSERT INTO tables (capacity) VALUES (6);
+INSERT INTO tables (capacity) VALUES (2);
+INSERT INTO tables (capacity) VALUES (2);
+INSERT INTO tables (capacity) VALUES (2);
+INSERT INTO tables (capacity) VALUES (8);
 
-#check foreign keys
-SHOW CREATE TABLE `reservation`;
+INSERT INTO customer (id, first_name, last_name, username, email, phone) VALUES (1, 'Jason', 'Bourne', 'bourne2win', 'jasonbourne@gmail.com',  '3829879876');
+
+commit;
+
+#
+#SET FOREIGN_KEY_CHECKS = 0;
+#drop table order_item;
+#drop table reservation;
+#drop table customer;
+#drop table item;
+#drop table orders;
+#drop table tables;
+#SET FOREIGN_KEY_CHECKS = 1;

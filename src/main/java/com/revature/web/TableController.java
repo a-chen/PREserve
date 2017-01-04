@@ -28,5 +28,4 @@ public class TableController {
         return businessDelegate.getAllTables();
     }
 
-
 }

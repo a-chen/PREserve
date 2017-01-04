@@ -19,9 +19,7 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public void createReservation(Reservation reservation) {
-        Transaction tx = session.beginTransaction();
         session.save(reservation);
-        tx.commit();
     }
 
     @Override
@@ -42,15 +40,11 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public void updateReservation(Reservation reservation) {
-        Transaction tx = session.beginTransaction();
         session.saveOrUpdate(reservation);
-        tx.commit();
     }
 
     @Override
     public void deleteReservation(Reservation reservation) {
-        Transaction tx = session.beginTransaction();
         session.delete(reservation);
-        tx.commit();
     }
 }
