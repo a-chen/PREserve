@@ -8,12 +8,12 @@ import java.util.Set;
 public class Order {
 
     @Id
-    @Column
+    @Column(name = "orders_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToOne
-    @JoinColumn
+    @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
     @OneToOne
@@ -56,6 +56,7 @@ public class Order {
         this.customer = customer;
     }
 
+
     public Set<Order_Item> getOrder_items() {
         return order_items;
     }
@@ -63,6 +64,7 @@ public class Order {
     public void setOrder_items(Set<Order_Item> order_items) {
         this.order_items = order_items;
     }
+
 
     @Override
     public String toString() {

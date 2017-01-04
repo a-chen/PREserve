@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Item {
 
     @Id
-    @Column
+    @Column(name = "item_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
     

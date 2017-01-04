@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Order_Item {
 
 	@Id
-	@Column
+	@Column(name = "order_item_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
@@ -41,7 +41,7 @@ public class Order_Item {
 
 	@Override
 	public String toString() {
-		return "Order_Item [order=" + order + ", item=" + item + ", quantity=" + quantity + "]";
+		return "Order_Item [order=" + order.getId() + ", item=" + item.getId() + ", quantity=" + quantity + "]";
 	}
 
 	public Order getOrder() {
