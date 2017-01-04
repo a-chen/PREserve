@@ -25,7 +25,8 @@ public class Order_ItemDAOImplTest {
         System.out.println(facade.getAllOrder_Items());
         context.registerShutdownHook();
     }
-	
+
+	@Ignore
 	@Test
 	public void getOrder_ItemByOrderId() {
 	    AbstractApplicationContext context =
@@ -35,7 +36,8 @@ public class Order_ItemDAOImplTest {
 	    System.out.println(facade.getOrder_ItemByOrderId(1));
 	    context.registerShutdownHook();
 	}
-	
+
+	@Ignore
 	@Test
 	public void insertOrder_Item(){
 		Order order = new OrderDAOImpl().getOrderById(1);

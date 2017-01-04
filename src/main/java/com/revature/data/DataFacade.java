@@ -20,6 +20,8 @@ public interface DataFacade {
      */
     Order getOrderById( int id );
 
+    void insertOrder( Order order );
+
 	/** 
 	 * @return collection of all items
 	 */
@@ -88,5 +90,7 @@ public interface DataFacade {
 	 * @return table with specified id
 	 */
 	public ReservationTable getTableById(int id);
+
+	//void insertOrder_Item(Order_Item order_item);
 
 }

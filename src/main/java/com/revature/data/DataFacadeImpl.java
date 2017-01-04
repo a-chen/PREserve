@@ -118,6 +118,25 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         return order;
     }
 
+    /**
+     *This inserts an order with the provided order
+     * @param order
+     */
+    @Override
+    public void insertOrder( Order order ) {
+        Session session = sessionFactory.openSession();
+        orderDAO = context.getBean("orderDAO", OrderDAO.class);
+        orderDAO.setSession( session );
+        Transaction transaction = session.beginTransaction();
+        try{
+            orderDAO.insert( order );
+            transaction.commit();
+        }catch(Exception e){
+            transaction.rollback();
+        }
+        session.close();
+    }
+
 	@Override
 	public HashSet<Item> getAllItems() {
 		Session session = sessionFactory.openSession();
@@ -137,7 +156,24 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         session.close();
         return item;
 	}
-	
+
+/**
+ 	//TODO how are we inserting order items?
+    @Override
+    public void insertOrder_Item(Order_Item order_item) {
+        Session session = sessionFactory.openSession();
+        order_itemDAO = context.getBean("order_itemDAO", Order_ItemDAO.class);
+        order_itemDAO.setSession( session );
+        Transaction tx = session.beginTransaction();
+        try{
+            order_itemDAO.insert( order_item );
+            tx.commit();
+        }catch(Exception e){
+            transaction.rollback();
+        }
+        session.close();
+    }
+**/	
 	@Override
 	public HashSet<Order_Item> getAllOrder_Items() {
 		Session session = sessionFactory.openSession();

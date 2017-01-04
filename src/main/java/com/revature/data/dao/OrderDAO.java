@@ -1,6 +1,8 @@
 package com.revature.data.dao;
 
+import com.revature.beans.Customer;
 import com.revature.beans.Order;
+import com.revature.beans.Reservation;
 import org.hibernate.Session;
 
 public interface OrderDAO {
@@ -13,4 +15,10 @@ public interface OrderDAO {
      * @return order with specified id
      */
     Order getOrderById( int id );
+
+    /**
+     * This inserts an order with the provided order
+     * @param order
+     */
+    void insert( Order order );
 }
