@@ -20,10 +20,10 @@ public class OrderDaoImplTest {
     }
     @Test
     public void insert(){
-        /*AbstractApplicationContext context = new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
         DataFacade facade = context.getBean("facade", DataFacade.class);
 
-        Customer customer = facade.getCustomerById(1);
+        /*Customer customer = facade.getCustomerById(1);
         Reservation reservation = facade.getReservationById();
         Order order = new Order( reservation, customer );
 
