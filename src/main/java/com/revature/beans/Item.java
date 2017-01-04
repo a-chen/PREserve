@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "items")
+@Table(name = "item")
 public class Item {
 
     @Id
@@ -22,7 +22,7 @@ public class Item {
     @Column(nullable = false)
 	private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
 	private String description;
 	
 	@Override
@@ -35,6 +35,7 @@ public class Item {
 	}
 
 	public Item(double price, String name, String description) {
+        super();
 		this.price = price;
 		this.name = name;
 		this.description = description;
