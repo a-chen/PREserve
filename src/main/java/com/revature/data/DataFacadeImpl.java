@@ -183,10 +183,10 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         Session session = sessionFactory.openSession();
         order_itemDAO = context.getBean("order_itemDAO", Order_ItemDAO.class);
         order_itemDAO.setSession( session );
-        Transaction transaction = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         try{
             order_itemDAO.insert( order_item );
-            transaction.commit();
+            tx.commit();
         }catch(Exception e){
             transaction.rollback();
         }

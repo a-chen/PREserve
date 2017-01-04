@@ -26,7 +26,7 @@ public class Order_ItemDAOImplTest {
         context.registerShutdownHook();
     }
 
-	
+	@Ignore
 	@Test
 	public void getOrder_ItemByOrderId() {
 	    AbstractApplicationContext context =
