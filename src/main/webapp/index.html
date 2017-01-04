@@ -35,10 +35,106 @@
 </head>
 <body>
 
-<div class="home-page-title">
-	<h1>Welcome to PREserve!</h1>
-	<h4>Please pick the Date, Time, and number of patrons you would like for your reservation.</h4>
+<!-- Intro page to set reservation preferences -->
+<div class="intro-div jumbotron center">
+	<div class="home-page-title" style= "text-align:center">
+		<h1>Welcome to PREserve!</h1>
+		<h4>Please pick the date, time, and number of patrons you would like for your reservation.</h4>
+	</div>
+	
+	<form id="reservation" action ="" method="post">
+		<div class="row col-sm-offset-3" style="padding-top:15px">
+			<div class="form-group form-inline">
+				<div class="form-group col-sm-3">
+					<div class="input-group" data-datepicker="true">
+					    <input name="date" min="0" type="date" class="form-control" required>
+				    	<span class="input-group-addon glyphicon glyphicon-calendar"/>
+					</div>
+				</div>
+				<div class="form-group col-sm-3">
+					<div class="input-group">
+			            <input name="time" type="time" class="form-control" required>
+			            <span class="input-group-addon glyphicon glyphicon-time"/>
+			        </div>
+				</div>
+				<div class="form-group col-sm-3">
+					<div class="input-group">
+						<input name= "numPatrons" min="0" type="number" step="0" 
+							class="form-control" placeholder="Patrons" required>
+				    	<span class="input-group-addon glyphicon glyphicon-user"/>
+					</div>		
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class= "col-md-offset-10" style="padding-top:20px">
+				<input type="submit" class="btn btn-primary" value="Submit" />
+			</div>
+		</div>
+	</form>
 </div>
 
+<!-- Table page to pick an available table -->
+<div class="table-div">
+	<div class="table-page-title">
+		<h1>Available reservations for "Date" at "Time"</h1>
+		<h4>Please choose an available table.</h4>
+	</div>
+	<div class="col-md-10 col-md-offset-2">
+		<div class="row row1">
+			<div class="table1 col-md-6">
+				<div class="square">
+				    <div class="content">
+				        <div class="table">
+				            <div class="table-cell">
+				              table1    
+				            </div>
+				        </div>
+				    </div>
+				</div>
+			</div>
+			
+			<div class="table4 col-md-2">
+			
+			</div>
+			
+			<div class="table7 col-md-2">
+			
+			</div>
+		</div>
+		
+		<div class="row row2">
+			<div class="table2 col-md-6">
+			
+			</div>
+			
+			<div class="table5 col-md-2">
+			
+			</div>
+			
+			<div class="table8 col-md-2">
+			
+			</div>
+		</div>	
+		
+		<div class="row row3">
+			<div class="table3 col-md-6">
+			
+			</div>
+			
+			<div class="table6 col-md-4">
+			
+			</div>
+		</div>
+				
+	</div>
+</div>
+<script type="text/javascript">
+	$('#timepicker1').timepicker({
+		template: false,
+		showInputs: false,
+		minuteStep: 5
+	});
+</script>
 </body>
 </html>

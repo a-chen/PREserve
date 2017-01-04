@@ -85,6 +85,19 @@ INSERT INTO tables (capacity) VALUES (8);
 #customer
 INSERT INTO customer (id, first_name, last_name, username, email, phone) VALUES (1, 'Jason', 'Bourne', 'bourne2win', 'jasonbourne@gmail.com',  '3829879876');
 
+#items
+INSERT INTO item 
+	VALUES(1, 10.0, 'Regular Pizza', '18 inch classic pizza pie.');
+
+INSERT INTO item(price, name, description) 
+	VALUES(15.0, 'Anchovy Pizza', '18 inch pizza pie with anchovies.');
+    
+INSERT INTO item(price, name, description)  
+	VALUES(15.0, 'Hawaiian Pizza', '18 inch pizza pie with ham and pineapple');
+    
+INSERT INTO item(price, name, description) 
+	VALUES(15.0, 'French Fries Pizza', '18 inch pizza pie topped with french fries');
+
 commit;
 
 #run below to drop all tables while ignoring foreign key constraints
