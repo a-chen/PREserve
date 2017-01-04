@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.List;
 
-@Service(value = "businessDelegate")
+//@Service(value = "businessDelegate")
 public class Delegate {
 
     private DataFacade facade;

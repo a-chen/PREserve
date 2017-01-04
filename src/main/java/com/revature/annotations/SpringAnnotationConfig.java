@@ -3,6 +3,7 @@ package com.revature.annotations;
         import com.revature.data.*;
         import com.revature.data.dao.*;
         import com.revature.data.impl.*;
+        import com.revature.middle.Delegate;
         import org.springframework.context.annotation.Bean;
         import org.springframework.context.annotation.ComponentScan;
         import org.springframework.context.annotation.Configuration;
@@ -30,6 +31,9 @@ public class SpringAnnotationConfig {
                                     orderDAO(), order_itemDAO(),
                                     reservationDAO(), tableDAO());
     }
+
+    @Bean
+    public Delegate businessDelegate() {return new Delegate();}
 
 
 }
