@@ -39,6 +39,8 @@ public interface DataFacade {
      */
     Order getOrderById( int id );
 
+    void insertOrder( Order order );
+
 	/** 
 	 * @return collection of all items
 	 */

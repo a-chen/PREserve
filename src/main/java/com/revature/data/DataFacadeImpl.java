@@ -1,12 +1,9 @@
 package com.revature.data;
 
-import com.revature.beans.Customer;
-import com.revature.beans.Item;
-import com.revature.beans.Order;
-import com.revature.beans.Order_Item;
-import com.revature.beans.ReservationTable;
+import com.revature.beans.*;
 import com.revature.data.dao.*;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Session;
 import org.springframework.beans.BeansException;
@@ -119,6 +116,25 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 
         session.close();
         return order;
+    }
+
+    /**
+     *This inserts an order with the provided order
+     * @param order
+     */
+    @Override
+    public void insertOrder( Order order ) {
+        Session session = sessionFactory.openSession();
+        orderDAO = context.getBean("orderDAO", OrderDAO.class);
+        orderDAO.setSession( session );
+        Transaction transaction = session.beginTransaction();
+        try{
+            orderDAO.insert( order );
+            transaction.commit();
+        }catch(Exception e){
+            transaction.rollback();
+        }
+        session.close();
     }
 
 	@Override
