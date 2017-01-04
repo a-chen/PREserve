@@ -156,7 +156,24 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         session.close();
         return item;
 	}
-	
+
+/**
+ 	//TODO how are we inserting order items?
+    @Override
+    public void insertOrder_Item(Order_Item order_item) {
+        Session session = sessionFactory.openSession();
+        order_itemDAO = context.getBean("order_itemDAO", Order_ItemDAO.class);
+        order_itemDAO.setSession( session );
+        Transaction transaction = session.beginTransaction();
+        try{
+            order_itemDAO.insert( order_item );
+            transaction.commit();
+        }catch(Exception e){
+            transaction.rollback();
+        }
+        session.close();
+    }
+**/	
 	@Override
 	public HashSet<Order_Item> getAllOrder_Items() {
 		Session session = sessionFactory.openSession();

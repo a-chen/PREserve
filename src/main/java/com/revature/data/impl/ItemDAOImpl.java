@@ -7,6 +7,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.revature.beans.Item;
+import com.revature.beans.ReservationTable;
 
 public class ItemDAOImpl implements ItemDAO {
 
@@ -16,25 +17,15 @@ public class ItemDAOImpl implements ItemDAO {
 	public void setSession(Session session) {
 		this.session = session;
 	}
-	
-    public ItemDAOImpl(Session session) {
-        this.session = session;
-    }
 
-    public ItemDAOImpl() {}
-
+	@Override
 	public HashSet<Item> getAllItems(){
-		Query query = session.createQuery("from com.revature.beans.Item");
-		return new HashSet<Item>(query.list());
+        return new HashSet<>(session.createCriteria(Item.class).list());
 	}
-		
+
+	@Override	
 	public Item getItemById(int id) {
-		String HQL="FROM com.revature.beans.Item WHERE id = :pk";
-		Query query = session.createQuery(HQL);
-		query.setInteger("pk", id);
-		
-		Item item = (Item) query.uniqueResult();
-		return item;
+        return (Item) session.get(Item.class, id);
 	}
 
 }

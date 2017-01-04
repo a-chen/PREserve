@@ -1,10 +1,28 @@
 package com.revature.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "items")
 public class Item {
 
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+    
+    @Column(nullable = false)
 	private double price;
+	
+    @Column(nullable = false)
 	private String name;
+
+    @Column(nullable = false)
 	private String description;
 	
 	@Override
@@ -16,9 +34,7 @@ public class Item {
 		super();
 	}
 
-	public Item(int id, double price, String name, String description) {
-		super();
-		this.id = id;
+	public Item(double price, String name, String description) {
 		this.price = price;
 		this.name = name;
 		this.description = description;

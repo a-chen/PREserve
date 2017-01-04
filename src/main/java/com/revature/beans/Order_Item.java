@@ -1,41 +1,55 @@
 package com.revature.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "order_items")
 public class Order_Item {
 
-	private Order order_id;
-	private Item item_id;
-	private int quantity;
+    @OneToOne
+    @JoinColumn(name = "order_id", nullable = false)
+	private Order order;
+
+    @OneToOne
+    @JoinColumn(name = "item_id", nullable = false)
+	private Item item;
 	
+    @Column(nullable = false)
+	private int quantity;
+
+    public Order_Item(Order order, Item item, int quantity) {
+        this.order = order;
+        this.item = item;
+        this.quantity = quantity;
+    }
+
 	public Order_Item() {
 		super();
 	}
 
-	public Order_Item(Order order_id, Item item_id, int quantity) {
-		super();
-		this.order_id = order_id;
-		this.item_id = item_id;
-		this.quantity = quantity;
-	}
-
 	@Override
 	public String toString() {
-		return "Order_Item [order_id=" + order_id + ", item_id=" + item_id + ", quantity=" + quantity + "]";
+		return "Order_Item [order=" + order + ", item=" + item + ", quantity=" + quantity + "]";
 	}
 
-	public Order getOrder_id() {
-		return order_id;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrder_id(Order order_id) {
-		this.order_id = order_id;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-	public Item getItem_id() {
-		return item_id;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setItem_id(Item item_id) {
-		this.item_id = item_id;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	public int getQuantity() {
