@@ -21,7 +21,7 @@ public class Order {
     private Customer customer;
 
     @OneToMany
-    @JoinColumn(name="")
+    @JoinColumn(name="order_item_id")
     private Set<Order_Item> order_items;
 
 
