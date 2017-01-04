@@ -1,6 +1,7 @@
 package com.revature.beans;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -18,6 +19,11 @@ public class Order {
     @OneToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
+
+    @OneToMany
+    @JoinColumn(name="")
+    private Set<Order_Item> order_items;
+
 
     public Order(Reservation reservation, Customer customer) {
         this.reservation = reservation;
@@ -48,6 +54,14 @@ public class Order {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Set<Order_Item> getOrder_items() {
+        return order_items;
+    }
+
+    public void setOrder_items(Set<Order_Item> order_items) {
+        this.order_items = order_items;
     }
 
     @Override

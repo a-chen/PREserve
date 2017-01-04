@@ -19,8 +19,8 @@ public class Order_Item {
     private int id;
 	
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-	private Order order;
+    @JoinColumn(name = "orders_id", nullable = false)
+	private Order orders_id;
 
    @ManyToOne
    @JoinColumn(name = "item_id", nullable = false)
@@ -29,11 +29,11 @@ public class Order_Item {
    @Column(nullable = false)
 	private int quantity;
 
-    public Order_Item(Order order, Item item, int quantity) {
-        this.order = order;
-        this.item = item;
-        this.quantity = quantity;
-    }
+	public Order_Item(Order orders_id, Item item, int quantity) {
+		this.orders_id = orders_id;
+		this.item = item;
+		this.quantity = quantity;
+	}
 
 	public Order_Item() {
 		super();
@@ -41,15 +41,20 @@ public class Order_Item {
 
 	@Override
 	public String toString() {
-		return "Order_Item [order=" + order + ", item=" + item + ", quantity=" + quantity + "]";
+		return "Order_Item{" +
+				"id=" + id +
+				", orders_id=" + orders_id +
+				", item=" + item +
+				", quantity=" + quantity +
+				'}';
 	}
 
-	public Order getOrder() {
-		return order;
+	public Order getOrders_id() {
+		return orders_id;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrders_id(Order orders_id) {
+		this.orders_id = orders_id;
 	}
 
 	public Item getItem() {
@@ -67,5 +72,12 @@ public class Order_Item {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-		
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
