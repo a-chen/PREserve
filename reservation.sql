@@ -82,16 +82,19 @@ INSERT INTO tables (capacity) VALUES (2);
 INSERT INTO tables (capacity) VALUES (2);
 INSERT INTO tables (capacity) VALUES (8);
 
+#customer
 INSERT INTO customer (id, first_name, last_name, username, email, phone) VALUES (1, 'Jason', 'Bourne', 'bourne2win', 'jasonbourne@gmail.com',  '3829879876');
 
 commit;
 
-#
-#SET FOREIGN_KEY_CHECKS = 0;
-#drop table order_item;
-#drop table reservation;
-#drop table customer;
-#drop table item;
-#drop table orders;
-#drop table tables;
-#SET FOREIGN_KEY_CHECKS = 1;
+#run below to drop all tables while ignoring foreign key constraints
+/*
+SET FOREIGN_KEY_CHECKS = 0;
+drop table order_item;
+drop table reservation;
+drop table customer;
+drop table item;
+drop table orders;
+drop table tables;
+SET FOREIGN_KEY_CHECKS = 1;
+*/
