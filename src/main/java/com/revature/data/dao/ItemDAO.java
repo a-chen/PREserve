@@ -8,10 +8,10 @@ import com.revature.beans.Item;
 
 public interface ItemDAO {
 	
-	public void setSession(Session session);
+	void setSession(Session session);
 	
-	HashSet<Item> getAll();
+	HashSet<Item> getAllItems();
 	
-	Item getById(int id);
+	Item getItemById(int id);
 	
 }

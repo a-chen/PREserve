@@ -141,7 +141,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 	public HashSet<Item> getAllItems() {
 		Session session = sessionFactory.openSession();
 		itemDAO.setSession(session);
-		HashSet<Item> items = itemDAO.getAll();
+		HashSet<Item> items = itemDAO.getAllItems();
 		session.close();
 		return items;
 	}
@@ -151,7 +151,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 		Session session = sessionFactory.openSession();
 
         itemDAO.setSession( session );
-        Item item = itemDAO.getById( id );
+        Item item = itemDAO.getItemById( id );
 
         session.close();
         return item;
@@ -174,4 +174,46 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 		session.close();
 		return order_items;
 	}
+
+    @Override
+    public void createReservation(Reservation reservation) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        reservationDAO.createReservation(reservation);
+        session.close();
+    }
+
+    @Override
+    public HashSet<Reservation> getReservationByCustomerId(int id) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        HashSet<Reservation> reservations = reservationDAO.getReservationByCustomerId(id);
+        session.close();
+        return reservations;
+    }
+
+    @Override
+    public Reservation getReservationById(int id) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        Reservation reservation = reservationDAO.getReservationById(id);
+        session.close();
+        return reservation;
+    }
+
+    @Override
+    public void updateReservation(Reservation reservation) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        reservationDAO.updateReservation(reservation);
+        session.close();
+    }
+
+    @Override
+    public void deleteReservation(Reservation reservation) {
+        Session session = sessionFactory.openSession();
+        reservationDAO.setSession(session);
+        reservationDAO.deleteReservation(reservation);
+        session.close();
+    }
 }

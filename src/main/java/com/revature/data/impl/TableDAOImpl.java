@@ -8,29 +8,18 @@ import java.util.HashSet;
 
 public class TableDAOImpl implements TableDAO {
 
-    Session session;
+    private Session session;
 
     @Override
     public void setSession(Session session) {
         this.session = session;
     }
 
-    /**
-     * This returns a set of all tables
-     *
-     * @return set of all tables
-     */
     @Override
     public HashSet<ReservationTable> getAll() {
         return new HashSet<>(session.createCriteria(ReservationTable.class).list());
     }
 
-    /**
-     * This returns a table with provided id
-     *
-     * @param id
-     * @return table with specified id
-     */
     @Override
     public ReservationTable getTableById(int id) {
         return (ReservationTable) session.get(ReservationTable.class, id);

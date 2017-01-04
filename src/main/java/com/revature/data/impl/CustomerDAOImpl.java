@@ -5,7 +5,7 @@ import com.revature.data.dao.CustomerDAO;
 import org.hibernate.Session;
 
 public class CustomerDAOImpl implements CustomerDAO {
-    Session session;
+    private Session session;
 
     @Override
     public void setSession(Session session) {
