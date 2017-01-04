@@ -3,6 +3,7 @@ package com.revature.data;
 import com.revature.beans.*;
 import com.revature.data.dao.*;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Session;
 import org.springframework.beans.BeansException;
@@ -158,8 +159,12 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     @Override
     public void createReservation(Reservation reservation) {
         Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
         reservationDAO.setSession(session);
+
         reservationDAO.createReservation(reservation);
+
+        tx.commit();
         session.close();
     }
 
@@ -184,16 +189,24 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     @Override
     public void updateReservation(Reservation reservation) {
         Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
         reservationDAO.setSession(session);
+
         reservationDAO.updateReservation(reservation);
+
+        tx.commit();
         session.close();
     }
 
     @Override
     public void deleteReservation(Reservation reservation) {
         Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
         reservationDAO.setSession(session);
+
         reservationDAO.deleteReservation(reservation);
+
+        tx.commit();
         session.close();
     }
 }
