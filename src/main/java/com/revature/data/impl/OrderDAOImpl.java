@@ -31,4 +31,7 @@ public class OrderDAOImpl implements OrderDAO {
      */
     @Override
     public void insert( Order order ) { session.saveOrUpdate( order ); }
+
+    @Override
+    public void delete(Order order) { session.delete( order ); }
 }

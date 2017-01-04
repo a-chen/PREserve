@@ -23,11 +23,22 @@ public class OrderDaoImplTest {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
         DataFacade facade = context.getBean("facade", DataFacade.class);
 
-        /*Customer customer = facade.getCustomerById(1);
-        Reservation reservation = facade.getReservationById();
+        Customer customer = facade.getCustomerById(1);
+        Reservation reservation = facade.getReservationById(1);
         Order order = new Order( reservation, customer );
 
         facade.insertOrder( order );
-        context.registerShutdownHook();*/
+        context.registerShutdownHook();
+    }
+
+    @Test
+    public void delete(){
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
+        DataFacade facade = context.getBean("facade", DataFacade.class);
+
+        Order order = facade.getOrderById(1);
+        facade.deleteOrder( order );
+
+        context.registerShutdownHook();
     }
 }

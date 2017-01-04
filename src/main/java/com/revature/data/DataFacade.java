@@ -7,20 +7,30 @@ import java.util.HashSet;
 public interface DataFacade {
 
     /**
-     * This returns a customer with provided username
+     * This returns a customer with provided id
      * @param id
      * @return customer with specified id
      */
     Customer getCustomerById( int id );
 
     /**
-     * This returns an order with provided username
+     * This returns an order with provided id
      * @param id
      * @return order with specified id
      */
     Order getOrderById( int id );
 
+	/**
+	 * This inserts an order
+	 * @param order
+	 */
     void insertOrder( Order order );
+
+	/**
+	 * This deletes an order
+	 * @param order
+	 */
+    void deleteOrder( Order order );
 
 	/** 
 	 * @return collection of all items
