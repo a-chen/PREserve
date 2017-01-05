@@ -25,30 +25,28 @@ public class OrderItemDAOImpl implements OrderItemDAO {
         return new HashSet<>(session.createCriteria(OrderItem.class).list());
 	}
 
+	@Override
+	public OrderItem getByOrderItemId(int id) {
+		return (OrderItem) session.get(OrderItem.class, id);
+	}
+
 	public HashSet<OrderItem> getByOrderID(int id){
 		Criteria criteria = session.createCriteria(OrderItem.class);
 		criteria.add(Restrictions.eq("order.id", id));
 
 		return new HashSet<OrderItem>(criteria.list());
 	}
-	
+
+	public void delete(OrderItem orderItem){
+		session.delete(orderItem);
+	}
+
 	public void insert(OrderItem orderItem) {
-		Transaction tx = session.beginTransaction();
 		session.save(orderItem);
-		tx.commit();
 	}
 
 	public void update(OrderItem orderItem) {
-		Transaction tx = session.beginTransaction();
 		session.saveOrUpdate(orderItem);
-		tx.commit();
 	}
-
-	public void delete(OrderItem orderItem){
-		Transaction tx = session.beginTransaction();
-		session.delete(orderItem);
-		tx.commit();
-	}
-
 
 }

@@ -152,40 +152,79 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         return item;
 	}
 
-/**
- 	//TODO how are we inserting order items?
     @Override
-    public void insertorderItem(OrderItem orderItem) {
+    public HashSet<OrderItem> getAllorderItems() {
         Session session = sessionFactory.openSession();
-        orderItemDAO = context.getBean("orderItemDAO", OrderItemDAO.class);
-        orderItemDAO.setSession( session );
-        Transaction tx = session.beginTransaction();
-        try{
-            orderItemDAO.insert( orderItem );
-            tx.commit();
-        }catch(Exception e){
-            transaction.rollback();
-        }
-        session.close();
-    }
-**/	
-	@Override
-	public HashSet<OrderItem> getAllorderItems() {
-		Session session = sessionFactory.openSession();
         orderItemDAO.setSession(session);
         HashSet<OrderItem> orderItems = orderItemDAO.getAll();
         session.close();
         return orderItems;
-	}
+    }
 
-	@Override
-	public HashSet<OrderItem> getorderItemByOrderId(int id) {
-		Session session = sessionFactory.openSession();
-		orderItemDAO.setSession(session);
-		HashSet<OrderItem> orderItems = orderItemDAO.getByOrderID(id);
-		session.close();
-		return orderItems;
-	}
+    @Override
+    public OrderItem getOrderItemById(int id) {
+        Session session = sessionFactory.openSession();
+
+        orderItemDAO.setSession( session );
+        OrderItem orderItem = orderItemDAO.getByOrderItemId(id);
+
+        session.close();
+        return orderItem;
+    }
+
+    @Override
+    public HashSet<OrderItem> getorderItemByOrderId(int id) {
+        Session session = sessionFactory.openSession();
+        orderItemDAO.setSession(session);
+        HashSet<OrderItem> orderItems = orderItemDAO.getByOrderID(id);
+        session.close();
+        return orderItems;
+    }
+
+    @Override
+    public void deleteOrderItem(OrderItem orderItem){
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        orderItemDAO.setSession(session);
+        try {
+            orderItemDAO.delete(orderItem);
+            tx.commit();
+        }catch (Exception e){
+            tx.rollback();
+        }
+        session.close();
+    }
+
+    @Override
+    public void insertOrderItem(OrderItem orderItem) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        orderItemDAO.setSession( session );
+        try{
+            orderItemDAO.insert( orderItem );
+            tx.commit();
+        }catch(Exception e){
+            tx.rollback();
+        }
+        session.close();
+    }
+
+    @Override
+    public void updateOrderItem(OrderItem orderItem) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        orderItemDAO.setSession( session );
+        try{
+            orderItemDAO.update( orderItem );
+            tx.commit();
+        }catch(Exception e){
+            tx.rollback();
+        }
+        session.close();
+    }
 
     @Override
     public void createReservation(Reservation reservation) {
