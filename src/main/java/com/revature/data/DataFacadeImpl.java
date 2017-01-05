@@ -7,8 +7,10 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Session;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
 
@@ -16,13 +18,20 @@ import java.util.HashSet;
  * This is the facade for the data tier.
  * All interactions with the database should occur through here.
  */
+@Component(value = "facade")
 public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 
+    @Autowired
     private CustomerDAO customerDAO;
+    @Autowired
     private ItemDAO itemDAO;
+    @Autowired
     private OrderDAO orderDAO;
+    @Autowired
     private Order_ItemDAO order_itemDAO;
+    @Autowired
     private ReservationDAO reservationDAO;
+    @Autowired
     private TableDAO tableDAO;
 
     private SessionFactory sessionFactory;

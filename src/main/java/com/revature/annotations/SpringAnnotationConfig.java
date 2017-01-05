@@ -18,7 +18,7 @@ public class SpringAnnotationConfig {
     public ItemDAO itemDAO() {return new ItemDAOImpl();}
     @Bean
     public OrderDAO orderDAO() {return new OrderDAOImpl();}
-    @Bean
+    @Bean(name = "orderItemDAO")
     public Order_ItemDAO order_itemDAO() {return new Order_ItemDAOImpl();}
     @Bean
     public ReservationDAO reservationDAO() {return new ReservationDAOImpl();}

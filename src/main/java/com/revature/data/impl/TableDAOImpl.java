@@ -3,9 +3,11 @@ package com.revature.data.impl;
 import com.revature.beans.ReservationTable;
 import com.revature.data.dao.TableDAO;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 
+@Repository(value = "tableDAO")
 public class TableDAOImpl implements TableDAO {
 
     private Session session;

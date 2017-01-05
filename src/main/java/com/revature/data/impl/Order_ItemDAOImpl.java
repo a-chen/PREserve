@@ -9,7 +9,9 @@ import org.hibernate.Transaction;
 
 import com.revature.beans.Item;
 import com.revature.beans.Order_Item;
+import org.springframework.stereotype.Repository;
 
+@Repository(value = "orderItemDAO")
 public class Order_ItemDAOImpl implements Order_ItemDAO {
 
     private Session session;

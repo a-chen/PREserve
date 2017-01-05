@@ -20,12 +20,17 @@ public class TableController {
         this.businessDelegate = businessDelegate;
     }
 
-    @ResponseBody
-    @RequestMapping(value = "tables",
+    @RequestMapping(value = "/tables",
             method = RequestMethod.GET,
             produces = "application/json")
+    @ResponseBody
     public HashSet<ReservationTable> getAll() {
         return businessDelegate.getAllTables();
+    }
+
+    @RequestMapping("/helloWorld")
+    public void helloWorld() {
+        System.out.println("Hello World");
     }
 
 }

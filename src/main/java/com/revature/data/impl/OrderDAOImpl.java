@@ -5,7 +5,9 @@ import com.revature.beans.Order;
 import com.revature.beans.Reservation;
 import com.revature.data.dao.OrderDAO;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
+@Repository(value = "orderDAO")
 public class OrderDAOImpl implements OrderDAO {
 
     private Session session;
