@@ -57,39 +57,41 @@
 	</div>
 	
 	<form id="reservation" action ="" method="post">
-		<div class="row col-sm-offset-2" style="padding-top:15px">
+		<div class="row col-md-offset-2 col-sm-offset-0" style="padding-top:15px">
 			<div class="form-group form-inline">
-				<div class="form-group col-sm-3">
+				<div class="form-group col-md-3 col-sm-4">
 					<div class="input-group" data-datepicker="true">
 					    <input name="date" min="0" type="date" class="form-control" required>
 				    	<span class="input-group-addon glyphicon glyphicon-calendar"></span>
 					</div>
 				</div>
-				<div class="form-group col-sm-3" style="padding-left:30px;">
+				<div class="form-group col-md-3 col-sm-4">
 					<div class="input-group timepicker">
-			            <input id="timepicker1" type="text" class="time ui-timepicker-input form-control" autocomplete="off">
+			            <input id="timepicker1" type="text" class="time ui-timepicker-input form-control"
+			            	placeholder="Time" autocomplete="off" required>
 			            <span class="input-group-addon glyphicon glyphicon-time"></span>
 			        </div>
 				</div>
-				<div class="form-group col-sm-3">
+				<div class="form-group col-md-3 col-sm-4">
 					<div class="input-group">
 						<input name= "numPatrons" min="0" type="number" step="0" 
 							class="form-control" placeholder="Patrons" required>
 				    	<span class="input-group-addon glyphicon glyphicon-user"></span>
 					</div>		
+					<h6 style="margin-top:5px; margin-left:20px;">Max number of patrons is 6</h6>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class= "col-md-offset-10" style="padding-top:20px">
-				<input type="submit" class="btn btn-primary" value="Submit" />
+			<div class= "col-sm-offset-10 col-xs-offset-8" style="padding-top:20px">
+				<a href="#tips"><input type="submit" class="btn btn-primary" value="Submit" /></a>
 			</div>
 		</div>
 	</form>
 </div>
 
 <!-- Table div to pick an available table -->
-<div class="table-div">
+<div class="table-div" id="#tables">
 	<div class="table-page-title">
 		<h1>Available Reservations for "Date" at "Time"</h1>
 		<h4>Please choose an available table.</h4>
@@ -135,14 +137,14 @@
 			</div>
 		</div>	
 		
-		<div class="row row3 table-padding">
-			<div class="table3 col-md-6">
+		<div class="row row3">
+			<div class="table3 col-md-6 table-padding">
 				<div class="table-square">
 				    table3
 				</div>
 			</div>
 			
-			<div class="table6 col-md-4">
+			<div class="table6 col-md-4 table-padding">
 				<div class="table-square">
 				    table6
 				</div>
@@ -160,7 +162,9 @@
  $(function() {
    $('#timepicker1').timepicker({
    		'minTime': '9:00am',
-    	'maxTime': '11:00pm'
+    	'maxTime': '11:00pm',
+    	'forceRoundTime': true,
+    	'timeFormat': 'h:i A'
     });
  });
 </script>
