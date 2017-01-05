@@ -1,10 +1,18 @@
 @CHARSET "ISO-8859-1";
 
+/******************
+ Intro Div 
+*******************/
+
 .glyphicon {
 	top:0px;
 }
 
-.table-page-title{
+/******************
+ Table Div 
+*******************/
+ 
+.table-div-title{
 	text-align:center;
 }
 
@@ -16,4 +24,16 @@
 
 .table-padding {
 	padding-bottom: 15px;
+}
+
+/******************
+Reservation Div 
+*******************/
+
+.edit-reservation-div {
+	padding-top:50px;
+}
+
+.edit-reservation{
+	margin-top:10px;
 }
