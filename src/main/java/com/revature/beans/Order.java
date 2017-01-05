@@ -20,24 +20,24 @@ public class Order {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @OneToMany
-    @JoinColumn(name="order_item_id")
+    @OneToMany(mappedBy = "order")
     private Set<Order_Item> order_items;
-
 
     public Order(Reservation reservation, Customer customer) {
         this.reservation = reservation;
         this.customer = customer;
     }
 
-    public Order() { super();}
-
-    public void setId(Integer id) {
-        this.id = id;
+    public Order() {
+        super();
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Reservation getReservation() {
@@ -56,7 +56,6 @@ public class Order {
         this.customer = customer;
     }
 
-
     public Set<Order_Item> getOrder_items() {
         return order_items;
     }
@@ -65,13 +64,13 @@ public class Order {
         this.order_items = order_items;
     }
 
-
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", reservation=" + reservation.getId() +
                 ", customer=" + customer.getId() +
+                ", order_items=" + order_items +
                 '}';
     }
 }

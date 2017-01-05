@@ -26,38 +26,14 @@ public class Order_ItemDAOImplTest {
         context.registerShutdownHook();
     }
 
-	@Test
+    @Test
 	public void getOrder_ItemByOrderId() {
-	    AbstractApplicationContext context =
-	            new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
-	
-	    DataFacade facade = context.getBean("facade", DataFacade.class);
-	    System.out.println(facade.getOrder_ItemByOrderId(1));
-	    context.registerShutdownHook();
-	}
+		AbstractApplicationContext context =
+				new AnnotationConfigApplicationContext(SpringAnnotationConfig.class);
 
-	@Ignore
-	@Test
-	public void insertOrder_Item(){
-		Order order = new OrderDAOImpl().getOrderById(1);
-		Item item = new ItemDAOImpl().getItemById(1);
-		Order_ItemDAO dao = new Order_ItemDAOImpl();
-
-		Order_Item order_item = new Order_Item(order, item, 2);
-		dao.insert(order_item);
-		System.out.println("Inserted Order Item: " + order_item);
-	}
-
-	@Ignore
-	@Test
-	public void deleteOrder_Item(){
-		Order order = new OrderDAOImpl().getOrderById(1);
-		Item item = new ItemDAOImpl().getItemById(1);
-		Order_ItemDAO dao = new Order_ItemDAOImpl();
-		
-		Order_Item order_item = new Order_Item(order, item, 2);
-		dao.delete(order_item);
-		System.out.println("Deleted Order Item: " + order_item);
+		DataFacade facade = context.getBean("facade", DataFacade.class);
+		System.out.println(facade.getOrder_ItemByOrderId(1));
+		context.registerShutdownHook();
 	}
 
 	@Ignore
