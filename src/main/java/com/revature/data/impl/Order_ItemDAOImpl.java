@@ -33,7 +33,7 @@ public class Order_ItemDAOImpl implements Order_ItemDAO {
 						+ " where orders.id= :orders_id";*/
 		/*Query query = session.createQuery(HQL);
 		query.setInteger("orders_id", id);*/
-		criteria.add(Restrictions.eq("orders_id", id));
+		criteria.add(Restrictions.eq("order", id));
 
 		return new HashSet<Order_Item>(criteria.list());
 	}

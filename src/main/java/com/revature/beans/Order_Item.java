@@ -19,7 +19,6 @@ public class Order_Item {
     private int id;
 	
     @ManyToOne
-    @JoinColumn(name = "orders_id", nullable = false)
 	private Order order;
 
    @ManyToOne
