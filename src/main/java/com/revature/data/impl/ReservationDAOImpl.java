@@ -5,9 +5,11 @@ import com.revature.data.dao.ReservationDAO;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashSet;
 
+@Repository(value = "reservationDAO")
 public class ReservationDAOImpl implements ReservationDAO {
 
     private Session session;

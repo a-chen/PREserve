@@ -13,19 +13,41 @@ import java.util.HashSet;
 @Controller
 public class TableController {
 
-    @Autowired
     private Delegate businessDelegate;
 
+    @Autowired
     public void setBusinessDelegate(Delegate businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
 
-    @ResponseBody
-    @RequestMapping(value = "tables",
+
+    @RequestMapping(value={"/home"}, method=RequestMethod.GET)
+    // no response body.. returned value goes to IRVR
+    public String homePage(){
+        // InternalResourceViewResolver will prepend the prefix
+        // /WEB-INF/pages/index.html
+        // requestDispatcher.forward(req,resp)
+        return "home";
+    }
+
+    @RequestMapping(value={"/index"}, method=RequestMethod.GET)
+    public String indexPage(){
+        return "index";
+    }
+
+    @RequestMapping(value = "/tables",
             method = RequestMethod.GET,
             produces = "application/json")
+    @ResponseBody
     public HashSet<ReservationTable> getAll() {
-        return businessDelegate.getAllTables();
+        HashSet<ReservationTable> tables = businessDelegate.getAllTables();
+        System.out.println(tables);
+        return tables;
+    }
+
+    @RequestMapping("/helloWorld")
+    public void helloWorld() {
+        System.out.println("Hello World");
     }
 
 }

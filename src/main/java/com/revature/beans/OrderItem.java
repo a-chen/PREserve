@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "order_item")
-public class Order_Item {
+public class OrderItem {
 
 	@Id
 	@Column(name = "order_item_id")
@@ -29,19 +29,23 @@ public class Order_Item {
    @Column(nullable = false)
 	private int quantity;
 
-    public Order_Item(Order order, Item item, int quantity) {
+    public OrderItem(Order order, Item item, int quantity) {
         this.order = order;
         this.item = item;
         this.quantity = quantity;
     }
 
-	public Order_Item() {
+	public OrderItem() {
 		super();
 	}
 
 	@Override
 	public String toString() {
+<<<<<<< HEAD:src/main/java/com/revature/beans/Order_Item.java
 		return "Order_Item [order=" + order.getId() + ", item=" + item.getId() + ", quantity=" + quantity + "]";
+=======
+		return "OrderItem [order=" + order + ", item=" + item + ", quantity=" + quantity + "]";
+>>>>>>> 1ddc68902949ad49f12eeb800abd6b4221b2840e:src/main/java/com/revature/beans/OrderItem.java
 	}
 
 	public Order getOrder() {

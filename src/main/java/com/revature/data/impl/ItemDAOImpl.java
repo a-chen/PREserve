@@ -8,7 +8,9 @@ import org.hibernate.Session;
 
 import com.revature.beans.Item;
 import com.revature.beans.ReservationTable;
+import org.springframework.stereotype.Repository;
 
+@Repository(value = "itemDAO")
 public class ItemDAOImpl implements ItemDAO {
 
 	private Session session;

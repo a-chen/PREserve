@@ -2,22 +2,21 @@ package com.revature.data.dao;
 
 import java.util.HashSet;
 
+import com.revature.beans.OrderItem;
 import org.hibernate.Session;
-
-import com.revature.beans.Order_Item;
 
 public interface Order_ItemDAO {
 
 	void setSession(Session session);
 
-	HashSet<Order_Item> getAll();
+	HashSet<OrderItem> getAll();
 	
-	HashSet<Order_Item> getByOrderID(int id);
+	HashSet<OrderItem> getByOrderID(int id);
 	
-	void delete(Order_Item order_item);
+	void delete(OrderItem order_item);
 	
-	void insert(Order_Item order_item);
+	void insert(OrderItem order_item);
 
-	void update(Order_Item order_item);
+	void update(OrderItem order_item);
 	
 }
