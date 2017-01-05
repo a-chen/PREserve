@@ -52,7 +52,7 @@ CREATE TABLE orders(
 		REFERENCES customer(customer_id)
 );
 
-CREATE TABLE order_item(
+CREATE TABLE orderItem(
 	orders_id INT NOT NULL,
     item_id INT NOT NULL,
     quantity INT NOT NULL,

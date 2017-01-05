@@ -3,19 +3,16 @@ package com.revature.data.impl;
 import java.util.HashSet;
 
 import com.revature.beans.OrderItem;
-import com.revature.data.dao.Order_ItemDAO;
+import com.revature.data.dao.OrderItemDAO;
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.revature.beans.Item;
-import com.revature.beans.OrderItem;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 @Repository(value = "orderItemDAO")
-public class OrderItemDAOImpl implements Order_ItemDAO {
+public class OrderItemDAOImpl implements OrderItemDAO {
 
     private Session session;
 
@@ -35,21 +32,21 @@ public class OrderItemDAOImpl implements Order_ItemDAO {
 		return new HashSet<OrderItem>(criteria.list());
 	}
 	
-	public void insert(OrderItem order_item) {
+	public void insert(OrderItem orderItem) {
 		Transaction tx = session.beginTransaction();
-		session.save(order_item);
+		session.save(orderItem);
 		tx.commit();
 	}
 
-	public void update(OrderItem order_item) {
+	public void update(OrderItem orderItem) {
 		Transaction tx = session.beginTransaction();
-		session.saveOrUpdate(order_item);
+		session.saveOrUpdate(orderItem);
 		tx.commit();
 	}
 
-	public void delete(OrderItem order_item){
+	public void delete(OrderItem orderItem){
 		Transaction tx = session.beginTransaction();
-		session.delete(order_item);
+		session.delete(orderItem);
 		tx.commit();
 	}
 

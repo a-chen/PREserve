@@ -56,7 +56,7 @@ CREATE TABLE orders(
         ON DELETE CASCADE
 );
 
-CREATE TABLE order_item(
+CREATE TABLE orderItem(
 	id INT NOT NULL AUTO_INCREMENT,
 	orders_id INT NOT NULL,
     item_id INT NOT NULL,
@@ -103,7 +103,7 @@ commit;
 #run below to drop all tables while ignoring foreign key constraints
 /*
 SET FOREIGN_KEY_CHECKS = 0;
-drop table order_item;
+drop table orderItem;
 drop table reservation;
 drop table customer;
 drop table item;

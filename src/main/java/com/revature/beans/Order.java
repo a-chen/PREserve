@@ -21,7 +21,7 @@ public class Order {
     private Customer customer;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    private Set<OrderItem> order_items;
+    private Set<OrderItem> orderItems;
 
     public Order(Reservation reservation, Customer customer) {
         this.reservation = reservation;
@@ -56,12 +56,12 @@ public class Order {
         this.customer = customer;
     }
 
-    public Set<OrderItem> getOrder_items() {
-        return order_items;
+    public Set<OrderItem> getorderItems() {
+        return orderItems;
     }
 
-    public void setOrder_items(Set<OrderItem> order_items) {
-        this.order_items = order_items;
+    public void setorderItems(Set<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Order {
                 "id=" + id +
                 ", reservation=" + reservation.getId() +
                 ", customer=" + customer.getId() +
-                ", order_items=" + order_items +
+                ", orderItems=" + orderItems +
                 '}';
     }
 }

@@ -23,12 +23,12 @@ public class Delegate {
         return facade.getAllTables();
     }
     
-    public HashSet<OrderItem> getAllOrder_Items(){
-    	return facade.getAllOrder_Items();
+    public HashSet<OrderItem> getAllorderItems(){
+    	return facade.getAllorderItems();
     }
     
-    public HashSet<OrderItem> getOrder_ItemByOrderId(int id){
-    	return facade.getOrder_ItemByOrderId(id);
+    public HashSet<OrderItem> getorderItemByOrderId(int id){
+    	return facade.getorderItemByOrderId(id);
     }
     
     public HashSet<Item> getAllItems(){

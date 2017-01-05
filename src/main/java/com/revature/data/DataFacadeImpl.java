@@ -24,7 +24,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     private CustomerDAO customerDAO;
     private ItemDAO itemDAO;
     private OrderDAO orderDAO;
-    private Order_ItemDAO order_itemDAO;
+    private OrderItemDAO orderItemDAO;
     private ReservationDAO reservationDAO;
     private TableDAO tableDAO;
     private ApplicationContext context;
@@ -155,13 +155,13 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 /**
  	//TODO how are we inserting order items?
     @Override
-    public void insertOrder_Item(OrderItem order_item) {
+    public void insertorderItem(OrderItem orderItem) {
         Session session = sessionFactory.openSession();
-        order_itemDAO = context.getBean("order_itemDAO", Order_ItemDAO.class);
-        order_itemDAO.setSession( session );
+        orderItemDAO = context.getBean("orderItemDAO", OrderItemDAO.class);
+        orderItemDAO.setSession( session );
         Transaction tx = session.beginTransaction();
         try{
-            order_itemDAO.insert( order_item );
+            orderItemDAO.insert( orderItem );
             tx.commit();
         }catch(Exception e){
             transaction.rollback();
@@ -170,21 +170,21 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     }
 **/	
 	@Override
-	public HashSet<OrderItem> getAllOrder_Items() {
+	public HashSet<OrderItem> getAllorderItems() {
 		Session session = sessionFactory.openSession();
-        order_itemDAO.setSession(session);
-        HashSet<OrderItem> order_items = order_itemDAO.getAll();
+        orderItemDAO.setSession(session);
+        HashSet<OrderItem> orderItems = orderItemDAO.getAll();
         session.close();
-        return order_items;
+        return orderItems;
 	}
 
 	@Override
-	public HashSet<OrderItem> getOrder_ItemByOrderId(int id) {
+	public HashSet<OrderItem> getorderItemByOrderId(int id) {
 		Session session = sessionFactory.openSession();
-		order_itemDAO.setSession(session);
-		HashSet<OrderItem> order_items = order_itemDAO.getByOrderID(id);
+		orderItemDAO.setSession(session);
+		HashSet<OrderItem> orderItems = orderItemDAO.getByOrderID(id);
 		session.close();
-		return order_items;
+		return orderItems;
 	}
 
     @Override
@@ -254,8 +254,8 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         this.orderDAO = orderDAO;
     }
     @Autowired
-    public void setOrder_itemDAO(Order_ItemDAO order_itemDAO) {
-        this.order_itemDAO = order_itemDAO;
+    public void setorderItemDAO(OrderItemDAO orderItemDAO) {
+        this.orderItemDAO = orderItemDAO;
     }
     @Autowired
     public void setReservationDAO(ReservationDAO reservationDAO) {

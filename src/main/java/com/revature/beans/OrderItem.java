@@ -41,11 +41,7 @@ public class OrderItem {
 
 	@Override
 	public String toString() {
-<<<<<<< HEAD:src/main/java/com/revature/beans/Order_Item.java
-		return "Order_Item [order=" + order.getId() + ", item=" + item.getId() + ", quantity=" + quantity + "]";
-=======
-		return "OrderItem [order=" + order + ", item=" + item + ", quantity=" + quantity + "]";
->>>>>>> 1ddc68902949ad49f12eeb800abd6b4221b2840e:src/main/java/com/revature/beans/OrderItem.java
+		return "OrderItem [order=" + order.getId() + ", item=" + item.getId() + ", quantity=" + quantity + "]";
 	}
 
 	public Order getOrder() {
