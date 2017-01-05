@@ -27,7 +27,7 @@ public class TableController {
         // InternalResourceViewResolver will prepend the prefix
         // /WEB-INF/pages/index.html
         // requestDispatcher.forward(req,resp)
-        return "home";
+        return "template";
     }
 
     @RequestMapping(value={"/index"}, method=RequestMethod.GET)
