@@ -16,7 +16,7 @@
         <hibernate.version>3.6.0.Final</hibernate.version>
         <cucumber.version>1.2.5</cucumber.version>
         <selenium.version>3.0.1</selenium.version>
-        <jackson.version>2.2.3</jackson.version>
+        <jackson.version>2.6.7</jackson.version>
     </properties>
 
     <dependencies>
@@ -123,11 +123,11 @@
         </dependency>
 
         <!-- Jackson -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.13</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>

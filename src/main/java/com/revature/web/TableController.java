@@ -14,25 +14,9 @@ import java.util.HashSet;
 public class TableController {
 
     private Delegate businessDelegate;
-
     @Autowired
     public void setBusinessDelegate(Delegate businessDelegate) {
         this.businessDelegate = businessDelegate;
-    }
-
-
-    @RequestMapping(value={"/home"}, method=RequestMethod.GET)
-    // no response body.. returned value goes to IRVR
-    public String homePage(){
-        // InternalResourceViewResolver will prepend the prefix
-        // /WEB-INF/pages/index.html
-        // requestDispatcher.forward(req,resp)
-        return "template";
-    }
-
-    @RequestMapping(value={"/index"}, method=RequestMethod.GET)
-    public String indexPage(){
-        return "index";
     }
 
     @RequestMapping(value = "/tables",

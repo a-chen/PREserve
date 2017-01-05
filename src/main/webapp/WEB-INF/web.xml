@@ -6,7 +6,7 @@
     <display-name>Archetype Created Web Application</display-name>
 
     <welcome-file-list>
-        <welcome-file>/index</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 
 <!--     The front controller of this Spring Web application, responsible for
