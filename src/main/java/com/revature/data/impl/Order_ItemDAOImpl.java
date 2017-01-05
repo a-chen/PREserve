@@ -27,25 +27,10 @@ public class Order_ItemDAOImpl implements Order_ItemDAO {
 	
 	public HashSet<Order_Item> getByOrderID(int id){
 		Criteria criteria = session.createCriteria(Order_Item.class);
-		/*String HQL = " from Order_Item"
-						+ " left join orders"
-						+ " on order_item.orders_id = orders.id"
-						+ " where orders.id= :orders_id";*/
-		/*Query query = session.createQuery(HQL);
-		query.setInteger("orders_id", id);*/
 		criteria.add(Restrictions.eq("order.id", id));
 
 		return new HashSet<Order_Item>(criteria.list());
 	}
-
-	/*public Set<Trainee> findBy(String major){
-		Session session = sf.openSession();
-		String HQL = "from Trainee where major = :q";
-		Query query = session
-				.createQuery(HQL);
-		query.setString("q", major);
-		return new HashSet<Trainee>(query.list());
-	}*/
 	
 	public void insert(Order_Item order_item) {
 		Transaction tx = session.beginTransaction();

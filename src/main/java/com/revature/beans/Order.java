@@ -20,7 +20,7 @@ public class Order {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private Set<Order_Item> order_items;
 
     public Order(Reservation reservation, Customer customer) {

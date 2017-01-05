@@ -41,7 +41,7 @@ public class Order_Item {
 
 	@Override
 	public String toString() {
-		return "Order_Item [order=" /*+ order.getId()*/ + ", item=" + item.getId() + ", quantity=" + quantity + "]";
+		return "Order_Item [order=" + order.getId() + ", item=" + item.getId() + ", quantity=" + quantity + "]";
 	}
 
 	public Order getOrder() {
