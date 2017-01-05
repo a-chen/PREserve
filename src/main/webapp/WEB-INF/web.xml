@@ -5,6 +5,10 @@
          id="WebApp_ID" version="3.0">
     <display-name>Archetype Created Web Application</display-name>
 
+    <welcome-file-list>
+        <welcome-file>/index</welcome-file>
+    </welcome-file-list>
+
 <!--     The front controller of this Spring Web application, responsible for
         handling all application requests-->
 
@@ -19,10 +23,10 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!-- Map all requests to the DispatcherServlet for handling -->
     <servlet-mapping>
-        <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
+    <servlet-name>dispatcher</servlet-name>
+    <url-pattern>/</url-pattern><!-- Map all requests to the DispatcherServlet for handling -->
+
+</servlet-mapping>
 
 </web-app>
