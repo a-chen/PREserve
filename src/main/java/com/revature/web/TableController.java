@@ -13,9 +13,9 @@ import java.util.HashSet;
 @Controller
 public class TableController {
 
-    @Autowired
     private Delegate businessDelegate;
 
+    @Autowired
     public void setBusinessDelegate(Delegate businessDelegate) {
         this.businessDelegate = businessDelegate;
     }

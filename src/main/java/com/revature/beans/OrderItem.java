@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "order_item")
-public class Order_Item {
+public class OrderItem {
 
 	@Id
 	@Column
@@ -29,19 +29,19 @@ public class Order_Item {
    @Column(nullable = false)
 	private int quantity;
 
-    public Order_Item(Order order, Item item, int quantity) {
+    public OrderItem(Order order, Item item, int quantity) {
         this.order = order;
         this.item = item;
         this.quantity = quantity;
     }
 
-	public Order_Item() {
+	public OrderItem() {
 		super();
 	}
 
 	@Override
 	public String toString() {
-		return "Order_Item [order=" + order + ", item=" + item + ", quantity=" + quantity + "]";
+		return "OrderItem [order=" + order + ", item=" + item + ", quantity=" + quantity + "]";
 	}
 
 	public Order getOrder() {

@@ -21,48 +21,15 @@ import java.util.HashSet;
 @Component(value = "facade")
 public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 
-    @Autowired
     private CustomerDAO customerDAO;
-    @Autowired
     private ItemDAO itemDAO;
-    @Autowired
     private OrderDAO orderDAO;
-    @Autowired
     private Order_ItemDAO order_itemDAO;
-    @Autowired
     private ReservationDAO reservationDAO;
-    @Autowired
     private TableDAO tableDAO;
-
-    private SessionFactory sessionFactory;
     private ApplicationContext context;
 
-    @Override
-    public void setApplicationContext(ApplicationContext context) throws BeansException {
-        this.context = context;
-    }
-
-    /**
-     * This sets all DAO beans
-     * @param customerDAO
-     * @param itemDAO
-     * @param orderDAO
-     * @param order_itemDAO
-     * @param reservationDAO
-     * @param tableDAO
-     */
-    public DataFacadeImpl(CustomerDAO customerDAO, ItemDAO itemDAO,
-                           OrderDAO orderDAO, Order_ItemDAO order_itemDAO,
-                           ReservationDAO reservationDAO, TableDAO tableDAO) {
-
-        sessionFactory = new Configuration().configure().buildSessionFactory();
-        this.customerDAO = customerDAO;
-        this.itemDAO = itemDAO;
-        this.orderDAO = orderDAO;
-        this.order_itemDAO = order_itemDAO;
-        this.reservationDAO = reservationDAO;
-        this.tableDAO = tableDAO;
-    }
+    private SessionFactory sessionFactory;
 
     /**
      * This returns a collection of all tables
@@ -188,7 +155,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 /**
  	//TODO how are we inserting order items?
     @Override
-    public void insertOrder_Item(Order_Item order_item) {
+    public void insertOrder_Item(OrderItem order_item) {
         Session session = sessionFactory.openSession();
         order_itemDAO = context.getBean("order_itemDAO", Order_ItemDAO.class);
         order_itemDAO.setSession( session );
@@ -203,19 +170,19 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     }
 **/	
 	@Override
-	public HashSet<Order_Item> getAllOrder_Items() {
+	public HashSet<OrderItem> getAllOrder_Items() {
 		Session session = sessionFactory.openSession();
         order_itemDAO.setSession(session);
-        HashSet<Order_Item> order_items = order_itemDAO.getAll();
+        HashSet<OrderItem> order_items = order_itemDAO.getAll();
         session.close();
         return order_items;
 	}
 
 	@Override
-	public HashSet<Order_Item> getOrder_ItemByOrderId(int id) {
+	public HashSet<OrderItem> getOrder_ItemByOrderId(int id) {
 		Session session = sessionFactory.openSession();
 		order_itemDAO.setSession(session);
-		HashSet<Order_Item> order_items = order_itemDAO.getByOrderID(id);
+		HashSet<OrderItem> order_items = order_itemDAO.getByOrderID(id);
 		session.close();
 		return order_items;
 	}
@@ -272,5 +239,38 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 
         tx.commit();
         session.close();
+    }
+
+    @Autowired
+    public void setCustomerDAO(CustomerDAO customerDAO) {
+        this.customerDAO = customerDAO;
+    }
+    @Autowired
+    public void setItemDAO(ItemDAO itemDAO) {
+        this.itemDAO = itemDAO;
+    }
+    @Autowired
+    public void setOrderDAO(OrderDAO orderDAO) {
+        this.orderDAO = orderDAO;
+    }
+    @Autowired
+    public void setOrder_itemDAO(Order_ItemDAO order_itemDAO) {
+        this.order_itemDAO = order_itemDAO;
+    }
+    @Autowired
+    public void setReservationDAO(ReservationDAO reservationDAO) {
+        this.reservationDAO = reservationDAO;
+    }
+    @Autowired
+    public void setTableDAO(TableDAO tableDAO) {
+        this.tableDAO = tableDAO;
+    }
+    @Override
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
+        this.context = context;
+    }
+
+    public DataFacadeImpl() {
+        sessionFactory = new Configuration().configure().buildSessionFactory();
     }
 }
