@@ -21,7 +21,7 @@ public class Order {
     private Customer customer;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    private Set<Order_Item> order_items;
+    private Set<OrderItem> order_items;
 
     public Order(Reservation reservation, Customer customer) {
         this.reservation = reservation;
@@ -56,11 +56,11 @@ public class Order {
         this.customer = customer;
     }
 
-    public Set<Order_Item> getOrder_items() {
+    public Set<OrderItem> getOrder_items() {
         return order_items;
     }
 
-    public void setOrder_items(Set<Order_Item> order_items) {
+    public void setOrder_items(Set<OrderItem> order_items) {
         this.order_items = order_items;
     }
 
