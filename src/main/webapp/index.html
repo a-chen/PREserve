@@ -65,9 +65,10 @@
 				    	<span class="input-group-addon glyphicon glyphicon-calendar"></span>
 					</div>
 				</div>
-				<div class="form-group col-sm-3" style="padding-left:30px;">
+				<div class="form-group col-sm-3">
 					<div class="input-group timepicker">
-			            <input id="timepicker1" type="text" class="time ui-timepicker-input form-control" autocomplete="off">
+			            <input id="timepicker1" type="text" class="time ui-timepicker-input form-control"
+			            	placeholder="Time" autocomplete="off">
 			            <span class="input-group-addon glyphicon glyphicon-time"></span>
 			        </div>
 				</div>
@@ -77,6 +78,7 @@
 							class="form-control" placeholder="Patrons" required>
 				    	<span class="input-group-addon glyphicon glyphicon-user"></span>
 					</div>		
+					<h5>Max number of patrons is 6</h5>
 				</div>
 			</div>
 		</div>
@@ -160,7 +162,9 @@
  $(function() {
    $('#timepicker1').timepicker({
    		'minTime': '9:00am',
-    	'maxTime': '11:00pm'
+    	'maxTime': '11:00pm',
+    	'forceRoundTime': true,
+    	'timeFormat': 'h:i A'
     });
  });
 </script>
