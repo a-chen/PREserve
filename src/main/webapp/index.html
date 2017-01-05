@@ -11,11 +11,26 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 
+<!-- Updated stylesheet url -->
+<link rel="stylesheet" href="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.css">
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
+<!-- Updated JavaScript url -->
+<script src="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+
+<!-- jQuery Timepicker -->
+<link rel="stylesheet" href="jquery/jquery.timepicker.css" type="text/css" />
+
+<link rel="stylesheet" href="jquery/jquery.timepicker.min.js" type="text/javascript" />
+
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
+	
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -34,7 +49,6 @@
 
 </head>
 <body>
-
 <!-- Intro div to set reservation preferences -->
 <div class="intro-div jumbotron center">
 	<div class="home-page-title" style= "text-align:center;">
@@ -48,20 +62,20 @@
 				<div class="form-group col-sm-3">
 					<div class="input-group" data-datepicker="true">
 					    <input name="date" min="0" type="date" class="form-control" required>
-				    	<span class="input-group-addon glyphicon glyphicon-calendar"/>
+				    	<span class="input-group-addon glyphicon glyphicon-calendar"></span>
 					</div>
 				</div>
 				<div class="form-group col-sm-3" style="padding-left:30px;">
-					<div class="input-group">
-			            <input name="time" type="time" class="form-control" required>
-			            <span class="input-group-addon glyphicon glyphicon-time"/>
+					<div class="input-group timepicker">
+			            <input id="timepicker1" type="text" class="time ui-timepicker-input form-control" autocomplete="off">
+			            <span class="input-group-addon glyphicon glyphicon-time"></span>
 			        </div>
 				</div>
 				<div class="form-group col-sm-3">
 					<div class="input-group">
 						<input name= "numPatrons" min="0" type="number" step="0" 
 							class="form-control" placeholder="Patrons" required>
-				    	<span class="input-group-addon glyphicon glyphicon-user"/>
+				    	<span class="input-group-addon glyphicon glyphicon-user"></span>
 					</div>		
 				</div>
 			</div>
@@ -142,5 +156,13 @@
 <div class="reservation-div">
 
 </div>
+<script type="text/javascript">
+ $(function() {
+   $('#timepicker1').timepicker({
+   		'minTime': '9:00am',
+    	'maxTime': '11:00pm'
+    });
+ });
+</script>
 </body>
 </html>
