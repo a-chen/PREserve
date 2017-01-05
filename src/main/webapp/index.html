@@ -11,11 +11,26 @@
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
 
+<!-- Updated stylesheet url -->
+<link rel="stylesheet" href="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.css">
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
+<!-- Updated JavaScript url -->
+<script src="//jonthornton.github.io/jquery-timepicker/jquery.timepicker.js"></script>
+
+<!-- jQuery Timepicker -->
+<link rel="stylesheet" href="jquery/jquery.timepicker.css" type="text/css" />
+
+<link rel="stylesheet" href="jquery/jquery.timepicker.min.js" type="text/javascript" />
+
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
+	
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
@@ -34,10 +49,9 @@
 
 </head>
 <body>
-
-<!-- Intro page to set reservation preferences -->
+<!-- Intro div to set reservation preferences -->
 <div class="intro-div jumbotron center">
-	<div class="home-page-title" style= "text-align:center">
+	<div class="home-page-title" style= "text-align:center;">
 		<h1>Welcome to PREserve!</h1>
 		<h4>Please pick the date, time, and number of patrons you would like for your reservation.</h4>
 	</div>
@@ -48,20 +62,20 @@
 				<div class="form-group col-sm-3">
 					<div class="input-group" data-datepicker="true">
 					    <input name="date" min="0" type="date" class="form-control" required>
-				    	<span class="input-group-addon glyphicon glyphicon-calendar"/>
+				    	<span class="input-group-addon glyphicon glyphicon-calendar"></span>
 					</div>
 				</div>
-				<div class="form-group col-sm-3" style="padding-left:50px;">
-					<div class="input-group">
-			            <input name="time" type="time" class="form-control" required>
-			            <span class="input-group-addon glyphicon glyphicon-time"/>
+				<div class="form-group col-sm-3" style="padding-left:30px;">
+					<div class="input-group timepicker">
+			            <input id="timepicker1" type="text" class="time ui-timepicker-input form-control" autocomplete="off">
+			            <span class="input-group-addon glyphicon glyphicon-time"></span>
 			        </div>
 				</div>
 				<div class="form-group col-sm-3">
 					<div class="input-group">
 						<input name= "numPatrons" min="0" type="number" step="0" 
 							class="form-control" placeholder="Patrons" required>
-				    	<span class="input-group-addon glyphicon glyphicon-user"/>
+				    	<span class="input-group-addon glyphicon glyphicon-user"></span>
 					</div>		
 				</div>
 			</div>
@@ -74,67 +88,81 @@
 	</form>
 </div>
 
-<!-- Table page to pick an available table -->
+<!-- Table div to pick an available table -->
 <div class="table-div">
 	<div class="table-page-title">
-		<h1>Available reservations for "Date" at "Time"</h1>
+		<h1>Available Reservations for "Date" at "Time"</h1>
 		<h4>Please choose an available table.</h4>
 	</div>
 	<div class="col-md-10 col-md-offset-2">
 		<div class="row row1">
-			<div class="table1 col-md-6">
-				<div class="square">
-				    <div class="content">
-				        <div class="table">
-				            <div class="table-cell">
-				              table1    
-				            </div>
-				        </div>
-				    </div>
+			<div class="table1 col-md-6 table-padding">
+				<div class="table-square">
+				    table1
 				</div>
 			</div>
 			
-			<div class="table4 col-md-2">
-			
+			<div class="table4 col-md-2 table-padding">
+				<div class="table-square">
+				    table4
+				</div>
 			</div>
 			
-			<div class="table7 col-md-2">
-			
+			<div class="table7 col-md-2 table-padding">
+				<div class="table-square">
+				    table7
+				</div>
 			</div>
 		</div>
 		
 		<div class="row row2">
-			<div class="table2 col-md-6">
-			
+			<div class="table2 col-md-6 table-padding">
+				<div class="table-square">
+				    table2
+				</div>
 			</div>
 			
-			<div class="table5 col-md-2">
-			
+			<div class="table5 col-md-2 table-padding">
+				<div class="table-square">
+				    table5
+				</div>
 			</div>
 			
-			<div class="table8 col-md-2">
-			
+			<div class="table8 col-md-2 table-padding">
+				<div class="table-square">
+				    table8
+				</div>
 			</div>
 		</div>	
 		
-		<div class="row row3">
+		<div class="row row3 table-padding">
 			<div class="table3 col-md-6">
-			
+				<div class="table-square">
+				    table3
+				</div>
 			</div>
 			
 			<div class="table6 col-md-4">
-			
+				<div class="table-square">
+				    table6
+				</div>
 			</div>
 		</div>
 				
 	</div>
 </div>
+
+<!-- Reservation div to view/ edit a reservation -->
+<div class="reservation-div">
+
+</div>
 <script type="text/javascript">
-	$('#timepicker1').timepicker({
-		template: false,
-		showInputs: false,
-		minuteStep: 5
-	});
+ $(function() {
+   $('#timepicker1').timepicker({
+   		'minTime': '9:00am',
+    	'maxTime': '11:00pm'
+    });
+ });
 </script>
 </body>
 </html>

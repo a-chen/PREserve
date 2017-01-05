@@ -5,8 +5,9 @@
          id="WebApp_ID" version="3.0">
     <display-name>Archetype Created Web Application</display-name>
 
-     The front controller of this Spring Web application, responsible for
-        handling all application requests
+<!--     The front controller of this Spring Web application, responsible for
+        handling all application requests-->
+
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
