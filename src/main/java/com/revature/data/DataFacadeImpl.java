@@ -126,12 +126,12 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     public void insertOrder( Order order ) {
         Session session = sessionFactory.openSession();
         orderDAO.setSession( session );
-        Transaction transaction = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         try{
             orderDAO.insert( order );
-            transaction.commit();
+            tx.commit();
         }catch(Exception e){
-            transaction.rollback();
+            tx.rollback();
         }
         session.close();
     }
@@ -145,12 +145,12 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         Session session = sessionFactory.openSession();
         orderDAO.setSession( session );
 
-        Transaction transaction = session.beginTransaction();
+        Transaction tx = session.beginTransaction();
         try{
             orderDAO.delete( order );
-            transaction.commit();
+            tx.commit();
         }catch( Exception e ){
-            transaction.rollback();
+            tx.rollback();
         }
 
         session.close();

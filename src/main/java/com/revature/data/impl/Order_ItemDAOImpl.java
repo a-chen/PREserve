@@ -3,12 +3,14 @@ package com.revature.data.impl;
 import java.util.HashSet;
 
 import com.revature.data.dao.Order_ItemDAO;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.revature.beans.Item;
 import com.revature.beans.Order_Item;
+import org.hibernate.criterion.Restrictions;
 
 public class Order_ItemDAOImpl implements Order_ItemDAO {
 
@@ -24,16 +26,10 @@ public class Order_ItemDAOImpl implements Order_ItemDAO {
 	}
 	
 	public HashSet<Order_Item> getByOrderID(int id){
-		String HQL = "select"
-					+ " order_item.orders_id, order_item.item_id, order_item.quantity"
-					+ " from com.revature.beans.Order_Item"
-						+ " left join orders"
-						+ " on order_item.orders_id = orders.id"
-					+ " where orders.id= :order_id";
-		Query query = session.createQuery(HQL);
-		query.setInteger("order_id", id);
-		
-		return new HashSet<Order_Item>(query.list());
+		Criteria criteria = session.createCriteria(Order_Item.class);
+		criteria.add(Restrictions.eq("order.id", id));
+
+		return new HashSet<Order_Item>(criteria.list());
 	}
 	
 	public void insert(Order_Item order_item) {

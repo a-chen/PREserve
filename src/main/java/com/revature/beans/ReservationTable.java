@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class ReservationTable {
 
     @Id
-    @Column
+    @Column(name = "tables_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 

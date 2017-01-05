@@ -14,12 +14,12 @@ import javax.persistence.Table;
 public class Order_Item {
 
 	@Id
-	@Column
+	@Column(name = "order_item_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 	
     @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
+	@JoinColumn(name = "orders_id", nullable = false)
 	private Order order;
 
    @ManyToOne
@@ -41,7 +41,7 @@ public class Order_Item {
 
 	@Override
 	public String toString() {
-		return "Order_Item [order=" + order + ", item=" + item + ", quantity=" + quantity + "]";
+		return "Order_Item [order=" + order.getId() + ", item=" + item.getId() + ", quantity=" + quantity + "]";
 	}
 
 	public Order getOrder() {
@@ -67,5 +67,12 @@ public class Order_Item {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-		
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
