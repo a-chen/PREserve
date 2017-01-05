@@ -175,6 +175,7 @@
     </dependencies>
 
     <build>
+    	<finalName></finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
