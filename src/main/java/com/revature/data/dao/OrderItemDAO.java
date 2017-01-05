@@ -10,7 +10,9 @@ public interface OrderItemDAO {
 	void setSession(Session session);
 
 	HashSet<OrderItem> getAll();
-	
+
+	OrderItem getByOrderItemId(int id);
+
 	HashSet<OrderItem> getByOrderID(int id);
 	
 	void delete(OrderItem orderItem);

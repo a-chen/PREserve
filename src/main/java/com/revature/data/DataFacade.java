@@ -48,7 +48,13 @@ public interface DataFacade {
 	 * @return collection of all Order Items
 	 */
 	HashSet<OrderItem> getAllorderItems();
-	
+
+	/**
+	 * This method  Order Items  by id
+	 * @param id
+	 * @return
+	 */
+	OrderItem getOrderItemById(int id);
 	/**
 	 * This method returns a collection of Order Items 
 	 *  with provided item order id 
@@ -56,6 +62,24 @@ public interface DataFacade {
 	 * @return
 	 */
 	HashSet<OrderItem> getorderItemByOrderId(int id);
+
+	/**
+	 * This method deletes an orderItem
+	 * @param orderItem
+	 */
+	void deleteOrderItem( OrderItem orderItem );
+
+	/**
+	 * This method insert an orderItem
+	 * @param orderItem
+	 */
+	void insertOrderItem(OrderItem orderItem);
+
+	/**
+	 * This method updates an orderItem
+	 * @param orderItem
+	 */
+	void updateOrderItem(OrderItem orderItem);
 
 	void createReservation(Reservation reservation);
 
@@ -100,7 +124,5 @@ public interface DataFacade {
 	 * @return table with specified id
 	 */
 	public ReservationTable getTableById(int id);
-
-	//void insertorderItem(OrderItem orderItem);
 
 }

@@ -3,24 +3,28 @@ package com.revature.data;
 import com.revature.beans.Customer;
 import com.revature.beans.Order;
 import com.revature.beans.Reservation;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class OrderDaoImplTest {
+    static AbstractApplicationContext context;
+
+    @BeforeClass
+    public static void getClassPathAP(){
+        context = new ClassPathXmlApplicationContext("beans.xml");
+    }
+
     @Test
     public void getOrderById() {
-        AbstractApplicationContext context =
-                new ClassPathXmlApplicationContext("beans.xml");
-
         DataFacade facade = context.getBean("facade", DataFacade.class);
         System.out.println(facade.getOrderById(1));
-        context.registerShutdownHook();
     }
 
     @Test
     public void insert() {
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         DataFacade facade = context.getBean("facade", DataFacade.class);
 
         Customer customer = facade.getCustomerById(1);
@@ -28,17 +32,18 @@ public class OrderDaoImplTest {
         Order order = new Order(reservation, customer);
 
         facade.insertOrder(order);
-        context.registerShutdownHook();
     }
 
     @Test
     public void delete() {
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         DataFacade facade = context.getBean("facade", DataFacade.class);
 
-        Order order = facade.getOrderById(1);
+        Order order = facade.getOrderById(2);
         facade.deleteOrder(order);
+    }
 
+    @AfterClass
+    public static void endClassPathAP(){
         context.registerShutdownHook();
     }
 }
