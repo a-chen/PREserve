@@ -39,5 +39,5 @@ public class Delegate {
     public Item getItemById(int id){
     	return facade.getItemById(id);
     }
-   // public void createReseveration(Reservation reservation){ return facade.createReservation(reservation);}
+    public void createReservation(Reservation reservation){ facade.createReservation(reservation);}
 }

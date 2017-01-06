@@ -1,9 +1,9 @@
-$("#reservation").click(function() {
+$("#addReservation").click(function() {
     $.ajax({
-        method: "GET",
-        url: "http://localhost:9001/reservation",
+        method: "POST",
+        url: "/reservation",
         success: function (resp) {
-            console.log(resp);
+            console.log("hi");
         }
     });
 })

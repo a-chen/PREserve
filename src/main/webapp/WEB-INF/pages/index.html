@@ -56,39 +56,38 @@
 		<h1>Welcome to PREserve!</h1>
 		<h4>Please pick the date, time, and number of patrons you would like for your reservation.</h4>
 	</div>
-	
-	<form id="reservation" action ="" method="post">
-		<div class="row col-md-offset-2 col-sm-offset-0" style="padding-top:15px">
-			<div class="form-group form-inline">
-				<div class="form-group col-md-3 col-sm-4">
-					<div class="input-group" data-datepicker="true">
-					    <input name="date" min="0" type="date" class="form-control" required>
-				    	<span class="input-group-addon glyphicon glyphicon-calendar"></span>
-					</div>
-				</div>
-				<div class="form-group col-md-3 col-sm-4">
-					<div class="input-group timepicker">
-			            <input id="timepicker1" type="text" class="time ui-timepicker-input form-control"
-			            	placeholder="Time" autocomplete="off" required>
-			            <span class="input-group-addon glyphicon glyphicon-time"></span>
-			        </div>
-				</div>
-				<div class="form-group col-md-3 col-sm-4">
-					<div class="input-group">
-						<input name= "numPatrons" min="0" type="number" step="0" 
-							class="form-control" placeholder="Patrons" required>
-				    	<span class="input-group-addon glyphicon glyphicon-user"></span>
-					</div>		
-					<h6 style="margin-top:5px; margin-left:20px;">Max number of patrons is 6</h6>
+
+	<div class="row col-md-offset-2 col-sm-offset-0" style="padding-top:15px">
+		<div class="form-group form-inline">
+			<div class="form-group col-md-3 col-sm-4">
+				<div class="input-group" data-datepicker="true">
+					<input name="date" min="0" type="date" class="form-control" required>
+					<span class="input-group-addon glyphicon glyphicon-calendar"></span>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class= "col-sm-offset-10 col-xs-offset-8" style="padding-top:20px">
-				<a href="#tips"><input type="submit" class="btn btn-primary" value="Submit" /></a>
+			<div class="form-group col-md-3 col-sm-4">
+				<div class="input-group timepicker">
+					<input id="timepicker1" type="text" class="time ui-timepicker-input form-control"
+						placeholder="Time" autocomplete="off" required>
+					<span class="input-group-addon glyphicon glyphicon-time"></span>
+				</div>
+			</div>
+			<div class="form-group col-md-3 col-sm-4">
+				<div class="input-group">
+					<input name= "numPatrons" min="0" type="number" step="0"
+						class="form-control" placeholder="Patrons" required>
+					<span class="input-group-addon glyphicon glyphicon-user"></span>
+				</div>
+				<h6 style="margin-top:5px; margin-left:20px;">Max number of patrons is 6</h6>
 			</div>
 		</div>
-	</form>
+	</div>
+	<div class="row">
+		<div class= "col-sm-offset-10 col-xs-offset-8" style="padding-top:20px">
+			<input type="submit" id="addReservation" class="btn btn-primary" value="Submit" />
+		</div>
+	</div>
+
 </div>
 
 <!-- Table div to pick an available table -->
@@ -163,91 +162,79 @@
 	<div class="edit-reservation-div-title col-sm-offset-2">
 		<h2>CustomerName's Reservation</h2>
 	</div>
-	
-	<form id="edit-reservation" action ="" method="post">
-		<div class="row edit-reservation col-md-offset-2 col-sm-offset-0">
-			<div class="form-group form-inline">
-				<div class="form-group col-md-2 col-sm-4">
-					<h4>Date:</h4>		
-				</div>
-				<div class = "col-md-2 col-sm-4">	
-					<button type="button" class="btn btn-default btn-sm">
-  						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
-					</button>
-				</div>
+
+	<div class="row edit-reservation col-md-offset-2 col-sm-offset-0">
+		<div class="form-group form-inline">
+			<div class="form-group col-md-2 col-sm-4">
+				<h4>Date:</h4>
+			</div>
+			<div class = "col-md-2 col-sm-4">
+				<button type="button" class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+				</button>
 			</div>
 		</div>
-		<div class="row edit-reservation col-md-offset-2 col-sm-offset-0">
-			<div class="form-group form-inline">
-				<div class="form-group col-md-2 col-sm-4">
-					<h4>Time:</h4>	
-				</div>
-				<div class = "col-md-2 col-sm-4">	
-					<button type="button" class="btn btn-default btn-sm">
-  						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
-					</button>
-				</div>
+	</div>
+	<div class="row edit-reservation col-md-offset-2 col-sm-offset-0">
+		<div class="form-group form-inline">
+			<div class="form-group col-md-2 col-sm-4">
+				<h4>Time:</h4>
+			</div>
+			<div class = "col-md-2 col-sm-4">
+				<button type="button" class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+				</button>
 			</div>
 		</div>
-		<div class="row edit-reservation col-md-offset-2 col-sm-offset-0">
-			<div class="form-group form-inline">
-				<div class="form-group col-md-2 col-sm-4">
-					<h4>Patrons:</h4>	
-				</div>
-				<div class = "col-md-2 col-sm-4">	
-					<button type="button" class="btn btn-default btn-sm">
-  						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
-					</button>
-				</div>
+	</div>
+	<div class="row edit-reservation col-md-offset-2 col-sm-offset-0">
+		<div class="form-group form-inline">
+			<div class="form-group col-md-2 col-sm-4">
+				<h4>Patrons:</h4>
+			</div>
+			<div class = "col-md-2 col-sm-4">
+				<button type="button" class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+				</button>
 			</div>
 		</div>
-		<div class="row edit-reservation col-md-offset-2 col-sm-offset-0">
-			<div class="form-group form-inline">
-				<div class="form-group col-md-2 col-sm-4">
-					<h4>Table:</h4>		
-				</div>
-				<div class = "col-md-2 col-sm-4">
-					<button type="button" class="btn btn-default btn-sm">
-  						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
-					</button>
-				</div>
+	</div>
+	<div class="row edit-reservation col-md-offset-2 col-sm-offset-0">
+		<div class="form-group form-inline">
+			<div class="form-group col-md-2 col-sm-4">
+				<h4>Table:</h4>
+			</div>
+			<div class = "col-md-2 col-sm-4">
+				<button type="button" class="btn btn-default btn-sm">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+				</button>
 			</div>
 		</div>
-	</form>
+	</div>
 	
 	<div class = "row" style="margin-top:15px;">		
 		<div class="edit-order-div-title col-sm-offset-2">
 			<h2>CustomerName's Order</h2>
 		</div>
-		<form id="edit-order" action ="" method="post">
-			<div class="row edit-order col-md-offset-2 col-sm-offset-0">
-				<div class="form-group form-inline">
-					<div class="form-group col-md-2 col-sm-4">
-						<h4>Item1</h4>	
-					</div>
-					<div class = "col-md-2 col-sm-4">	
-						<button type="button" class="btn btn-default btn-sm">
-	  						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
-						</button>	
-						<button type="button" class="btn btn-default btn-sm">
-	  						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
-						</button>
-					</div>
+		<div class="row edit-order col-md-offset-2 col-sm-offset-0">
+			<div class="form-group form-inline">
+				<div class="form-group col-md-2 col-sm-4">
+					<h4>Item1</h4>
+				</div>
+				<div class = "col-md-2 col-sm-4">
+					<button type="button" class="btn btn-default btn-sm">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+					</button>
+					<button type="button" class="btn btn-default btn-sm">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
+					</button>
 				</div>
 			</div>
-		</form>
+		</div>
 	</div>
 </div>
 </div>
-<script type="text/javascript">
- $(function() {
-   $('#timepicker1').timepicker({
-   		'minTime': '9:00am',
-    	'maxTime': '11:00pm',
-    	'forceRoundTime': true,
-    	'timeFormat': 'h:i A'
-    });
- });
-</script>
+<script type="text/javascript" src="../../resources/js/external.js"></script>
+<script type="text/javascript" src="../../resources/js/reservation.js"></script>
 </body>
 </html>
