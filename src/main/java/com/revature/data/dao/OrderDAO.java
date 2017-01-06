@@ -14,7 +14,7 @@ public interface OrderDAO {
      * @param id
      * @return order with specified id
      */
-    Order getOrderById( int id );
+    Order getById(int id );
 
     /**
      * This inserts an order with the provided order

@@ -20,12 +20,12 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public void createReservation(Reservation reservation) {
+    public void insert(Reservation reservation) {
         session.save(reservation);
     }
 
     @Override
-    public HashSet<Reservation> getReservationByCustomerId(int id) {
+    public HashSet<Reservation> getByCustomerId(int id) {
         String hql = "from Reservation where customer_id = :q";
         Query query = session.createQuery(hql);
         query.setInteger("q", id);
@@ -33,7 +33,7 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public Reservation getReservationById(int reservationId) {
+    public Reservation getById(int reservationId) {
         String hql = "from Reservation where id = :pk";
         Query query = session.createQuery(hql);
         query.setInteger("pk", reservationId);
@@ -41,12 +41,12 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public void updateReservation(Reservation reservation) {
+    public void update(Reservation reservation) {
         session.saveOrUpdate(reservation);
     }
 
     @Override
-    public void deleteReservation(Reservation reservation) {
+    public void delete(Reservation reservation) {
         if(reservation != null)
             session.delete(reservation);
     }

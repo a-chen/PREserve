@@ -14,11 +14,10 @@ public interface OrderItemDAO {
 	OrderItem getByOrderItemId(int id);
 
 	HashSet<OrderItem> getByOrderID(int id);
-	
-	void delete(OrderItem orderItem);
-	
+
 	void insert(OrderItem orderItem);
 
 	void update(OrderItem orderItem);
-	
+
+	void delete(OrderItem orderItem);
 }

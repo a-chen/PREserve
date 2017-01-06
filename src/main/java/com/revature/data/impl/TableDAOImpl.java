@@ -23,7 +23,7 @@ public class TableDAOImpl implements TableDAO {
     }
 
     @Override
-    public ReservationTable getTableById(int id) {
+    public ReservationTable getById(int id) {
         return (ReservationTable) session.get(ReservationTable.class, id);
     }
 }

@@ -10,8 +10,8 @@ public interface ItemDAO {
 	
 	void setSession(Session session);
 	
-	HashSet<Item> getAllItems();
+	HashSet<Item> getAll();
 	
-	Item getItemById(int id);
+	Item getById(int id);
 	
 }

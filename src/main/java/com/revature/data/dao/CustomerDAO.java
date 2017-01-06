@@ -12,5 +12,5 @@ public interface CustomerDAO {
      * @param id
      * @return table with specified id
      */
-    Customer getCustomerById( int id );
+    Customer getById(int id );
 }

@@ -23,7 +23,7 @@ public class OrderDAOImpl implements OrderDAO {
      * @return order with specified id
      */
     @Override
-    public Order getOrderById(int id) {
+    public Order getById(int id) {
         return (Order) session.get(Order.class, id);
     }
 

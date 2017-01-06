@@ -20,12 +20,12 @@ public class ReservationDAOImplTest {
     }
 
     @Test
-    public void createReservation(){
+    public void insertReservation(){
         Date date = new Date();
         DataFacade facade = context.getBean("facade", DataFacade.class);
 
         Reservation reservation = new Reservation(new java.sql.Timestamp(date.getTime()), facade.getTableById(2), facade.getCustomerById(1));
-        facade.createReservation(reservation);
+        facade.insertReservation(reservation);
     }
 
     @Test

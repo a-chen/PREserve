@@ -22,5 +22,5 @@ public interface TableDAO {
      * @param id
      * @return table with specified id
      */
-    ReservationTable getTableById(int id);
+    ReservationTable getById(int id);
 }
