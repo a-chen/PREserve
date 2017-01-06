@@ -29,5 +29,10 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/helloWorld")
+    public void helloWorld() {
+        System.out.println("Hello World");
+    }
+
 
 }

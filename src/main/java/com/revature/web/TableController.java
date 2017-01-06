@@ -28,10 +28,4 @@ public class TableController {
         System.out.println(tables);
         return tables;
     }
-
-    @RequestMapping("/helloWorld")
-    public void helloWorld() {
-        System.out.println("Hello World");
-    }
-
 }

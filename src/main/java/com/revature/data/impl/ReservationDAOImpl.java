@@ -47,6 +47,7 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public void deleteReservation(Reservation reservation) {
-        session.delete(reservation);
+        if(reservation != null)
+            session.delete(reservation);
     }
 }
