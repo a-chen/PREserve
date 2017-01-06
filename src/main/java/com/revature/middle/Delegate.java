@@ -13,7 +13,7 @@ import java.util.HashSet;
 @Service(value = "businessDelegate")
 public class Delegate {
 
-    //Spring setter dependency injection
+//  Spring setter dependency injection
     private CustomerService customerService;
     private ItemService itemService;
     private OrderService orderService;
@@ -21,12 +21,12 @@ public class Delegate {
     private ReservationService reservationService;
     private TableService tableService;
 
-    //CustomerService
+//  CustomerService
     public Customer getCustomerById(int id) {
         return customerService.getCustomerById(id);
     }
 
-    //ItemService
+//  ItemService
     public HashSet<Item> getAllItems() {
         return itemService.getAllItems();
     }
@@ -35,7 +35,7 @@ public class Delegate {
         return itemService.getItemById(id);
     }
 
-    //OrderService
+//  OrderService
     public Order getOrderById(int id) {
         return orderService.getOrderById(id);
     }
@@ -48,7 +48,7 @@ public class Delegate {
         orderService.deleteOrder(order);
     }
 
-    //OrderItemService
+//  OrderItemService
     public HashSet<OrderItem> getAllOrderItems() {
         return orderItemService.getAllOrderItems();
     }
@@ -73,7 +73,7 @@ public class Delegate {
         orderItemService.deleteOrderItem(orderItem);
     }
 
-    //ReservationService
+//  ReservationService
     public HashSet<Reservation> getReservationByCustomerId(int id) {
         return reservationService.getReservationByCustomerId(id);
     }
@@ -94,7 +94,7 @@ public class Delegate {
         reservationService.deleteReservation(reservation);
     }
 
-    //TableService
+//  TableService
     public HashSet<ReservationTable> getAllTables() {
         return tableService.getAllTables();
     }
@@ -103,7 +103,7 @@ public class Delegate {
         return tableService.getTableById(id);
     }
 
-    //Setters
+//  Setters
     @Autowired
     public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
