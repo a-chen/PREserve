@@ -20,7 +20,7 @@ public class ReservationController {
             method = RequestMethod.GET,
             produces = "application/JSON")
     public String submitReservation(@PathVariable int id){
-        return new Delegate();
+        return businessDelegate.createReseveration();
     }
 
 }
