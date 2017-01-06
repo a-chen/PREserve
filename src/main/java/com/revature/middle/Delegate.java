@@ -2,6 +2,7 @@ package com.revature.middle;
 
 import com.revature.beans.Item;
 import com.revature.beans.OrderItem;
+import com.revature.beans.Reservation;
 import com.revature.beans.ReservationTable;
 import com.revature.data.DataFacade;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,5 @@ public class Delegate {
     public Item getItemById(int id){
     	return facade.getItemById(id);
     }
+    public void createReseveration(Reservation reservation){ return; facade.createReservation(reservation);}
 }
