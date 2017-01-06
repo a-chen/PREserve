@@ -39,5 +39,11 @@ public class Delegate {
     public Item getItemById(int id){
     	return facade.getItemById(id);
     }
+
     public void createReservation(Reservation reservation){ facade.createReservation(reservation);}
+
+    public Reservation getReservationById(int id){ return facade.getReservationById(id);}
+
+    public HashSet<Reservation> getReservationByCustomerId(int id){ return facade.getReservationByCustomerId(id);}
+
 }
