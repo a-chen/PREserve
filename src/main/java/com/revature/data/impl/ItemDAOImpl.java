@@ -21,12 +21,12 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public HashSet<Item> getAllItems(){
+	public HashSet<Item> getAll(){
         return new HashSet<>(session.createCriteria(Item.class).list());
 	}
 
 	@Override	
-	public Item getItemById(int id) {
+	public Item getById(int id) {
         return (Item) session.get(Item.class, id);
 	}
 

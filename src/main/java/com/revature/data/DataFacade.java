@@ -6,6 +6,7 @@ import java.util.HashSet;
 
 public interface DataFacade {
 
+//	Customer
     /**
      * This returns a customer with provided id
      * @param id
@@ -13,6 +14,20 @@ public interface DataFacade {
      */
     Customer getCustomerById( int id );
 
+//  Item
+	/**
+	 * @return collection of all items
+	 */
+	HashSet<Item> getAllItems();
+
+    /**
+     * This method returns an Item with provided item id
+     * @param id
+     * @return
+     */
+	Item getItemById(int id);
+
+//	Order
     /**
      * This returns an order with provided id
      * @param id
@@ -32,22 +47,11 @@ public interface DataFacade {
 	 */
     void deleteOrder( Order order );
 
-	/** 
-	 * @return collection of all items
-	 */
-	HashSet<Item> getAllItems();
-	
-    /**
-     * This method returns an Item with provided item id
-     * @param id
-     * @return
-     */
-	Item getItemById(int id);
-	
+//	OrderItem
 	/**
 	 * @return collection of all Order Items
 	 */
-	HashSet<OrderItem> getAllorderItems();
+	HashSet<OrderItem> getAllOrderItems();
 
 	/**
 	 * This method  Order Items  by id
@@ -61,13 +65,7 @@ public interface DataFacade {
 	 * @param id
 	 * @return
 	 */
-	HashSet<OrderItem> getorderItemByOrderId(int id);
-
-	/**
-	 * This method deletes an orderItem
-	 * @param orderItem
-	 */
-	void deleteOrderItem( OrderItem orderItem );
+	HashSet<OrderItem> getOrderItemByOrderId(int id);
 
 	/**
 	 * This method insert an orderItem
@@ -81,8 +79,13 @@ public interface DataFacade {
 	 */
 	void updateOrderItem(OrderItem orderItem);
 
-	void createReservation(Reservation reservation);
+	/**
+	 * This method deletes an orderItem
+	 * @param orderItem
+	 */
+	void deleteOrderItem( OrderItem orderItem );
 
+//	Reservation
 	/**
 	 * Returns a collection of Reservations belonging
 	 *  to a Customer ID
@@ -98,6 +101,8 @@ public interface DataFacade {
 	 */
 	Reservation getReservationById(int id);
 
+	void insertReservation(Reservation reservation);
+
 	/**
 	 * Updates a Reservation
 	 * @param Reservation Object
@@ -110,12 +115,13 @@ public interface DataFacade {
 	 */
 	void deleteReservation(Reservation reservation);
 
+//	Table
 	/**
 	 * This returns a collection of all tables
 	 *
 	 * @return collection of all tables
 	 */
-	public HashSet<ReservationTable> getAllTables();
+	HashSet<ReservationTable> getAllTables();
 
 	/**
 	 * This returns a table with provided id
@@ -123,6 +129,6 @@ public interface DataFacade {
 	 * @param id
 	 * @return table with specified id
 	 */
-	public ReservationTable getTableById(int id);
+	ReservationTable getTableById(int id);
 
 }

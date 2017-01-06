@@ -21,6 +21,7 @@ import java.util.HashSet;
 @Component(value = "facade")
 public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 
+//  Spring setter dependency injection
     private CustomerDAO customerDAO;
     private ItemDAO itemDAO;
     private OrderDAO orderDAO;
@@ -28,40 +29,10 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     private ReservationDAO reservationDAO;
     private TableDAO tableDAO;
     private ApplicationContext context;
-
+//  Constructor DI
     private SessionFactory sessionFactory;
 
-    /**
-     * This returns a collection of all tables
-     *
-     * @return collection of all tables
-     */
-    public HashSet<ReservationTable> getAllTables() {
-        Session session = sessionFactory.openSession();
-
-        tableDAO.setSession(session);
-        HashSet<ReservationTable> tables = tableDAO.getAll();
-
-        session.close();
-        return tables;
-    } // getAllTables
-
-    /**
-     * This returns a table with provided id
-     *
-     * @param id
-     * @return table with specified id
-     */
-    public ReservationTable getTableById(int id) {
-        Session session = sessionFactory.openSession();
-
-        tableDAO.setSession(session);
-        ReservationTable table = tableDAO.getTableById(id);
-
-        session.close();
-        return table;
-    } //getTableById
-
+//   Customer
     /**
      * This returns a customer with provided id
      * @param id
@@ -72,12 +43,34 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         Session session = sessionFactory.openSession();
 
         customerDAO.setSession( session );
-        Customer customer = customerDAO.getCustomerById( id );
+        Customer customer = customerDAO.getById( id );
 
         session.close();
         return customer;
     }
 
+//  Item
+    @Override
+	public HashSet<Item> getAllItems() {
+		Session session = sessionFactory.openSession();
+		itemDAO.setSession(session);
+		HashSet<Item> items = itemDAO.getAll();
+		session.close();
+		return items;
+	}
+
+	@Override
+	public Item getItemById(int id) {
+		Session session = sessionFactory.openSession();
+
+        itemDAO.setSession( session );
+        Item item = itemDAO.getById( id );
+
+        session.close();
+        return item;
+	}
+
+//  Order
     /**
      * This returns an order with provided id
      * @param id
@@ -88,7 +81,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         Session session = sessionFactory.openSession();
 
         orderDAO.setSession( session );
-        Order order = orderDAO.getOrderById( id );
+        Order order = orderDAO.getById( id );
 
         session.close();
         return order;
@@ -132,28 +125,9 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         session.close();
     }
 
+//  OrderItem
     @Override
-	public HashSet<Item> getAllItems() {
-		Session session = sessionFactory.openSession();
-		itemDAO.setSession(session);
-		HashSet<Item> items = itemDAO.getAllItems();
-		session.close();
-		return items;
-	}
-
-	@Override
-	public Item getItemById(int id) {
-		Session session = sessionFactory.openSession();
-
-        itemDAO.setSession( session );
-        Item item = itemDAO.getItemById( id );
-
-        session.close();
-        return item;
-	}
-
-    @Override
-    public HashSet<OrderItem> getAllorderItems() {
+    public HashSet<OrderItem> getAllOrderItems() {
         Session session = sessionFactory.openSession();
         orderItemDAO.setSession(session);
         HashSet<OrderItem> orderItems = orderItemDAO.getAll();
@@ -173,27 +147,12 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     }
 
     @Override
-    public HashSet<OrderItem> getorderItemByOrderId(int id) {
+    public HashSet<OrderItem> getOrderItemByOrderId(int id) {
         Session session = sessionFactory.openSession();
         orderItemDAO.setSession(session);
         HashSet<OrderItem> orderItems = orderItemDAO.getByOrderID(id);
         session.close();
         return orderItems;
-    }
-
-    @Override
-    public void deleteOrderItem(OrderItem orderItem){
-        Session session = sessionFactory.openSession();
-        Transaction tx = session.beginTransaction();
-
-        orderItemDAO.setSession(session);
-        try {
-            orderItemDAO.delete(orderItem);
-            tx.commit();
-        }catch (Exception e){
-            tx.rollback();
-        }
-        session.close();
     }
 
     @Override
@@ -227,22 +186,26 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     }
 
     @Override
-    public void createReservation(Reservation reservation) {
+    public void deleteOrderItem(OrderItem orderItem){
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        reservationDAO.setSession(session);
 
-        reservationDAO.createReservation(reservation);
-
-        tx.commit();
+        orderItemDAO.setSession(session);
+        try {
+            orderItemDAO.delete(orderItem);
+            tx.commit();
+        }catch (Exception e){
+            tx.rollback();
+        }
         session.close();
     }
 
+//  Reservation
     @Override
     public HashSet<Reservation> getReservationByCustomerId(int id) {
         Session session = sessionFactory.openSession();
         reservationDAO.setSession(session);
-        HashSet<Reservation> reservations = reservationDAO.getReservationByCustomerId(id);
+        HashSet<Reservation> reservations = reservationDAO.getByCustomerId(id);
         session.close();
         return reservations;
     }
@@ -251,9 +214,21 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     public Reservation getReservationById(int id) {
         Session session = sessionFactory.openSession();
         reservationDAO.setSession(session);
-        Reservation reservation = reservationDAO.getReservationById(id);
+        Reservation reservation = reservationDAO.getById(id);
         session.close();
         return reservation;
+    }
+
+    @Override
+    public void insertReservation(Reservation reservation) {
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+        reservationDAO.setSession(session);
+
+        reservationDAO.insert(reservation);
+
+        tx.commit();
+        session.close();
     }
 
     @Override
@@ -262,7 +237,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         Transaction tx = session.beginTransaction();
         reservationDAO.setSession(session);
 
-        reservationDAO.updateReservation(reservation);
+        reservationDAO.update(reservation);
 
         tx.commit();
         session.close();
@@ -274,12 +249,45 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         Transaction tx = session.beginTransaction();
         reservationDAO.setSession(session);
 
-        reservationDAO.deleteReservation(reservation);
+        reservationDAO.delete(reservation);
 
         tx.commit();
         session.close();
     }
 
+//  Table
+    /**
+     * This returns a collection of all tables
+     *
+     * @return collection of all tables
+     */
+    public HashSet<ReservationTable> getAllTables() {
+        Session session = sessionFactory.openSession();
+
+        tableDAO.setSession(session);
+        HashSet<ReservationTable> tables = tableDAO.getAll();
+
+        session.close();
+        return tables;
+    } // getAllTables
+
+    /**
+     * This returns a table with provided id
+     *
+     * @param id
+     * @return table with specified id
+     */
+    public ReservationTable getTableById(int id) {
+        Session session = sessionFactory.openSession();
+
+        tableDAO.setSession(session);
+        ReservationTable table = tableDAO.getById(id);
+
+        session.close();
+        return table;
+    } //getById
+
+//  Setters
     @Autowired
     public void setCustomerDAO(CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
@@ -309,6 +317,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         this.context = context;
     }
 
+//  Constructor
     public DataFacadeImpl() {
         sessionFactory = new Configuration().configure().buildSessionFactory();
     }

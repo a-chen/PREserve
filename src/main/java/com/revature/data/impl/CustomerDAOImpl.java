@@ -17,5 +17,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public CustomerDAOImpl(){}
 
     @Override
-    public Customer getCustomerById( int id ) { return (Customer) session.get(Customer.class, id); }
+    public Customer getById(int id ) {
+        return (Customer) session.get(Customer.class, id);
+    }
 }
