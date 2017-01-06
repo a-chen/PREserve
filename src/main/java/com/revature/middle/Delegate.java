@@ -1,6 +1,7 @@
 package com.revature.middle;
 
 import com.revature.beans.Item;
+import com.revature.beans.Order;
 import com.revature.beans.OrderItem;
 import com.revature.beans.Reservation;
 import com.revature.beans.ReservationTable;
@@ -40,4 +41,8 @@ public class Delegate {
     	return facade.getItemById(id);
     }
     public void createReservation(Reservation reservation){ facade.createReservation(reservation);}
+    
+    public void createOrder(Order order) { 
+    	facade.insertOrder(order);
+    }
 }

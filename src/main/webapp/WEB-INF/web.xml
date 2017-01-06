@@ -9,8 +9,6 @@
         <welcome-file>index</welcome-file>
     </welcome-file-list>
 
-<!--     The front controller of this Spring Web application, responsible for
-        handling all application requests-->
 
     <servlet>
         <servlet-name>dispatcher</servlet-name>
@@ -22,7 +20,6 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <!--Map all requests to the DispatcherServlet for handling-->
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
