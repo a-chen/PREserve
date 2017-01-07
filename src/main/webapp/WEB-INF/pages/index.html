@@ -52,7 +52,7 @@
 <!-- Intro div to set reservation preferences -->
 <div class="intro-div jumbotron center">
     <!--Check commented code with existing code, then delete the unwanted-->
-    <!--<div class="home-page-title" style= "text-align:center;">
+    <div class="home-page-title" style= "text-align:center;">
         <h1>Welcome to PREserve!</h1>
         <h4>Please pick the date, time, and number of patrons you would like for your reservation.</h4>
     </div>
@@ -85,45 +85,10 @@
         </div>
         <div class="row">
             <div class= "col-sm-offset-10 col-xs-offset-8" style="padding-top:20px">
-                <a href="#tips"><input type="submit" class="btn btn-primary" value="Submit" /></a>
+                <a href="#tips"><input type="submit" class="btn btn-primary" value="Submit" id="insertReservation"/></a>
             </div>
         </div>
-    </form>-->
-    <div class="home-page-title" style="text-align:center;">
-        <h1>Welcome to PREserve!</h1>
-        <h4>Please pick the date, time, and number of patrons you would like for your reservation.</h4>
-    </div>
-
-    <div class="row col-md-offset-2 col-sm-offset-0" style="padding-top:15px">
-        <div class="form-group form-inline">
-            <div class="form-group col-md-3 col-sm-4">
-                <div class="input-group" data-datepicker="true">
-                    <input name="date" min="0" type="date" class="form-control" required>
-                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
-                </div>
-            </div>
-            <div class="form-group col-md-3 col-sm-4">
-                <div class="input-group timepicker">
-                    <input id="timepicker1" type="text" class="time ui-timepicker-input form-control"
-                           placeholder="Time" autocomplete="off" required>
-                    <span class="input-group-addon glyphicon glyphicon-time"></span>
-                </div>
-            </div>
-            <div class="form-group col-md-3 col-sm-4">
-                <div class="input-group">
-                    <input name="numPatrons" min="0" type="number" step="0"
-                           class="form-control" placeholder="Patrons" required>
-                    <span class="input-group-addon glyphicon glyphicon-user"></span>
-                </div>
-                <h6 style="margin-top:5px; margin-left:20px;">Max number of patrons is 6</h6>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-offset-10 col-xs-offset-8" style="padding-top:20px">
-            <a href="#tips"><input id="reservation" type="submit" class="btn btn-primary" value="Submit"/></a>
-        </div>
-    </div>
+    </form>
 </div>
 
 <!-- Table div to pick an available table -->

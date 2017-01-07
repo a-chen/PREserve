@@ -6,4 +6,3 @@ $(function() {
         'timeFormat': 'h:i A'
     });
 });
-
