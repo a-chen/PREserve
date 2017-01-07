@@ -31,7 +31,7 @@ public class ReservationController {
         return reservations;
         }
 
-    @RequestMapping(value = "/reservation",
+/*    @RequestMapping(value = "/reservation",
             method = RequestMethod.POST,
             consumes = "application/json")
     public ResponseEntity submitReservation(@RequestBody @Valid Reservation reservation,
@@ -39,5 +39,5 @@ public class ReservationController {
         System.out.println("in reservation method");
          //businessDelegate.createReservation(reservation);
         return new ResponseEntity(HttpStatus.CREATED);
-    }
+    }*/
 }

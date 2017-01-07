@@ -1,4 +1,4 @@
-$(function(){
+function getReservation(){
     var q = 1;
     $.ajax({
         type:"GET",
@@ -7,10 +7,10 @@ $(function(){
             console.log(resp);
         }
     });
-});
+} // to be used in customer ajax call
 
 
-$("#insertReservation").click(function(){
+/*$("#insertReservation").click(function(){
     var customer ={};
     var table = {};
     var reservation = {};
@@ -22,4 +22,4 @@ $("#insertReservation").click(function(){
             console.log("in get reserve");
         }
     });
-});
+});*/
