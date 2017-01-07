@@ -10,16 +10,32 @@ function getReservation(){
 } // to be used in customer ajax call
 
 
-/*$("#insertReservation").click(function(){
-    var customer ={};
-    var table = {};
-    var reservation = {};
+$("#insertReservation").click(function(){
+    var customer ={id:1,
+        firstName:                  "Jason",
+        lastName:                   "Bourne",
+        username:                   "bourne2win",
+        email:                      "jasonbourne@gmail.com",
+        phone:                      "3829879876"};
+    var table = {capacity: 2};
+    var reservation = {
+        date: new Date(),
+        table: table,
+        customer: customer};
     $.ajax({
-        type:"GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type:"POST",
         data: JSON.stringify( reservation ),
+        dataType: 'json',
         url:"http://localhost:9001/reservation/insert" ,
         success: function(resp){
-            console.log("in get reserve");
+            console.log(resp.customer.firstName);
+        },
+        error: function(resp){
+            console.log("error " + new Date());
         }
     });
-});*/
+});

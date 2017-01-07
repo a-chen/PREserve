@@ -24,9 +24,5 @@ public class CustomerController {
             method = RequestMethod.GET,
             produces = "application/json")
     @ResponseBody
-    public Customer getCustomer(@RequestParam(value="q") int id) {
-        Customer customer = businessDelegate.getCustomerById(id);
-        System.out.println(customer);
-        return customer;
-    }
+    public Customer getCustomer(@RequestParam(value="q") int id) {return businessDelegate.getCustomerById(id);}
 }

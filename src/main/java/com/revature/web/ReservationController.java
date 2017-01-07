@@ -1,8 +1,10 @@
 package com.revature.web;
 
+import com.revature.beans.Customer;
 import com.revature.beans.Reservation;
 import com.revature.middle.Delegate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,19 +31,18 @@ public class ReservationController {
             method = RequestMethod.GET,
             produces = "application/json")
     @ResponseBody
-    public HashSet<Reservation> getReservations(@RequestParam(value="q") int id) {
-        HashSet<Reservation> reservations = businessDelegate.getReservationByCustomerId(id);
-        System.out.println(reservations);
-        return reservations;
-    }
+    public HashSet<Reservation> getReservations(@RequestParam(value="q") int id) {return businessDelegate.getReservationByCustomerId(id);}
 
-/*    @RequestMapping(value = "/reservation",
+    @RequestMapping(value = "/reservation/insert",
             method = RequestMethod.POST,
             consumes = "application/json")
-    public ResponseEntity submitReservation(@RequestBody @Valid Reservation reservation,
+    public @ResponseBody HttpEntity submitReservation(@RequestBody @Valid Reservation reservation,
                                             BindingResult result){
-        System.out.println("in reservation method");
+        System.out.println(reservation.getCustomer().getFirstName());
+        if(result.hasErrors()){
+            return new ResponseEntity("Failed", HttpStatus.BAD_REQUEST);
+        }
          //businessDelegate.createReservation(reservation);
-        return new ResponseEntity(HttpStatus.CREATED);
-    }*/
+        return new ResponseEntity<Reservation>(reservation, HttpStatus.CREATED);
+    }
 }
