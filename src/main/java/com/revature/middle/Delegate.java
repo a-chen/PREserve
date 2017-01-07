@@ -133,5 +133,4 @@ public class Delegate {
     public void setTableService(TableService tableService) {
         this.tableService = tableService;
     }
-
 }
