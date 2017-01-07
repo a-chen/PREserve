@@ -20,12 +20,13 @@ public class CustomerController {
         this.businessDelegate = businessDelegate;
     }
 
-    @RequestMapping(value = "/customers",
+    @RequestMapping(value = "/customer",
             method = RequestMethod.GET,
             produces = "application/json")
     @ResponseBody
     public Customer getCustomer(@RequestParam(value="q") int id) {
         Customer customer = businessDelegate.getCustomerById(id);
+        System.out.println(customer);
         return customer;
     }
 }
