@@ -36,6 +36,10 @@ public class Delegate {
     }
 
 //  OrderService
+    public HashSet<Order> getOrderByReservationId(int id){
+    	return orderService.getOrderByReservationId(id);
+    }
+    
     public Order getOrderById(int id) {
         return orderService.getOrderById(id);
     }

@@ -17,7 +17,7 @@ public class Order {
     private Reservation reservation;
 
     @OneToOne
-    @JoinColumn(name = "customer_id", nullable = false)
+    @JoinColumn(name = "customer_id", nullable = true)
     private Customer customer;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
