@@ -10,10 +10,15 @@ $("#reservation").click(function() {
 
 // Timepicker initialization
 $(function() {
-    $('#timepicker1').timepicker({
+    $('#time-input').timepicker({
         'minTime': '9:00am',
         'maxTime': '11:00pm',
         'forceRoundTime': true,
         'timeFormat': 'h:i A'
     });
+});
+
+// Loads external html
+$(function () {
+    $(".load-table-selector").load("tableSelector.html");
 });
