@@ -10,7 +10,7 @@ $("#reservation").click(function() {
 
 // Timepicker initialization
 $(function() {
-    $('#time-input').timepicker({
+    $('.time-input').timepicker({
         'minTime': '9:00am',
         'maxTime': '11:00pm',
         'forceRoundTime': true,

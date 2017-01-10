@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>PREserve</title>
+    <meta charset="ISO-8859-1">
+    <title>PREserve</title>
 
     <!-- Latest compiled and minified jQuery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -42,21 +42,21 @@
                 <div class="row col-md-offset-2 col-sm-offset-0" style="padding-top:15px">
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group" data-datepicker="true">
-                            <input id="date-input" name="date" min="0" type="date" class="form-control" required>
+                            <input class="date-input form-control" name="date" min="0" type="date" required>
                             <span class="input-group-addon glyphicon glyphicon-calendar"></span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group timepicker">
-                            <input id="time-input" type="text" class="time ui-timepicker-input form-control"
+                            <input class="time-input time ui-timepicker-input form-control" type="text"
                                    placeholder="Time" autocomplete="off" required>
                             <span class="input-group-addon glyphicon glyphicon-time"></span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group">
-                            <input id="patron-input" name="numPatrons" min="0" type="number" step="0"
-                                   class="form-control" placeholder="Patrons" required>
+                            <input class="patron-input form-control" name="numPatrons" min="0" type="number" step="0"
+                                   placeholder="Patrons" required>
                             <span class="input-group-addon glyphicon glyphicon-user"></span>
                         </div>
                         <h6 style="margin-top:5px; margin-left:20px;">Max number of patrons is <span
@@ -153,22 +153,22 @@
                                 <h3 id="reservation-detail-header">Current details (edit to change)</h3>
                                 <div class="col-md-4">
                                     <div class="input-group" data-datepicker="true">
-                                        <input name="date" min="0" type="date" class="form-control" required>
+                                        <input class="date-input form-control" name="date" min="0" type="date" required>
                                         <span class="input-group-addon glyphicon glyphicon-calendar"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="input-group timepicker">
-                                        <input id="timepicker1" type="text"
-                                               class="time ui-timepicker-input form-control"
+                                        <input type="text"
+                                               class="time-input time ui-timepicker-input form-control"
                                                placeholder="Time" autocomplete="off" required>
                                         <span class="input-group-addon glyphicon glyphicon-time"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="input-group">
-                                        <input name="numPatrons" min="0" type="number" step="0"
-                                               class="form-control" placeholder="Patrons" required>
+                                        <input class="patron-input form-control" placeholder="Patrons" name="numPatrons"
+                                               min="0" type="number" step="0" required>
                                         <span class="input-group-addon glyphicon glyphicon-user"></span>
                                     </div>
                                 </div>
