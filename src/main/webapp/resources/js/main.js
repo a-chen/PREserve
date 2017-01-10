@@ -1,4 +1,4 @@
-$("#reservation").click(function() {
+$("#reservation").click(function () {
     $.ajax({
         method: "GET",
         url: "http://localhost:9001/reservation",
@@ -9,7 +9,7 @@ $("#reservation").click(function() {
 });
 
 // Timepicker initialization
-$(function() {
+$(function () {
     $('.time-input').timepicker({
         'minTime': '9:00am',
         'maxTime': '11:00pm',
