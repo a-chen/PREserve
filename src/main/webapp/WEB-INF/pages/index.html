@@ -42,20 +42,20 @@
                 <div class="row col-md-offset-2 col-sm-offset-0" style="padding-top:15px">
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group" data-datepicker="true">
-                            <input class="date-input form-control reserve" name="date" min="0" type="date" required>
+                            <input id="date" class="date-input form-control reserve" name="date" min="0" type="date" required>
                             <span class="input-group-addon glyphicon glyphicon-calendar"></span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group timepicker">
-                            <input class="time-input time ui-timepicker-input form-control reserve" type="text"
+                            <input id="timepicker1" class="time-input time ui-timepicker-input form-control reserve" type="text"
                                    placeholder="Time" autocomplete="off" required>
                             <span class="input-group-addon glyphicon glyphicon-time"></span>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group">
-                            <input class="patron-input form-control" name="numPatrons reserve" min="0" type="number" step="0"
+                            <input id="patrons" class="patron-input form-control reserve" name="numPatrons" min="0" type="number" step="0"
                                    placeholder="Patrons" required>
                             <span class="input-group-addon glyphicon glyphicon-user"></span>
                         </div>
@@ -153,7 +153,7 @@
                                 <h3 id="reservation-detail-header">Current details (edit to change)</h3>
                                 <div class="col-md-4">
                                     <div class="input-group" data-datepicker="true">
-                                        <input id="date" class="date-input form-control" name="date" min="0" type="date"
+                                        <input class="date-input form-control" name="date" min="0" type="date"
                                                required>
                                         <span class="input-group-addon glyphicon glyphicon-calendar"></span>
                                     </div>
@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="input-group">
-                                        <input id="patrons" class="patron-input form-control" placeholder="Patrons"
+                                        <input class="patron-input form-control" placeholder="Patrons"
                                                name="numPatrons"
                                                min="0" type="number" step="0" required>
                                         <span class="input-group-addon glyphicon glyphicon-user"></span>

@@ -9,34 +9,39 @@ function getReservation(){
     });
 }   // to be used in customer ajax call
     // TODO in service, make logic to only get the most recent reservation.
+$(function() {
+    $('.reserve').on('change paste keyup', function () {
+        /*var fullDate= new Date(date + ' ' + time);
+         var customer = {id : 1};
+         var reservation = {
+         date: fullDate,
+         customer: customer
+         };*/
+        var date = $('#date').val();
+        var time = $('#timepicker1').val();
+        var patrons = $("#patrons").val();
 
-$("#reserve").change(function () {
-    /*var date = $("#date").val();
-    var time = $("#timepicker1").val();
-    var patrons = $("#patrons").val();
-    var fullDate= new Date(date + ' ' + time);
-    var customer = {id : 1};
-    var reservation = {
-        date: fullDate,
-        customer: customer
-    };*/
-    var date = $(this).find('#date').text();
-    console.log(date);
-   /* $.ajax({
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        type:"POST",
-        data: JSON.stringify( reservation ),
-        dataType: 'json',
-        url:"http://localhost:9001/reservation/getReservedTables" ,
-        success: function(resp){
-        },
-        error: function(resp){
-            console.log("error");
+        if( date != null && time != null && patrons != null){
+            console.log(date);
+            console.log(time);
+            console.log(patrons);
         }
-    });*/
+        /* $.ajax({
+         headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
+         },
+         type:"POST",
+         data: JSON.stringify( reservation ),
+         dataType: 'json',
+         url:"http://localhost:9001/reservation/getReservedTables" ,
+         success: function(resp){
+         },
+         error: function(resp){
+         console.log("error");
+         }
+         });*/
+    });
 });
 
 $("#insertReservation").click(function(){
