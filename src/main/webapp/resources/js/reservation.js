@@ -10,8 +10,8 @@ function getReservation(){
 }   // to be used in customer ajax call
     // TODO in service, make logic to only get the most recent reservation.
 
-$("#getReservedTables").click(function () {
-    var date = $("#date").val();
+$("#reserve").change(function () {
+    /*var date = $("#date").val();
     var time = $("#timepicker1").val();
     var patrons = $("#patrons").val();
     var fullDate= new Date(date + ' ' + time);
@@ -19,8 +19,10 @@ $("#getReservedTables").click(function () {
     var reservation = {
         date: fullDate,
         customer: customer
-    };
-    $.ajax({
+    };*/
+    var date = $(this).find('#date').text();
+    console.log(date);
+   /* $.ajax({
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -34,7 +36,7 @@ $("#getReservedTables").click(function () {
         error: function(resp){
             console.log("error");
         }
-    });
+    });*/
 });
 
 $("#insertReservation").click(function(){
