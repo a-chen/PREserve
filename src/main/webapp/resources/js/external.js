@@ -1,3 +1,4 @@
+// Timepicker initialization
 $(function() {
     $('#timepicker1').timepicker({
         'minTime': '9:00am',
