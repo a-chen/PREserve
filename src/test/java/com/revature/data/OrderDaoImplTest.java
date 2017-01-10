@@ -5,6 +5,7 @@ import com.revature.beans.Order;
 import com.revature.beans.Reservation;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,13 +17,20 @@ public class OrderDaoImplTest {
     public static void getClassPathAP(){
         context = new ClassPathXmlApplicationContext("beans.xml");
     }
-
+    
+    @Test
+	public void getOrderByCustomerId() {
+    	DataFacade facade = context.getBean("facade", DataFacade.class);
+        System.out.println(facade.getOrderByReservationId(1));
+	}
+	@Ignore
     @Test
     public void getOrderById() {
         DataFacade facade = context.getBean("facade", DataFacade.class);
         System.out.println(facade.getOrderById(1));
     }
 
+	@Ignore
     @Test
     public void insert() {
         DataFacade facade = context.getBean("facade", DataFacade.class);
@@ -34,6 +42,7 @@ public class OrderDaoImplTest {
         facade.insertOrder(order);
     }
 
+	@Ignore
     @Test
     public void delete() {
         DataFacade facade = context.getBean("facade", DataFacade.class);

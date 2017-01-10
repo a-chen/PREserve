@@ -47,6 +47,8 @@ public interface DataFacade {
 	 */
     void deleteOrder( Order order );
 
+	HashSet<Order> getOrderByReservationId(int id);
+
 //	OrderItem
 	/**
 	 * @return collection of all Order Items

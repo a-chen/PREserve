@@ -25,7 +25,7 @@ public class TableController {
     @ResponseBody
     public HashSet<ReservationTable> getAll() {
         HashSet<ReservationTable> tables = businessDelegate.getAllTables();
-        System.out.println(tables);
+        //System.out.println(tables);
         return tables;
     }
 }

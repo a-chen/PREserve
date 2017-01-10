@@ -14,7 +14,7 @@ public class MainController {
     public void setBusinessDelegate(Delegate businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
-
+/*
     @RequestMapping(value={"/home"}, method= RequestMethod.GET)
     // no response body.. returned value goes to IRVR
     public String homePage(){
@@ -22,7 +22,7 @@ public class MainController {
         // /WEB-INF/pages/index.html
         // requestDispatcher.forward(req,resp)
         return "template";
-    }
+    }*/
 
     @RequestMapping(value={"/index"}, method=RequestMethod.GET)
     public String indexPage(){

@@ -4,7 +4,8 @@ $(function(){
         type:"GET",
         url:"http://localhost:9001/customer?q="+q ,
         success: function(resp){
-            console.log(resp);
+            //console.log(resp);
+            var reservation = getReservation();
         }
     });
 });
