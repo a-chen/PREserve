@@ -1,6 +1,7 @@
 package com.revature.middle;
 
 import com.revature.beans.Reservation;
+import com.revature.beans.ReservationTable;
 import com.revature.data.DataFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,12 @@ public class ReservationService {
 
     void deleteReservation(Reservation reservation) {
         facade.deleteReservation(reservation);
+    }
+
+    public HashSet<ReservationTable> getReservedTables(Reservation reservation){
+        HashSet<ReservationTable> tables = facade.getAllTables();
+        // TODO logic to filter  tables with reservation object
+        return tables;
     }
 
 }

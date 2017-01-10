@@ -47,6 +47,9 @@
 	<!-- Personalized Style Sheet -->
 	<link rel="stylesheet" href="../../resources/css/styles.css" type="text/css">
 
+	<!-- Moment.js -->
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/af.js"></script>-->
+
 </head>
 <body>
 <!-- Intro div to set reservation preferences -->
@@ -62,7 +65,7 @@
 			<div class="form-group form-inline">
 				<div class="form-group col-md-3 col-sm-4">
 					<div class="input-group" data-datepicker="true">
-						<input name="date" min="0" type="date" class="form-control" required>
+						<input id="date" name="date" min="0" type="date" class="form-control" required>
 						<span class="input-group-addon glyphicon glyphicon-calendar"></span>
 					</div>
 				</div>
@@ -75,7 +78,7 @@
 				</div>
 				<div class="form-group col-md-3 col-sm-4">
 					<div class="input-group">
-						<input name= "numPatrons" min="0" type="number" step="0"
+						<input id="patrons" name= "numPatrons" min="0" type="number" step="0"
 							   class="form-control" placeholder="Patrons" required>
 						<span class="input-group-addon glyphicon glyphicon-user"></span>
 					</div>
@@ -85,7 +88,7 @@
 		</div>
 		<div class="row">
 			<div class= "col-sm-offset-10 col-xs-offset-8" style="padding-top:20px">
-				<a href="#tips"><input type="submit" class="btn btn-primary" value="Submit" id="insertReservation"/></a>
+				<a href="#tips"><input type="submit" class="btn btn-primary" value="Submit" id="getReservedTables"/></a>
 			</div>
 		</div>
 	</form>

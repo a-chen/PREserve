@@ -98,6 +98,8 @@ public class Delegate {
         reservationService.deleteReservation(reservation);
     }
 
+    public HashSet<ReservationTable> getReservedTables(Reservation reservation){ return reservationService.getReservedTables(reservation);}
+
 //  TableService
     public HashSet<ReservationTable> getAllTables() {
         return tableService.getAllTables();
