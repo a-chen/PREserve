@@ -45,7 +45,7 @@ CREATE TABLE reservation(
 CREATE TABLE orders(
 	id INT NOT NULL AUTO_INCREMENT,
     reservation_id INT NOT NULL,
-    customer_id INT NOT NULL,
+    customer_id INT NULL,
     
     PRIMARY KEY (id),
     FOREIGN KEY (reservation_id)

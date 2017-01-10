@@ -4,6 +4,10 @@ import com.revature.beans.Customer;
 import com.revature.beans.Order;
 import com.revature.beans.Reservation;
 import com.revature.data.dao.OrderDAO;
+
+import java.util.HashSet;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -36,4 +40,12 @@ public class OrderDAOImpl implements OrderDAO {
 
     @Override
     public void delete(Order order) { session.delete( order ); }
+
+	@Override
+	public HashSet<Order> getOrderByReservationId(int id) {
+        String hql = "from Order where reservation_id = :q";
+        Query query = session.createQuery(hql);
+        query.setInteger("q", id);
+        return new HashSet<>(query.list());
+	}
 }

@@ -71,6 +71,15 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 	}
 
 //  Order
+	
+	@Override
+    public HashSet<Order> getOrderByReservationId(int id) {
+        Session session = sessionFactory.openSession();
+        orderDAO.setSession(session);
+        HashSet<Order> orders = orderDAO.getOrderByReservationId(id);
+        session.close();
+        return orders;
+    }
     /**
      * This returns an order with provided id
      * @param id

@@ -36,6 +36,10 @@ public class Delegate {
     }
 
 //  OrderService
+    public HashSet<Order> getOrderByReservationId(int id){
+    	return orderService.getOrderByReservationId(id);
+    }
+    
     public Order getOrderById(int id) {
         return orderService.getOrderById(id);
     }
@@ -93,6 +97,8 @@ public class Delegate {
     public void deleteReservation(Reservation reservation) {
         reservationService.deleteReservation(reservation);
     }
+
+    public HashSet<ReservationTable> getReservedTables(Reservation reservation){ return reservationService.getReservedTables(reservation);}
 
 //  TableService
     public HashSet<ReservationTable> getAllTables() {
