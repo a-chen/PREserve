@@ -38,8 +38,8 @@ public class ReservationController {
     @RequestMapping(value = "/reservation/getReservedTables",
             method = RequestMethod.POST,
             consumes = "application/json")
-    public @ResponseBody HashSet<ReservationTable> getReservedTables(@RequestBody @Valid Reservation reservation){
-        HashSet<ReservationTable> tables = businessDelegate.getReservedTables(reservation);
+    public @ResponseBody HashSet<ReservationTable> getAvailableTables(@RequestBody @Valid Reservation reservation){
+        HashSet<ReservationTable> tables = businessDelegate.getAvailableTables(reservation);
         return tables;
     }
 

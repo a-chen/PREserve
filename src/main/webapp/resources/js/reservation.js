@@ -15,16 +15,19 @@ $(function() {
         var date = $('#date').val();
         var time = $('#timepicker1').val();
         var patrons = $("#patrons").val();
-
+        //console.log(new moment().format("MM/DD/YY hh:mm A"));
         if( date != '' && time != '' && patrons != ''){
+            //var fullDate = new moment(new Date(date + ' ' + time)).format('YYYY-MM-DD hh:mm:ss');
             var fullDate= new Date(date + ' ' + time);
+            //console.log(new moment(fullDate).format('YYYY-MM-DD hh:mm:ss'));
+            //console.log((fullDate));
             var customer = {id : 1};
             var reservation = {
                 date: fullDate,
                 customer: customer,
                 patrons: patrons
             };
-            console.log(fullDate);
+           // console.log(fullDate);
              $.ajax({
                  headers: {
                      'Accept': 'application/json',

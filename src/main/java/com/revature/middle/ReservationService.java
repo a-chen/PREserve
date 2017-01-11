@@ -6,6 +6,8 @@ import com.revature.data.DataFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 
 @Service
@@ -37,22 +39,33 @@ public class ReservationService {
         facade.deleteReservation(reservation);
     }
 
-    public HashSet<ReservationTable> getReservedTables(Reservation reservation){
+    public HashSet<ReservationTable> getAvailableTables(Reservation reservation){
         HashSet<ReservationTable> tables = facade.getAllTables();
         HashSet<ReservationTable> toRemove = new HashSet<ReservationTable>();
         for(ReservationTable temp : tables){
-            //System.out.println(reservation.getPatrons());
             if(reservation.getPatrons() > temp.getCapacity())
                 toRemove.add(temp);
         }
         tables.removeAll(toRemove);
+        System.out.println(toRemove);
+        toRemove.clear();
 
+        SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD hh:mm:ss");
+        //Date date = format.parse(reservation.getDate());
         HashSet<Reservation> getReservationAfter = facade.getReservationsAfterTime(reservation.getDate());
+
+        System.out.println("AFTER: " + getReservationAfter);
         for(Reservation temp : getReservationAfter){
-            if(reservation.getDate().getTime() == temp.getDate().getTime())
-                System.out.println("remove that table");
+            //System.out.println("reservation: " + reservation.getDate() + " TEMP: " + temp.getDate());
+            if(reservation.getDate().equals(temp.getDate())){
+                //System.out.println("in loop");
+                toRemove.add(facade.getTableById(temp.getTable().getId()));
+            }
         }
-        System.out.println(tables);
+        System.out.println(toRemove);
+        tables.removeAll(toRemove);
+        //System.out.println(reservation.getDate());
+       // System.out.println(getReservationAfter);
         return tables;
     }
 
