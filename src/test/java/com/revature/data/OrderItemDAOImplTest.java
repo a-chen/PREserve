@@ -5,6 +5,7 @@ import com.revature.beans.Order;
 import com.revature.beans.OrderItem;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -15,6 +16,25 @@ public class OrderItemDAOImplTest {
     @BeforeClass
     public static void getClassPathAP(){
         context = new ClassPathXmlApplicationContext("beans.xml");
+    }
+
+    @Test
+    public void insertOrderItem() {
+        DataFacade facade = context.getBean("facade", DataFacade.class);
+
+        Order order = facade.getOrderById(1);
+        Item item = facade.getItemById(2);
+
+        OrderItem orderItem = facade.getOrderItemById(1);
+        facade.insertOrderItem(orderItem);
+    }
+
+    @Test
+    public void updateOrderItem() {
+        DataFacade facade = context.getBean("facade", DataFacade.class);
+        OrderItem orderItem = facade.getOrderItemById(1);
+        orderItem.setItem(facade.getItemById(2));
+        facade.updateOrderItem(orderItem);
     }
 
     @Test
@@ -35,30 +55,12 @@ public class OrderItemDAOImplTest {
         System.out.println(facade.getOrderItemByOrderId(1));
     }
 
-    @Test
-    public void insertOrderItem() {
-        DataFacade facade = context.getBean("facade", DataFacade.class);
-
-        Order order = facade.getOrderById(1);
-        Item item = facade.getItemById(2);
-
-        OrderItem orderItem = facade.getOrderItemById(1);
-        facade.insertOrderItem(orderItem);
-    }
-
+    @Ignore
     @Test
     public void deleteOrderItem() {
         DataFacade facade = context.getBean("facade", DataFacade.class);
         OrderItem orderItem = facade.getOrderItemById(2);
         facade.deleteOrderItem(orderItem);
-    }
-
-    @Test
-    public void updateOrderItem() {
-        DataFacade facade = context.getBean("facade", DataFacade.class);
-        OrderItem orderItem = facade.getOrderItemById(1);
-        orderItem.setItem(facade.getItemById(2));
-        facade.updateOrderItem(orderItem);
     }
 
     @AfterClass

@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.HashSet;
 
 @Repository(value = "reservationDAO")
@@ -26,7 +27,7 @@ public class ReservationDAOImpl implements ReservationDAO {
 
     @Override
     public HashSet<Reservation> getByCustomerId(int id) {
-        String hql = "from Reservation where customer_id = :q";
+        String hql = "from Reservation where customer.id = :q";
         Query query = session.createQuery(hql);
         query.setInteger("q", id);
         return new HashSet<>(query.list());
@@ -49,5 +50,13 @@ public class ReservationDAOImpl implements ReservationDAO {
     public void delete(Reservation reservation) {
         if(reservation != null)
             session.delete(reservation);
+    }
+
+    @Override
+    public HashSet<Reservation> getReservationsAfterTime(Date date) {
+        String hql = "from Reservation where date >= :t";
+        Query query = session.createQuery(hql);
+        query.setTimestamp("t", date);
+        return new HashSet<>(query.list());
     }
 }

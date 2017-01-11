@@ -39,7 +39,20 @@ public class ReservationService {
 
     public HashSet<ReservationTable> getReservedTables(Reservation reservation){
         HashSet<ReservationTable> tables = facade.getAllTables();
-        // TODO logic to filter  tables with reservation object
+        HashSet<ReservationTable> toRemove = new HashSet<ReservationTable>();
+        for(ReservationTable temp : tables){
+            //System.out.println(reservation.getPatrons());
+            if(reservation.getPatrons() > temp.getCapacity())
+                toRemove.add(temp);
+        }
+        tables.removeAll(toRemove);
+
+        HashSet<Reservation> getReservationAfter = facade.getReservationsAfterTime(reservation.getDate());
+        for(Reservation temp : getReservationAfter){
+            if(reservation.getDate().getTime() == temp.getDate().getTime())
+                System.out.println("remove that table");
+        }
+        System.out.println(tables);
         return tables;
     }
 
