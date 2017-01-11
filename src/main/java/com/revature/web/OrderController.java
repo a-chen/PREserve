@@ -41,7 +41,7 @@ public class OrderController {
             consumes = "application/json")
     public @ResponseBody HttpEntity submitReservation(@RequestBody @Valid Order order,
                                             BindingResult result){
-        System.out.println(order.getCustomer().getFirstName());
+//        System.out.println(order.getCustomer().getFirstName());
         if(result.hasErrors()){
             return new ResponseEntity("Failed", HttpStatus.BAD_REQUEST);
         }

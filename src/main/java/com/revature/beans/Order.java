@@ -16,16 +16,11 @@ public class Order {
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
-    @OneToOne
-    @JoinColumn(name = "customer_id", nullable = true)
-    private Customer customer;
-
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
     private Set<OrderItem> orderItems;
 
-    public Order(Reservation reservation, Customer customer) {
+    public Order(Reservation reservation) {
         this.reservation = reservation;
-        this.customer = customer;
     }
 
     public Order() {
@@ -48,14 +43,6 @@ public class Order {
         this.reservation = reservation;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public Set<OrderItem> getorderItems() {
         return orderItems;
     }
@@ -69,7 +56,6 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", reservation=" + reservation.getId() +
-                ", customer=" + customer.getId() +
                 ", orderItems=" + orderItems +
                 '}';
     }
