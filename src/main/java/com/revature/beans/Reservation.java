@@ -23,11 +23,14 @@ public class Reservation {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    public Reservation(Date date, ReservationTable table, Customer customer) {
-        super();
+    @Column(name = "patrons", nullable = true)
+    private int patrons;
+
+    public Reservation(Date date, ReservationTable table, Customer customer, int patrons) {
         this.date = date;
         this.table = table;
         this.customer = customer;
+        this.patrons = patrons;
     }
 
     public Reservation() {
@@ -41,6 +44,7 @@ public class Reservation {
                 ", date=" + date +
                 ", table=" + table +
                 ", customer=" + customer +
+                ", patrons=" + patrons +
                 '}';
     }
 
@@ -75,4 +79,8 @@ public class Reservation {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public int getPatrons() {return patrons;}
+
+    public void setPatrons(int patrons) {this.patrons = patrons;}
 }

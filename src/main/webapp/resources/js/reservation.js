@@ -9,38 +9,39 @@ function getReservation(){
     });
 }   // to be used in customer ajax call
     // TODO in service, make logic to only get the most recent reservation.
+
 $(function() {
     $('.reserve').on('change paste keyup', function () {
-        /*var fullDate= new Date(date + ' ' + time);
-         var customer = {id : 1};
-         var reservation = {
-         date: fullDate,
-         customer: customer
-         };*/
         var date = $('#date').val();
         var time = $('#timepicker1').val();
         var patrons = $("#patrons").val();
 
-        if( date != null && time != null && patrons != null){
-            console.log(date);
-            console.log(time);
-            console.log(patrons);
+        if( date != '' && time != '' && patrons != ''){
+            var fullDate= new Date(date + ' ' + time);
+            var customer = {id : 1};
+            var reservation = {
+                date: fullDate,
+                customer: customer,
+                patrons: patrons
+            };
+            console.log(fullDate);
+             $.ajax({
+                 headers: {
+                     'Accept': 'application/json',
+                     'Content-Type': 'application/json'
+                 },
+                 type:"POST",
+                 data: JSON.stringify( reservation ),
+                 dataType: 'json',
+                 url:"http://localhost:9001/reservation/getReservedTables" ,
+                 success: function(resp){
+                     console.log(resp)
+                 },
+                 error: function(resp){
+                    console.log("error");
+                 }
+             });
         }
-        /* $.ajax({
-         headers: {
-         'Accept': 'application/json',
-         'Content-Type': 'application/json'
-         },
-         type:"POST",
-         data: JSON.stringify( reservation ),
-         dataType: 'json',
-         url:"http://localhost:9001/reservation/getReservedTables" ,
-         success: function(resp){
-         },
-         error: function(resp){
-         console.log("error");
-         }
-         });*/
     });
 });
 

@@ -2,6 +2,7 @@ package com.revature.data;
 
 import com.revature.beans.*;
 
+import java.util.Date;
 import java.util.HashSet;
 
 public interface DataFacade {
@@ -132,5 +133,7 @@ public interface DataFacade {
 	 * @return table with specified id
 	 */
 	ReservationTable getTableById(int id);
+
+	HashSet<Reservation>getReservationsAfterTime(Date date);
 
 }
