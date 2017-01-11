@@ -23,7 +23,7 @@ public class OrderDaoImplTest {
     }
 
     @Test
-    public void getOrderByCustomerId() {
+    public void getOrderByReservationId() {
         DataFacade facade = context.getBean("facade", DataFacade.class);
         System.out.println(facade.getOrderByReservationId(1));
     }
