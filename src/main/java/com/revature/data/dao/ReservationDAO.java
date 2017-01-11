@@ -3,6 +3,7 @@ package com.revature.data.dao;
 import com.revature.beans.Reservation;
 import org.hibernate.Session;
 
+import java.util.Date;
 import java.util.HashSet;
 
 public interface ReservationDAO {
@@ -42,5 +43,5 @@ public interface ReservationDAO {
      */
     void delete(Reservation reservation);
 
-
+    public HashSet<Reservation> getReservationsAfterTime(Date date);
 }

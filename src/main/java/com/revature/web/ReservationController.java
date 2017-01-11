@@ -39,7 +39,8 @@ public class ReservationController {
             method = RequestMethod.POST,
             consumes = "application/json")
     public @ResponseBody HashSet<ReservationTable> getReservedTables(@RequestBody @Valid Reservation reservation){
-        return businessDelegate.getReservedTables(reservation);
+        HashSet<ReservationTable> tables = businessDelegate.getReservedTables(reservation);
+        return tables;
     }
 
     @RequestMapping(value = "/reservation/insert",

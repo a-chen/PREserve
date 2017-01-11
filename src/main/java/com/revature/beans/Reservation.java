@@ -23,11 +23,10 @@ public class Reservation {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @Column
+    @Column(name = "patrons", nullable = false)
     private int patrons;
 
     public Reservation(Date date, ReservationTable table, Customer customer, int patrons) {
-        super();
         this.date = date;
         this.table = table;
         this.customer = customer;
@@ -88,4 +87,5 @@ public class Reservation {
     public void setPatrons(int patrons) {
         this.patrons = patrons;
     }
+
 }

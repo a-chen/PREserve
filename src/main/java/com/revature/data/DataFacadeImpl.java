@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.HashSet;
 
 /**
@@ -264,6 +265,17 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         session.close();
     }
 
+    @Override
+    public HashSet<Reservation> getReservationsAfterTime(Date date) {
+        Session session = sessionFactory.openSession();
+
+        reservationDAO.setSession(session);
+        HashSet<Reservation> reservations= reservationDAO.getReservationsAfterTime(date);
+
+        session.close();
+        return reservations;
+    }
+
 //  Table
     /**
      * This returns a collection of all tables
@@ -296,7 +308,7 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
         return table;
     } //getById
 
-//  Setters
+    //  Setters
     @Autowired
     public void setCustomerDAO(CustomerDAO customerDAO) {
         this.customerDAO = customerDAO;
