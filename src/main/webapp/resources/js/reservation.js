@@ -7,68 +7,66 @@ function getReservation(){
             //console.log(resp);
         }
     });
-}   // to be used in customer ajax call
-    // TODO in service, make logic to only get the most recent reservation.
-function insertReservation() {
-    console.log("in table click")
-   // var table = $("#all-tables").closest('.table-square');
-    //table.css("background-color", "#e0162e");
 }
-$(function() {
-    $('.reserve').on('change paste keyup', function () {
-        var date = $('#date').val();
-        var time = $('#timepicker1').val();
-        var patrons = $("#patrons").val();
-        if( date != '' && time != '' && patrons != ''){
-            var fullDate= new Date(date + ' ' + time);
-            var customer = {id : 1};
-            var reservation = {
-                date: fullDate,
-                customer: customer,
-                patrons: patrons
-            };
-           // console.log(fullDate);
-             $.ajax({
-                 headers: {
-                     'Accept': 'application/json',
-                     'Content-Type': 'application/json'
-                 },
-                 type:"POST",
-                 data: JSON.stringify( reservation ),
-                 dataType: 'json',
-                 url:"http://localhost:9001/reservation/getReservedTables" ,
-                 success: function(resp){
-                     for( var i = 1; i < 9; i++){
-                         $(".table" + i + " a div").css("background-color", "#e0162e");
-                     }
 
-                     $.each( resp, function( i, item ) {
-                         var tableNum = $(".table" + item.id + " a div").text().replace( /[^\d.]/g, '' );
-                         console.log(i);
-                         if( tableNum == item.id )
-                             $(".table" + item.id + " a div").css("background-color", "#26A65B");
-                     });
-                 },
-                 error: function(resp){
-                    console.log("error");
+$(function () {
+    $('.reserve').on('change', function () {
+        getReserveTables();
+    })
+    $('.reserve').on('keyup', function () {
+        getReserveTables();
+    })
+})
+ function getReserveTables() {
+    console.log("hi")
+    var date = $('#date').val();
+    var time = $('#timepicker1').val();
+    var patrons = $("#patrons").val();
+    if( date != '' && time != '' && patrons != ''){
+        var fullDate= new Date(date + ' ' + time);
+        var customer = {id : 1};
+        var reservation = {
+            date: fullDate,
+            customer: customer,
+            patrons: patrons
+        };
+         $.ajax({
+             headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+             },
+             type:"POST",
+             data: JSON.stringify( reservation ),
+             dataType: 'json',
+             url:"http://localhost:9001/reservation/getReservedTables" ,
+             success: function(resp){
+                 for( var i = 1; i < 9; i++){
+                     $(".table" + i + " a div").css("background-color", "#e0162e");
+                     $(".table" + i + " a").off('click');
                  }
-             });
-        }
-    });
-});
 
-$("#insertReservation").click(function(){
-    var customer ={id:              1,
-        firstName:                  "Jason",
-        lastName:                   "Bourne",
-        username:                   "bourne2win",
-        email:                      "jasonbourne@gmail.com",
-        phone:                      "3829879876"};
-    var table = {capacity: 2};
-    var reservation = {
-        date: new Date(),
-        table: table,
-        customer: customer};
+                 $.each( resp, function( i, table ) {
+                     // gets only number in a string
+                     var tableNum = $(".table" +table.id + " a div").text().replace( /[^\d.]/g, '' );
+                     if( tableNum == table.id ) {
+                         $(".table" +table.id + " a div").css("background-color", "#26A65B");
+                         $(".table" + table.id + " a").on('click', function(){
+                             console.log(table);
+                             insertReservation(reservation, table);
+                         });
+                     }
+                 });
+             },
+             error: function(resp){
+                console.log("error");
+             }
+         });
+    }
+}
+
+function insertReservation(reservation, table){
+    reservation.table = table;
+    console.log((reservation));
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -79,11 +77,14 @@ $("#insertReservation").click(function(){
         dataType: 'json',
         url:"http://localhost:9001/reservation/insert" ,
         success: function(resp){
-            console.log(resp.customer.firstName);
+            console.log(resp);
+            $(".table" + resp.table.id + " a div").css("background-color", "#e0162e");
+            $(".table" + resp.table.id + " a").off('click');
         },
         error: function(resp){
-            console.log("error " + new Date());
+            console.log('error ');
+            console.log(resp);
         }
     });
-});
+}
 

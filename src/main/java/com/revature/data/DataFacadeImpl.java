@@ -240,6 +240,8 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
 
         tx.commit();
         session.close();
+
+        System.out.println("in facade");
     }
 
     @Override

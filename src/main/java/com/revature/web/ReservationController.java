@@ -48,11 +48,13 @@ public class ReservationController {
             consumes = "application/json")
     public @ResponseBody HttpEntity submitReservation(@RequestBody @Valid Reservation reservation,
                                                       BindingResult result){
-        //System.out.println(reservation.getCustomer().getFirstName());
+        Customer customer = businessDelegate.getCustomerById(reservation.getCustomer().getId());
+        reservation.setCustomer(customer);
+        System.out.println(reservation);
         if(result.hasErrors()){
             return new ResponseEntity("Failed", HttpStatus.BAD_REQUEST);
         }
-         //businessDelegate.createReservation(reservation);
+        businessDelegate.insertReservation(reservation);
         return new ResponseEntity<Reservation>(reservation, HttpStatus.CREATED);
     }
 }
