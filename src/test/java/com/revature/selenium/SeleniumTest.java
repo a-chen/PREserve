@@ -16,7 +16,6 @@ public class SeleniumTest {
 		driver = new ChromeDriver();
 	}
 
-	@Ignore
 	@Test
 	public void newReservation() {
 		NewReservation reservation = new NewReservation(driver);
@@ -26,27 +25,28 @@ public class SeleniumTest {
 		reservation.setDate("01122017");
 		reservation.setTime("0930");
 		reservation.setPatrons("2");
-		reservation.clickTable(2);
+		reservation.clickTable(3);
 		
 		driver.quit();
 	}
-	
+
+	@Ignore
 	@Test
 	public void editReservation() {
 		EditReservation reservation = new EditReservation(driver);
 		// Check if page is opened
 		org.junit.Assert.assertEquals("PREserve", reservation.getPageTitle());
 		
-		// choose reservation to test
+		// Set reservation to test
 		int reservationId = 1;
 		
 		reservation.openReservation(reservationId);
-		reservation.setDate(reservationId, "01122017");
+		reservation.setDate(reservationId, "01132017");
 		reservation.setTime(reservationId, "0930");
 		reservation.setPatrons(reservationId, "2");
 		reservation.clickTable(reservationId, 3);
-		
-		driver.quit();
+
+		//driver.quit();
 	}
 
 }

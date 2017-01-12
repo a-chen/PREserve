@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-/**
+/*
  * Make a new reservation with Selenium
  */
 public class NewReservation {

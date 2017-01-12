@@ -3,6 +3,11 @@ $(document).ready(function () {
 		alert("Table 3 selected.");
 	});
 });
+$(document).ready(function () {
+	$("#reservation-1 .table3").click(function() {
+		alert("Table 3 selected.");
+	});
+});
 
 $("#reservation").click(function () {
     $.ajax({
