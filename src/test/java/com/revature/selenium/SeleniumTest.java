@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class SeleniumTest {
 	private WebDriver driver;
 
+	@Ignore
 	@Before
 	public void makeDriver() {
 		String PATH_TO_CHROME_DRIVER = "C:/Selenium/chromedriver_win32/chromedriver.exe";
@@ -16,6 +17,7 @@ public class SeleniumTest {
 		driver = new ChromeDriver();
 	}
 
+	@Ignore
 	@Test
 	public void newReservation() {
 		NewReservation reservation = new NewReservation(driver);
