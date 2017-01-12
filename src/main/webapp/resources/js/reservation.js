@@ -9,12 +9,18 @@ function getReservation(){
 }
 
 $(function () {
-    $('.reserve').on('change', function () {
+    $('#date').on('change', function () {
         getReserveTables();
     })
-    $('.reserve').on('keyup', function () {
+    $('#timepicker1').on('change', function () {
         getReserveTables();
     })
+    $('input.reserve').on('keyup', function(){
+        if ($(this).data('val')!=this.value) {
+            getReserveTables();
+        }
+        $(this).data('val', this.value);
+    });
 })
  function getReserveTables() {
     var date = $('#date').val();
