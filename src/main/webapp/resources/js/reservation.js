@@ -38,66 +38,15 @@ $(function() {
                  dataType: 'json',
                  url:"http://localhost:9001/reservation/getReservedTables" ,
                  success: function(resp){
-                     $(".table-square1").css("background-color", "#e0162e");
-                     $(".table-square2").css("background-color", "#e0162e");
-                     $(".table-square3").css("background-color", "#e0162e");
-                     $(".table-square4").css("background-color", "#e0162e");
-                     $(".table-square5").css("background-color", "#e0162e");
-                     $(".table-square6").css("background-color", "#e0162e");
-                     $(".table-square7").css("background-color", "#e0162e");
-                     $(".table-square8").css("background-color", "#e0162e");
+                     for( var i = 1; i < 9; i++){
+                         $(".table" + i + " a div").css("background-color", "#e0162e");
+                     }
 
                      $.each( resp, function( i, item ) {
-                         //console.log(item)
-                         //$(".table-square1").css("background-color", "#e0162e");
-                         var tableNum = $(".table-square1").text().replace( /[^\d.]/g, '' );
-                         if( tableNum == item.id ) {
-                             $(".table-square1").css("background-color", "#26A65B");
-                             console.log(tableNum + " " + item.id)
-                         }
-
-                         tableNum = $(".table-square2").text().replace( /[^\d.]/g, '' );
-                         if( tableNum == item.id ) {
-                             $(".table-square2").css("background-color", "#26A65B");
-                             console.log(tableNum + " " + item.id)
-                         }
-
-                         tableNum = $(".table-square3").text().replace( /[^\d.]/g, '' );
-                         if( tableNum == item.id ) {
-                             $(".table-square3").css("background-color", "#26A65B");
-                             console.log(tableNum + " " + item.id)
-                         }
-
-                         tableNum = $(".table-square4").text().replace( /[^\d.]/g, '' );
-                         if( tableNum == item.id ) {
-                             $(".table-square4").css("background-color", "#26A65B");
-                             console.log(tableNum + " " + item.id)
-                         }
-
-                         tableNum = $(".table-square5").text().replace( /[^\d.]/g, '' );
-                         if( tableNum == item.id ) {
-                             $(".table-square5").css("background-color", "#26A65B");
-                             console.log(tableNum + " " + item.id)
-                         }
-
-                         tableNum = $(".table-square6").text().replace( /[^\d.]/g, '' );
-                         if( tableNum == item.id ) {
-                             $(".table-square6").css("background-color", "#26A65B");
-                             console.log(tableNum + " " + item.id)
-                         }
-
-                         tableNum = $(".table-square7").text().replace( /[^\d.]/g, '' );
-                         if( tableNum == item.id ) {
-                             $(".table-square7").css("background-color", "#26A65B");
-                             console.log(tableNum + " " + item.id)
-                         }
-
-                         tableNum = $(".table-square8").text().replace( /[^\d.]/g, '' );
-                         if( tableNum == item.id ) {
-                             $(".table-square8").css("background-color", "#26A65B");
-                             console.log(tableNum + " " + item.id)
-                         }
-
+                         var tableNum = $(".table" + item.id + " a div").text().replace( /[^\d.]/g, '' );
+                         console.log(i);
+                         if( tableNum == item.id )
+                             $(".table" + item.id + " a div").css("background-color", "#26A65B");
                      });
                  },
                  error: function(resp){
