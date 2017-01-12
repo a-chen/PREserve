@@ -5,6 +5,7 @@ import org.hibernate.Session;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 public interface ReservationDAO {
 
@@ -38,10 +39,10 @@ public interface ReservationDAO {
     void update(Reservation reservation);
 
     /**
-     * Deletes a reservatoin
-     * @param Reservation Object
+     * Deletes a reservation
+     * @param reservation Object
      */
     void delete(Reservation reservation);
 
-    public HashSet<Reservation> getReservationsAfterTime(Date date);
+    public List<Reservation> getReservationsAfterTime(Date date);
 }

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * This is the facade for the data tier.
@@ -266,11 +267,11 @@ public class DataFacadeImpl implements DataFacade, ApplicationContextAware {
     }
 
     @Override
-    public HashSet<Reservation> getReservationsAfterTime(Date date) {
+    public List<Reservation> getReservationsAfterTime(Date date) {
         Session session = sessionFactory.openSession();
 
         reservationDAO.setSession(session);
-        HashSet<Reservation> reservations= reservationDAO.getReservationsAfterTime(date);
+        List<Reservation> reservations= reservationDAO.getReservationsAfterTime(date);
 
         session.close();
         return reservations;

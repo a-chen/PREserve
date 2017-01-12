@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 @Repository(value = "reservationDAO")
 public class ReservationDAOImpl implements ReservationDAO {
@@ -53,10 +54,10 @@ public class ReservationDAOImpl implements ReservationDAO {
     }
 
     @Override
-    public HashSet<Reservation> getReservationsAfterTime(Date date) {
+    public List<Reservation> getReservationsAfterTime(Date date) {
         String hql = "from Reservation where date >= :t";
         Query query = session.createQuery(hql);
         query.setTimestamp("t", date);
-        return new HashSet<>(query.list());
+        return query.list();
     }
 }

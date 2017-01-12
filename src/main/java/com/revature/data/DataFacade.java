@@ -4,6 +4,7 @@ import com.revature.beans.*;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 public interface DataFacade {
 
@@ -134,6 +135,6 @@ public interface DataFacade {
 	 */
 	ReservationTable getTableById(int id);
 
-	HashSet<Reservation>getReservationsAfterTime(Date date);
+	List<Reservation> getReservationsAfterTime(Date date);
 
 }

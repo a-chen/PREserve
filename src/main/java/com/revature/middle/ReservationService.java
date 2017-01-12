@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
+import java.util.*;
 
 @Service
 public class ReservationService {
@@ -41,31 +40,26 @@ public class ReservationService {
 
     public HashSet<ReservationTable> getAvailableTables(Reservation reservation){
         HashSet<ReservationTable> tables = facade.getAllTables();
-        HashSet<ReservationTable> toRemove = new HashSet<ReservationTable>();
+        List<ReservationTable> toRemove = new ArrayList<ReservationTable>();
+
         for(ReservationTable temp : tables){
             if(reservation.getPatrons() > temp.getCapacity())
                 toRemove.add(temp);
         }
+
         tables.removeAll(toRemove);
-        System.out.println(toRemove);
         toRemove.clear();
 
-        SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD hh:mm:ss");
-        //Date date = format.parse(reservation.getDate());
-        HashSet<Reservation> getReservationAfter = facade.getReservationsAfterTime(reservation.getDate());
+        List<Reservation> getReservationAfter = facade.getReservationsAfterTime(reservation.getDate());
 
-        System.out.println("AFTER: " + getReservationAfter);
         for(Reservation temp : getReservationAfter){
-            //System.out.println("reservation: " + reservation.getDate() + " TEMP: " + temp.getDate());
-            if(reservation.getDate().equals(temp.getDate())){
-                //System.out.println("in loop");
-                toRemove.add(facade.getTableById(temp.getTable().getId()));
-            }
+            if( reservation.getDate().equals( temp.getDate() ) )
+                for( ReservationTable temp2 : tables ) {
+                    if(temp2.getId() == temp.getTable().getId())
+                        toRemove.add(temp2);
+                }
         }
-        System.out.println(toRemove);
         tables.removeAll(toRemove);
-        //System.out.println(reservation.getDate());
-       // System.out.println(getReservationAfter);
         return tables;
     }
 
