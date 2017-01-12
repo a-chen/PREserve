@@ -20,9 +20,11 @@
     <!-- Custom -->
     <script type="text/javascript" src="../../resources/js/customer.js"></script>
     <script type="text/javascript" src="../../resources/js/main.js"></script>
+    <script type="text/javascript" src="../../resources/js/order.js"></script>
     <script type="text/javascript" src="../../resources/js/reservation.js"></script>
     <link rel="stylesheet" href="../../resources/css/styles.css" type="text/css">
-
+	<link rel="shortcut icon" href="../../resources/images/favicon.ico"/>
+	
 </head>
 <body>
 
@@ -30,7 +32,7 @@
     <div id="header" class="row">
         <div class="col-md-offset-1 col-md-10 ">
             <div class="home-page-title" style="text-align:center;">
-                <h1>Welcome to PREserve!</h1>
+                <img src="../../resources/images/PREserveLogo.png" alt="logo">
             </div>
             <!-- upon page load, will check if there are any reservations in the future(check vs current time)
                 if there are none, will unhide the timepicker
@@ -40,7 +42,7 @@
                     <h4>Please pick the date, time, and number of patrons you would like for your reservation.</h4>
                 </div>
 
-                <div class="row col-md-offset-2 col-sm-offset-0" style="padding-top:15px">
+                <div class="row col-md-offset-2 col-sm-offset-0">
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group" data-datepicker="true">
                             <input id="date" class="date-input form-control reserve date-selector" name="date" min="0" type="date" required>
@@ -56,7 +58,7 @@
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group">
-                            <input id="patrons" class="patron-input form-control reserve patron-selector" name="numPatrons" min="0" type="number" step="0"
+                            <input id="patrons" class="patron-input form-control reserve patron-selector" name="numPatrons" min="0" max="6" type="number" step="0"
                                    placeholder="Patrons" required>
                             <span class="input-group-addon glyphicon glyphicon-user"></span>
                         </div>
@@ -123,35 +125,32 @@
             </div>
         </div>
     </div>
-
 </div>
 
+<!--<button id="loadOrderButton" type="button">Order1Test</button>-->
 
 <!-- Reservation panels -->
 <div id="reservation-container" class="row">
     <div class="col-md-offset-1 col-md-10">
-        <div class="center">
-            <h2>It looks like you have some reservations</h2>
-        </div>
 
         <!-- check for each reservation, will create new block, and set id = "reservation-reservationNum" -->
-        <div id="reservation-2" class="reservation row">
+        <div id="reservation-1" class="reservation row">
             <div class="col-md-offset-1 col-md-10 col-sm-offset-0 col-sm-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <!-- also set the collapse num equal to same num as above-->
-                        <h4 class="panel-title" data-toggle="collapse" data-target="#collapse-reservation-2"
-                            href="#collapse-reservation-2">
+                        <h4 class="panel-title" data-toggle="collapse" data-target="#collapse-reservation-1"
+                            href="#collapse-reservation-1">
                             <!-- set this value to reservation's date and time, use moment.js to format-->
                             <a>Tuesday, Jan 12 @ 8:00pm</a>
                         </h4>
                     </div>
                     <!-- here too, set collapse num = same as above 2-->
-                    <div id="collapse-reservation-2" class="panel-collapse collapse">
+                    <div id="collapse-reservation-1" class="panel-collapse collapse">
                         <!-- Panel content here -->
                         <div class="panel-body">
                             <div class="row" style="padding-top:15px">
-                                <h3 id="reservation-detail-header">Current details (edit to change)</h3>
+                                <h3 class="reservation-detail-header">Current details (edit to change)</h3>
                                 <div class="col-md-4">
                                     <div class="input-group" data-datepicker="true">
                                         <input class="date-input form-control" name="date" min="0" type="date"
@@ -171,7 +170,7 @@
                                     <div class="input-group">
                                         <input class="patron-input form-control" placeholder="Patrons"
                                                name="numPatrons"
-                                               min="0" type="number" step="0" required>
+                                               min="0" max="6" type="number" step="0" required>
                                         <span class="input-group-addon glyphicon glyphicon-user"></span>
                                     </div>
                                 </div>
@@ -234,87 +233,129 @@
                                 </div>
                             </div> <!-- /table-selector -->
 
-                            <!-- Pre-ordered items -->
-                            <div class="ordered-items-container">
-                                <h3>Ordered items</h3>
-                                <table class="table ordered-items">
-                                    <tr>
-                                        <th>Price</th>
-                                        <th>Name</th>
-                                        <th>Description</th>
-                                    </tr>
-                                    <!-- set item number with item number from db -->
-                                    <!-- upon click anywhere on a table row, will add that item to order -->
-                                    <tr class="item-1">
-                                        <td>
-                                            <!-- will add the "selected" attribute
-                                                to the relevant option, e.g. <option selected>1</option>-->
-                                            <select>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                                <option>6</option>
-                                                <option>7</option>
-                                                <option>8</option>
-                                                <option>9</option>
-                                                <option>10</option>
-                                            </select>
-                                        </td>
-                                        <td>Anchovy Pizza</td>
-                                        <td>Raw fish</td>
-                                    </tr>
-                                </table>
-                                <!-- auto update this every time something is added to #ordered-items -->
-                                <h5>Total: <span class="menu-total">12</span></h5>
-                            </div>
-
-                            <!-- Order -->
-                            <div id="order-2" class="row">
-                                <div class="col-md-12">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <h4 class="panel-title" data-toggle="collapse"
-                                                data-target="#collapse-order-2" href="#collapse-order-2">
-                                                <!-- also set the collapse num equal to same num as above-->
-                                                <a>Order</a>
-                                            </h4>
-                                        </div>
-                                        <!-- here too, set collapse num = same as above 2-->
-                                        <div id="collapse-order-2" class="panel-collapse collapse in">
-                                            <!-- Panel content here -->
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <h3>Menu</h3>
-                                                    <!-- will populate items from database -->
-                                                    <table class="table order-menu">
-                                                        <tr>
-                                                            <th>Price</th>
-                                                            <th>Name</th>
-                                                            <th>Description</th>
-                                                        </tr>
-                                                        <!-- set item number with item number from db -->
-                                                        <!-- upon click anywhere on a table row, will add that item to order,
-                                                            can figure out which order it belongs to by finding nearest identifiable parent-->
-                                                        <tr class="item-1">
-                                                            <td>12</td>
-                                                            <td>Anchovy Pizza</td>
-                                                            <td>Raw fish</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div><!-- /Panel content -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- /order -->
+                            <!-- Preordered Items List -->
+                           <div class="preordered-items-list-stub"></div>
+                            <!-- Menu List -->
+                            <div class="menu-list-stub"></div>
 
                         </div><!-- /Panel content -->
                     </div>
                 </div>
             </div>
         </div> <!-- /reservation -->
+
+        <!-- check for each reservation, will create new block, and set id = "reservation-reservationNum" -->
+        <div id="reservation-2" class="reservation row">
+            <div class="col-md-offset-1 col-md-10 col-sm-offset-0 col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <!-- also set the collapse num equal to same num as above-->
+                        <h4 class="panel-title" data-toggle="collapse" data-target="#collapse-reservation-2"
+                            href="#collapse-reservation-2">
+                            <!-- set this value to reservation's date and time, use moment.js to format-->
+                            <a>Tuesday, Jan 12 @ 8:00pm</a>
+                        </h4>
+                    </div>
+                    <!-- here too, set collapse num = same as above 2-->
+                    <div id="collapse-reservation-2" class="panel-collapse collapse">
+                        <!-- Panel content here -->
+                        <div class="panel-body">
+                            <div class="row" style="padding-top:15px">
+                                <h3 class="reservation-detail-header">Current details (edit to change)</h3>
+                                <div class="col-md-4">
+                                    <div class="input-group" data-datepicker="true">
+                                        <input class="date-input form-control" name="date" min="0" type="date"
+                                               required>
+                                        <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group timepicker">
+                                        <input type="text"
+                                               class="time-input time ui-timepicker-input form-control"
+                                               placeholder="Time" autocomplete="off" required>
+                                        <span class="input-group-addon glyphicon glyphicon-time"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <input class="patron-input form-control" placeholder="Patrons"
+                                               name="numPatrons"
+                                               min="0" max="6" type="number" step="0" required>
+                                        <span class="input-group-addon glyphicon glyphicon-user"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- table selector -->
+                            <!-- initial state: display:none
+                                when user changes one of the 3 input fields above, show table-selector -->
+                            <div class="table-selector table-div">
+                                <div class="table-div-title">
+                                    <h4 style="padding-bottom:15px;">Please choose an available table.</h4>
+                                </div>
+                                <div class="col-md-offset-1 col-md-10 ">
+                                    <div class="row row1">
+                                        <div class="table1 col-md-6 table-padding">
+                                            <div class="table-square">
+                                                table1
+                                            </div>
+                                        </div>
+                                        <div class="table4 col-md-3 table-padding">
+                                            <div class="table-square">
+                                                table4
+                                            </div>
+                                        </div>
+                                        <div class="table7 col-md-3 table-padding">
+                                            <div class="table-square">
+                                                table7
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row2">
+                                        <div class="table2 col-md-6 table-padding">
+                                            <div class="table-square">
+                                                table2
+                                            </div>
+                                        </div>
+                                        <div class="table5 col-md-3 table-padding">
+                                            <div class="table-square">
+                                                table5
+                                            </div>
+                                        </div>
+                                        <div class="table8 col-md-3 table-padding">
+                                            <div class="table-square">
+                                                table8
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row3">
+                                        <div class="table3 col-md-6 table-padding">
+                                            <div class="table-square">
+                                                table3
+                                            </div>
+                                        </div>
+                                        <div class="table6 col-md-6 table-padding">
+                                            <div class="table-square">
+                                                table6
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <!-- /table-selector -->
+
+                            <!-- Preordered Items List -->
+                            <div class="preordered-items-list-stub"></div>
+                            <!-- Menu List -->
+                            <div class="menu-list-stub"></div>
+
+                        </div><!-- /Panel content -->
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /reservation -->
+
+
 
     </div> <!-- /reservation panel content -->
 </div>

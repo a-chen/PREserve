@@ -20,6 +20,7 @@ public class Order {
     private Set<OrderItem> orderItems;
 
     public Order(Reservation reservation) {
+        super();
         this.reservation = reservation;
     }
 

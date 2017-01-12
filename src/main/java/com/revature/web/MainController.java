@@ -14,8 +14,8 @@ public class MainController {
     public void setBusinessDelegate(Delegate businessDelegate) {
         this.businessDelegate = businessDelegate;
     }
-/*
-    @RequestMapping(value={"/home"}, method= RequestMethod.GET)
+
+    /*@RequestMapping(value={"/home"}, method= RequestMethod.GET)
     // no response body.. returned value goes to IRVR
     public String homePage(){
         // InternalResourceViewResolver will prepend the prefix

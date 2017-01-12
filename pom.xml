@@ -171,7 +171,6 @@
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -185,6 +184,17 @@
                     <configuration>
                         <source>${java-version}</source>
                         <target>${java-version}</target>
+                    </configuration>
+                </plugin>
+                <!-- Plugin for autodeploy to AWS -->
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                    <configuration>
+                        <url>http://35.164.153.121:9001/</url>
+                        <server>AWS-EC2-Tomcat-Server</server>
+                        <path>/</path>
                     </configuration>
                 </plugin>
             </plugins>
