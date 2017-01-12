@@ -57,7 +57,7 @@
                     </div>
                     <div class="col-md-3 col-sm-4">
                         <div class="input-group">
-                            <input id="patrons" class="patron-input form-control reserve" name="numPatrons" min="0" type="number" step="0"
+                            <input id="patrons" class="patron-input form-control reserve" name="numPatrons" min="0" max="6" type="number" step="0"
                                    placeholder="Patrons" required>
                             <span class="input-group-addon glyphicon glyphicon-user"></span>
                         </div>
@@ -127,7 +127,7 @@
 
 </div>
 
-<button id="loadOrderButton" type="button">Hello</button>
+<button id="loadOrderButton" type="button">Order1Test</button>
 
 <!-- Reservation panels -->
 <div id="reservation-container" class="row">
@@ -173,7 +173,7 @@
                                     <div class="input-group">
                                         <input class="patron-input form-control" placeholder="Patrons"
                                                name="numPatrons"
-                                               min="0" type="number" step="0" required>
+                                               min="0" max="6" type="number" step="0" required>
                                         <span class="input-group-addon glyphicon glyphicon-user"></span>
                                     </div>
                                 </div>
@@ -284,6 +284,7 @@
                                                     <!-- will populate items from database -->
                                                     <table class="table order-menu">
                                                         <tr>
+                                                            <th>Quantity</th>
                                                             <th>Price</th>
                                                             <th>Name</th>
                                                             <th>Description</th>
@@ -292,6 +293,7 @@
                                                         <!-- upon click anywhere on a table row, will add that item to order,
                                                             can figure out which order it belongs to by finding nearest identifiable parent-->
                                                         <tr class="item-1">
+                                                            <td>1</td>
                                                             <td>12</td>
                                                             <td>Anchovy Pizza</td>
                                                             <td>Raw fish</td>
