@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 
 /**
  * Make a new reservation with Selenium
- *
  */
 public class NewReservation {
 
@@ -45,26 +44,8 @@ public class NewReservation {
 	}
 	
 	public NewReservation clickTable(int table) {
-		String X_PATH_Table1 = "//*[@id=\"initial-reservation-selector\"]/div[3]/div[2]/div[1]/div[1]/div";
-		String X_PATH_Table4 = "//*[@id=\"initial-reservation-selector\"]/div[3]/div[2]/div[1]/div[2]/div";
-		String X_PATH_Table7 = "//*[@id=\"initial-reservation-selector\"]/div[3]/div[2]/div[1]/div[3]/div";
-		String X_PATH_Table2 = "//*[@id=\"initial-reservation-selector\"]/div[3]/div[2]/div[2]/div[1]/div";
-		String X_PATH_Table5 = "//*[@id=\"initial-reservation-selector\"]/div[3]/div[2]/div[2]/div[2]/div";
-		String X_PATH_Table8 = "//*[@id=\"initial-reservation-selector\"]/div[3]/div[2]/div[2]/div[3]/div";
-		String X_PATH_Table3 = "//*[@id=\"initial-reservation-selector\"]/div[3]/div[2]/div[3]/div[1]/div";
-		String X_PATH_Table6 = "//*[@id=\"initial-reservation-selector\"]/div[3]/div[2]/div[3]/div[2]/div";
-		
-		String X_PATH=null;
-		
-		if(table==1) X_PATH=X_PATH_Table1;
-		if(table==4) X_PATH=X_PATH_Table4;
-		if(table==7) X_PATH=X_PATH_Table7;
-		if(table==2) X_PATH=X_PATH_Table2;
-		if(table==5) X_PATH=X_PATH_Table5;
-		if(table==8) X_PATH=X_PATH_Table8;
-		if(table==3) X_PATH=X_PATH_Table3;
-		if(table==6) X_PATH=X_PATH_Table6;
-		
+		String X_PATH = "//div[@id='initial-reservation-selector']//div[contains(concat(' ', @class, ' '), ' table" 
+							+ table + " ')]/div";
 		WebElement link = driver.findElement(By.xpath(X_PATH));
 		link.click();
 		implicitWait();
@@ -73,6 +54,6 @@ public class NewReservation {
 	}
 	
 	private void implicitWait() {
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 	}
 }

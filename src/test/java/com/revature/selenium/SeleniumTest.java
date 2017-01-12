@@ -1,6 +1,7 @@
 package com.revature.selenium;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,8 +16,9 @@ public class SeleniumTest {
 		driver = new ChromeDriver();
 	}
 
+	@Ignore
 	@Test
-	public void test() {
+	public void newReservation() {
 		NewReservation reservation = new NewReservation(driver);
 		// Check if page is opened
 		org.junit.Assert.assertEquals("PREserve", reservation.getPageTitle());
@@ -25,6 +27,24 @@ public class SeleniumTest {
 		reservation.setTime("0930");
 		reservation.setPatrons("2");
 		reservation.clickTable(2);
+		
+		driver.quit();
+	}
+	
+	@Test
+	public void editReservation() {
+		EditReservation reservation = new EditReservation(driver);
+		// Check if page is opened
+		org.junit.Assert.assertEquals("PREserve", reservation.getPageTitle());
+		
+		// choose reservation to test
+		int reservationId = 1;
+		
+		reservation.openReservation(reservationId);
+		reservation.setDate(reservationId, "01122017");
+		reservation.setTime(reservationId, "0930");
+		reservation.setPatrons(reservationId, "2");
+		reservation.clickTable(reservationId, 3);
 		
 		driver.quit();
 	}

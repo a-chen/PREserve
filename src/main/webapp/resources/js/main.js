@@ -1,3 +1,9 @@
+$(document).ready(function () {
+	$("#initial-reservation-selector .table3").click(function() {
+		alert("Table 3 selected.");
+	});
+});
+
 $("#reservation").click(function () {
     $.ajax({
         method: "GET",
