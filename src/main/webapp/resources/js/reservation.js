@@ -4,7 +4,6 @@ function getReservation(){
         type:"GET",
         url:"http://localhost:9001/reservation?q="+q ,
         success: function(resp){
-            //console.log(resp);
         }
     });
 }
@@ -18,7 +17,6 @@ $(function () {
     })
 })
  function getReserveTables() {
-    console.log("hi")
     var date = $('#date').val();
     var time = $('#timepicker1').val();
     var patrons = $("#patrons").val();
@@ -51,7 +49,6 @@ $(function () {
                      if( tableNum == table.id ) {
                          $(".table" +table.id + " a div").css("background-color", "#26A65B");
                          $(".table" + table.id + " a").on('click', function(){
-                             console.log(table);
                              insertReservation(reservation, table);
                          });
                      }
@@ -66,7 +63,6 @@ $(function () {
 
 function insertReservation(reservation, table){
     reservation.table = table;
-    console.log((reservation));
     $.ajax({
         headers: {
             'Accept': 'application/json',
@@ -77,13 +73,11 @@ function insertReservation(reservation, table){
         dataType: 'json',
         url:"http://localhost:9001/reservation/insert" ,
         success: function(resp){
-            console.log(resp);
             $(".table" + resp.table.id + " a div").css("background-color", "#e0162e");
             $(".table" + resp.table.id + " a").off('click');
         },
         error: function(resp){
             console.log('error ');
-            console.log(resp);
         }
     });
 }
